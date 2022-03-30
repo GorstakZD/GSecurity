@@ -94,6 +94,12 @@ Windows Registry Editor Version 5.00
 "SaferFlags"=dword:00000000
 "ItemData"="$*"
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{fd273b3f-6d63-4d9f-9539-0f7ce4f17e06}]
+"LastModified"=hex(b):c5,b1,49,5c,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="smb*"
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\262144]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\262144\Paths]
