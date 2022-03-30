@@ -6,6 +6,8 @@ set "params=%*"
 cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
 
 :: recycle bin
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket\Volume" /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket\Volume" /f
 regini GSecurity.txt
 rd "C:\$Recycle.bin" /s /q
 rd "D:\$Recycle.bin" /s /q
