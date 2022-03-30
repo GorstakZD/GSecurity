@@ -49,7 +49,7 @@ icacls "Z:\Desktop" /inheritance:e /grant:r %username%:(OI)(CI)F /t /l /q /c
 ipconfig /flushdns
 
 :: Remove default user
-net user defaultuser100000 /delete
+net user defaultuser0 /delete
 
 :: Remove random files/folders
 del "%AppData%\Microsoft\Windows\Recent\*" /s /f /q
