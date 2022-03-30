@@ -5,6 +5,33 @@ title GSecurity & color 0b
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
 
+:: recycle bin
+regini GSecurity.txt
+rd "C:\$Recycle.bin" /s /q
+rd "D:\$Recycle.bin" /s /q
+rd "E:\$Recycle.bin" /s /q
+rd "F:\$Recycle.bin" /s /q
+rd "G:\$Recycle.bin" /s /q
+rd "H:\$Recycle.bin" /s /q
+rd "I:\$Recycle.bin" /s /q
+rd "J:\$Recycle.bin" /s /q
+rd "K:\$Recycle.bin" /s /q
+rd "L:\$Recycle.bin" /s /q
+rd "M:\$Recycle.bin" /s /q
+rd "N:\$Recycle.bin" /s /q
+rd "O:\$Recycle.bin" /s /q
+rd "P:\$Recycle.bin" /s /q
+rd "Q:\$Recycle.bin" /s /q
+rd "R:\$Recycle.bin" /s /q
+rd "S:\$Recycle.bin" /s /q
+rd "T:\$Recycle.bin" /s /q
+rd "U:\$Recycle.bin" /s /q
+rd "V:\$Recycle.bin" /s /q
+rd "W:\$Recycle.bin" /s /q
+rd "X:\$Recycle.bin" /s /q
+rd "Y:\$Recycle.bin" /s /q
+rd "Z:\$Recycle.bin" /s /q
+
 :: Take ownership of Desktop
 takeown /s %computername% /u %username% /f "%SystemDrive%\Users\Public\Desktop" /r /d y
 icacls "%SystemDrive%\Users\Public\Desktop" /inheritance:r
@@ -123,7 +150,7 @@ reg delete "HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Winlog
 reg delete "HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman" /f
 reg delete "HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit" /f
 reg delete "HKLM\Software\WOW6432Node\Policies" /f
-reg delete "HKLM\System\CurrentControlSet\Control\Keyboard Layout" /v "Scancode Map" /f
+reg delete "HKLM\System\CurrentControlSet\Control\Keyboard "Layout" /v "Scancode Map" /f
 reg delete "HKLM\System\CurrentControlSet\Control\SafeBoot" /v "AlternateShell" /f
 reg delete "HKLM\System\CurrentControlSet\Control\SecurePipeServers\winreg" /f
 reg delete "HKLM\System\CurrentControlSet\Control\Session Manager" /v "BootExecute" /f
