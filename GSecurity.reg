@@ -12,6 +12,92 @@ Windows Registry Editor Version 5.00
 "AppsUseLightTheme"=dword:00000000
 "SystemUsesLightTheme"=dword:00000000
 
+; Software restriction policy
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SRPV2]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers]
+"authenticodeenabled"=dword:00000000
+"DefaultLevel"=dword:00040000
+"TransparentEnabled"=dword:00000001
+"PolicyScope"=dword:00000000
+"ExecutableTypes"=hex(7):41,00,44,00,45,00,00,00,41,00,44,00,50,00,00,00,42,00,\
+  41,00,53,00,00,00,42,00,41,00,54,00,00,00,43,00,48,00,4d,00,00,00,43,00,4d,\
+  00,44,00,00,00,43,00,4f,00,4d,00,00,00,43,00,50,00,4c,00,00,00,43,00,52,00,\
+  54,00,00,00,45,00,58,00,45,00,00,00,48,00,4c,00,50,00,00,00,48,00,54,00,41,\
+  00,00,00,49,00,4e,00,46,00,00,00,49,00,4e,00,53,00,00,00,49,00,53,00,50,00,\
+  00,00,4c,00,4e,00,4b,00,00,00,4d,00,44,00,42,00,00,00,4d,00,44,00,45,00,00,\
+  00,4d,00,53,00,43,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,50,00,00,00,\
+  4d,00,53,00,54,00,00,00,4f,00,43,00,58,00,00,00,50,00,43,00,44,00,00,00,50,\
+  00,49,00,46,00,00,00,52,00,45,00,47,00,00,00,53,00,43,00,52,00,00,00,53,00,\
+  48,00,53,00,00,00,55,00,52,00,4c,00,00,00,56,00,42,00,00,00,57,00,53,00,43,\
+  00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{08c84821-b0c8-47de-940b-1d289cf59259}]
+"LastModified"=hex(b):3c,24,0c,25,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="curl*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{951f6d16-c9ad-49fb-a8c2-5857278f3cab}]
+"LastModified"=hex(b):bb,47,b9,2d,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="python*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{999ebfd0-6b22-4905-840e-4f4d6c73e9bd}]
+"LastModified"=hex(b):8b,cb,70,42,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="scoop*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{9f5c5c59-ff44-4873-b5bf-3c82bdccd2a1}]
+"LastModified"=hex(b):77,52,61,3d,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="ps*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{bc46e11b-b759-4eea-bf6c-655a0a82eab5}]
+"LastModified"=hex(b):20,dd,43,54,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="*.j*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{c53f71ea-c80c-4d0c-967f-7dbffdbeb30b}]
+"LastModified"=hex(b):a4,7a,7b,33,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="powers*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{df802c0c-366a-4949-b31a-b627def587aa}]
+"LastModified"=hex(b):d8,fa,7d,93,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="*.v*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{fd273b3f-6d63-4d9f-9539-0f7ce4f17e0d}]
+"LastModified"=hex(b):c5,b1,49,5c,45,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="*.h"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\262144]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\262144\Paths]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\262144\Paths\{14d0a5d7-64f2-4df5-a532-9318d05b522a}]
+"LastModified"=hex(b):c8,8d,c6,25,43,44,d8,01
+"Description"=""
+"SaferFlags"=dword:00000000
+"ItemData"="getadmin.vbs"
+
 ; Worms Doors Cleaner
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Rpc\Internet]
@@ -5742,3 +5828,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\XboxNetApiSvc]
 "Start"=dword:00000004
+
