@@ -9,6 +9,8 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket\Volume" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket\Volume" /f
 regini GSecurity.txt
+rd "A:\$Recycle.bin" /s /q
+rd "B:\$Recycle.bin" /s /q
 rd "C:\$Recycle.bin" /s /q
 rd "D:\$Recycle.bin" /s /q
 rd "E:\$Recycle.bin" /s /q
