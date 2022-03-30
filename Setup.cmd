@@ -190,15 +190,6 @@ reg add "HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon"
 reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "BootExecute" /t REG_MULTI_SZ /d "autocheck autochk *" /f
 reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "SETUPEXECUTE" /t REG_MULTI_SZ /d "" /f
 
-:: perms
-c:
-cd\
-takeown /f c:
-icacls c: /inheritance:e /grant:r %username%:(OI)(CI)F
-icacls c: /inheritance:e /remove "CREATOR OWNER"
-icacls c: /inheritance:e /remove "*S-1-15-2-1"
-icacls c: /inheritance:e /remove "*S-1-15-2-2"
-
 :: block ads
 wmic nicconfig where DHCPEnabled=TRUE call SetDNSServerSearchOrder ("45.90.28.223","76.76.19.19","94.140.14.14")
 
@@ -211,5 +202,15 @@ reg import %~dp0GSecurity.reg
 :: security policy
 secedit.exe /configure /db %windir%\security\local.sdb /cfg %~dp0GSecurity.inf
 
+:: perms
+c:
+cd\
+takeown /f c:
+icacls c: /inheritance:e /grant:r %username%:(OI)(CI)F
+icacls c: /inheritance:e /remove "CREATOR OWNER"
+icacls c: /inheritance:e /remove "*S-1-15-2-1"
+icacls c: /inheritance:e /remove "*S-1-15-2-2"
+
 :: exit
+popd
 exit
