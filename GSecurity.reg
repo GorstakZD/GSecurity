@@ -2,6 +2,31 @@ Windows Registry Editor Version 5.00
 
 ; Gorstaks Tweaks 02.04.2022
 
+; Terminal
+
+[HKEY_LOCAL_MACHINE\software\policies\microsoft\windows nt\terminal services]
+"fallowfullcontrol"=-
+"fallowunsolicitedfullcontrol"=-
+"fusemailto"=-
+"maxticketexpiry"=-
+"maxticketexpiryunits"=-
+"AllowSignedFiles"=dword:00000000
+"AllowUnsignedFiles"=dword:00000000
+"DisablePasswordSaving"=dword:00000001
+"fAllowToGetHelp"=dword:00000000
+"fAllowUnsolicited"=dword:00000000
+"fDenyTSConnections"=dword:00000001
+"fDisableCdm"=dword:00000001
+"fDisableCpm"=dword:00000001
+"fEncryptRPCTraffic"=dword:00000001
+"fPromptForPassword"=dword:00000001
+"MinEncryptionLevel"=dword:00000003
+"PromptForCredsOnClient"=dword:00000001
+"UseUniversalPrinterDriverFirst"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\software\policies\microsoft\windows nt\terminal services\client]
+"fusbredirectionenablemode"=-
+
 ; Advanced System Care
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\AppMgmt]
