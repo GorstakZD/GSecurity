@@ -43,9 +43,21 @@ icacls "%SystemDrive%\Users\Public\Desktop" /inheritance:e /grant:r %username%:(
 takeown /s %computername% /u %username% /f "%USERPROFILE%\Desktop" /r /d y
 icacls "%USERPROFILE%\Desktop" /inheritance:r
 icacls "%USERPROFILE%\Desktop" /inheritance:e /grant:r %username%:(OI)(CI)F /t /l /q /c
-takeown /s %computername% /u %username% /f "Z:\Desktop" /r /d y
-icacls "Z:\Desktop" /inheritance:r
-icacls "Z:\Desktop" /inheritance:e /grant:r %username%:(OI)(CI)F /t /l /q /c
+
+:: Protect logon
+takeown /s %computername% /u %username% /f "%SystemDrive%\Windows\System32\winlogon.exe" /r /d y
+icacls %SystemDrive%\Windows\System32\winlogon.exe /inheritance:e /remove "ALL APPLICATION PACKAGES"
+icacls %SystemDrive%\Windows\System32\winlogon.exe /inheritance:e /remove "ALL RESTRICTED APPLICATION PACKAGES"
+icacls %SystemDrive%\Windows\System32\winlogon.exe /inheritance:e /remove "Users"
+icacls %SystemDrive%\Windows\System32\winlogon.exe /inheritance:e /remove "TrustedInstaller"
+icacls %SystemDrive%\Windows\System32\winlogon.exe /inheritance:e /deny "NETWORK":(OI)(CI)F /t /l /q /c
+
+takeown /s %computername% /u %username% /f "%SystemDrive%\Windows\System32\logonui.exe" /r /d y
+icacls %SystemDrive%\Windows\System32\logonui.exe /inheritance:e /remove "ALL APPLICATION PACKAGES"
+icacls %SystemDrive%\Windows\System32\logonui.exe /inheritance:e /remove "ALL RESTRICTED APPLICATION PACKAGES"
+icacls %SystemDrive%\Windows\System32\logonui.exe /inheritance:e /remove "Users"
+icacls %SystemDrive%\Windows\System32\logonui.exe /inheritance:e /remove "TrustedInstaller"
+icacls %SystemDrive%\Windows\System32\logonui.exe /inheritance:e /deny "NETWORK":(OI)(CI)F /t /l /q /c
 
 :: Flush DNS Cache
 ipconfig /flushdns
