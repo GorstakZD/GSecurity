@@ -5,6 +5,15 @@ title GSecurity & color 0b
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
 
+:: perms
+c:
+cd\
+takeown /f c:
+icacls c: /inheritance:e /grant:r %username%:(OI)(CI)F
+icacls c: /inheritance:e /remove "CREATOR OWNER"
+icacls c: /inheritance:e /remove "*S-1-15-2-1"
+icacls c: /inheritance:e /remove "*S-1-15-2-2"
+
 :: recycle bin
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket\Volume" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket\Volume" /f
@@ -215,15 +224,6 @@ reg import %~dp0GSecurity.reg
 
 :: security policy
 secedit.exe /configure /db %windir%\security\local.sdb /cfg %~dp0GSecurity.inf
-
-:: perms
-c:
-cd\
-takeown /f c:
-icacls c: /inheritance:e /grant:r %username%:(OI)(CI)F
-icacls c: /inheritance:e /remove "CREATOR OWNER"
-icacls c: /inheritance:e /remove "*S-1-15-2-1"
-icacls c: /inheritance:e /remove "*S-1-15-2-2"
 
 :: exit
 popd
