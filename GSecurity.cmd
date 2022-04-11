@@ -424,7 +424,7 @@ Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessAppl
 Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.WindowsStore_8wekyb3d8bbwe" /v "DisabledByUser" /t REG_DWORD /d "1" /f
 
 REM ; Disable IPV6
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters" /v "DisabledComponents" /t REG_DWORD /d "255" /f
+rem Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters" /v "DisabledComponents" /t REG_DWORD /d "255" /f
 
 REM ; Exit
 popd
