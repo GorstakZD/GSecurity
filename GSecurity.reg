@@ -2,6 +2,43 @@ Windows Registry Editor Version 5.00
 
 ; GSecurity
 
+; Linkage
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIPTUNNEL\Linkage]
+"Export"=-
+"Bind"=-
+"Route"=-
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP6TUNNEL\Linkage]
+"Export"=-
+"Bind"=-
+"Route"=-
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Linkage]
+"Export"=-
+"Bind"=-
+"Route"=-
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Linkage]
+"Export"=-
+"Bind"=-
+"Route"=-
+
+; Routes
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\PersistentRoutes]
+"3.216.211.0,255.255.255.0,0.0.0.0,1"=""
+"52.156.193.0,255.255.255.0,0.0.0.0,1"=""
+"52.203.103.0,255.255.255.0,0.0.0.0,1"=""
+"80.92.65.0,255.255.255.0,0.0.0.0,1"=""
+"195.29.180.0,255.255.255.0,0.0.0.0,1"=""
+"10.0.0.0,255.0.0.0,1.1.1.1,1"=""
+"224.0.0.0,255.255.255.0,1.1.1.1,1"=""
+"192.168.0.0,255.255.0.0,1.1.1.1,1"=""
+"127.0.0.0,255.255.255.0,1.1.1.1,1"=""
+"172.0.0.0,255.0.0.0,1.1.1.1,1"=""
+"255.0.0.0,255.0.0.0,1.1.1.1,1"=""
+
 ; Base Filtering Engine
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BFE]
