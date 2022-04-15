@@ -21,7 +21,13 @@ icacls %SystemDrive%\Windows\System32\logonui.exe /inheritance:e /remove "Truste
 icacls %SystemDrive%\Windows\System32\logonui.exe /inheritance:e /deny "NETWORK":(OI)(CI)F /t /l /q /c
 
 REM ; Registry
-Reg.exe import %~dp0GSecurity.reg
+Reg.exe import %~dp0BFE.reg
+Reg.exe import %~dp0Shutup10.reg
+Reg.exe import %~dp0W10Privacy.reg
+Reg.exe import %~dp0Performance.reg
+Reg.exe import %~dp0Machine_Policy.reg
+Reg.exe import %~dp0Spybot_Standalone_1.7.reg
+Reg.exe import %~dp0Spybot_Anti_Beacon_3.reg
 
 REM ; Exit
 popd
