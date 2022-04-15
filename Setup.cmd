@@ -28,6 +28,9 @@ Reg.exe import %~dp0Performance.reg
 Reg.exe import %~dp0Machine_Policy.reg
 Reg.exe import %~dp0Spybot_Standalone_1.7.reg
 Reg.exe import %~dp0Spybot_Anti_Beacon_3.reg
+Reg.exe import %~dp0WinAeroTweaker.reg
+Reg.exe import %~dp0WinOptimizer.reg
+Reg.exe import %~dp0WiseCare365.reg
 
 REM ; Exit
 popd
