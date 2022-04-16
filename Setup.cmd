@@ -23,6 +23,7 @@ icacls %SystemDrive%\Windows\System32\logonui.exe /inheritance:e /deny "NETWORK"
 REM ; Registry
 Reg.exe import %~dp0BFE.reg
 Reg.exe import %~dp0Firewall.reg
+Reg.exe import %~dp0IPSec_Policy.reg
 Reg.exe import %~dp0Machine_Policy.reg
 Reg.exe import %~dp0Performance.reg
 Reg.exe import %~dp0Services.reg
