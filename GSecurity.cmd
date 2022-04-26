@@ -144,6 +144,15 @@ icacls "%WINDIR%\System32\utilman.exe" /remove "Administrators" "Authenticated U
 takeown /f "%WINDIR%\SysWOW64\utilman.exe" /a
 icacls "%WINDIR%\SysWOW64\utilman.exe" /remove "Administrators" "Authenticated Users" "Users" "System"
 
+
+:: Block all inbound network traffic and all outbound except allowed apps
+netsh advfirewall set DomainProfile firewallpolicy blockinboundalways,blockoutbound
+netsh advfirewall set PrivateProfile firewallpolicy blockinboundalways,blockoutbound
+netsh advfirewall set PublicProfile firewallpolicy blockinbound,allowoutbound
+
+:: Remove All Windows Firewall Rules
+netsh advfirewall firewall delete rule name=all
+
 :: Import registry
 Reg.exe import GSecurity.reg
 
@@ -277,14 +286,6 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "1" /f
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d "1" /f
 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction" /v "Enable" /t REG_SZ /d "y" /f
-
-:: Block all inbound network traffic and all outbound except allowed apps
-netsh advfirewall set DomainProfile firewallpolicy blockinboundalways,blockoutbound
-netsh advfirewall set PrivateProfile firewallpolicy blockinboundalways,blockoutbound
-netsh advfirewall set PublicProfile firewallpolicy blockinbound,allowoutbound
-
-:: Remove All Windows Firewall Rules
-netsh advfirewall firewall delete rule name=all
 
 :: Logging
 Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\AppModel" /v "Start" /t REG_DWORD /d "0" /f
