@@ -26,6 +26,7 @@ Powershell.exe [Environment]::SetEnvironmentVariable(‘__PSLockdownPolicy‘, �
 :: Registry
 Reg.exe import BFE.reg
 Reg.exe import Defender.reg
+Reg.exe import Firewall.reg
 Reg.exe import Ifeo.reg
 Reg.exe import Immunity.reg
 Reg.exe import Performance.reg
