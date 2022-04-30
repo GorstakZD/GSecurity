@@ -25,12 +25,15 @@ Powershell.exe [Environment]::SetEnvironmentVariable(‘__PSLockdownPolicy‘, �
 
 :: Registry
 Reg.exe import BFE.reg
+Reg.exe import Defender.reg
+Reg.exe import Ifeo.reg
 Reg.exe import Immunity.reg
 Reg.exe import Performance.reg
 Reg.exe import Privacy.reg
 Reg.exe import Routes.reg
 Reg.exe import Scheduler.reg
 Reg.exe import TerminalServices.reg
+Reg.exe import Safer.reg
 
 :: Exit
 popd
