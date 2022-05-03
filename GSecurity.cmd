@@ -20,6 +20,14 @@ icacls %SystemDrive%\Windows\System32\logonui.exe /remove "ALL RESTRICTED APPLIC
 icacls %SystemDrive%\Windows\System32\logonui.exe /remove Users
 icacls %SystemDrive%\Windows\System32\logonui.exe /deny NETWORK:(OI)(CI)F
 
+:: Take ownership of Desktop
+takeown /f "%SystemDrive%\Users\Public\Desktop" /r /d y
+icacls "%SystemDrive%\Users\Public\Desktop" /inheritance:r
+icacls "%SystemDrive%\Users\Public\Desktop" /inheritance:e /grant:r %username%:(OI)(CI)F /t /l /q /c
+takeown /f "%USERPROFILE%\Desktop" /r /d y
+icacls "%USERPROFILE%\Desktop" /inheritance:r
+icacls "%USERPROFILE%\Desktop" /inheritance:e /grant:r %username%:(OI)(CI)F /t /l /q /c
+
 :: Powershell
 Powershell.exe [Environment]::SetEnvironmentVariable(‘__PSLockdownPolicy‘, ‘4’, ‘Machine‘)
 
