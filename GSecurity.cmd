@@ -48,7 +48,7 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager
 
 :: RunOnce
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Services\dmwappushservice\" /v \"Start\" /t REG_DWORD /f /d 4" /f"
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f" /f"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f"
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f"
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v \"ShutdownWithoutLogon\" /t REG_DWORD /f /d 1" /f"
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v \"DontDisplayLastUserName\" /t REG_DWORD /f /d 0" /f"
