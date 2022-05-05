@@ -47,33 +47,33 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v FeatureSettingsOverrideMask /t REG_DWORD /d 4 /f
 
 :: RunOnce
-Reg.exe add "HKLM\SYSTEM\ControlSet001\Services\dmwappushservice\" /v \"Start\" /t REG_DWORD /f /d 4" /f
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f" /f
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v \"ShutdownWithoutLogon\" /t REG_DWORD /f /d 1" /f
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v \"DontDisplayLastUserName\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass\" /v \"UserAuthPolicy\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass\" /v \"BluetoothPolicy\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\.DEFAULT\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32\" /v \"\" /t REG_SZ /f /d \"\"" /f
-Reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"AppsUseLightTheme\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"SystemUsesLightTheme\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" /v \"GlobalUserDisabled\" /t REG_DWORD /f /d 1" /f
-Reg.exe add "HKU\.DEFAULT\Control Panel\International\User Profile\" /v \"HttpAcceptLanguageOptOut\" /t REG_DWORD /f /d 1" /f
-Reg.exe add "HKU\S-1-5-18\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32\" /v \"\" /t REG_SZ /f /d \"\"" /f
-Reg.exe add "HKU\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"AppsUseLightTheme\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"SystemUsesLightTheme\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" /v \"GlobalUserDisabled\" /t REG_DWORD /f /d 1" /f
-Reg.exe add "HKU\S-1-5-18\Control Panel\International\User Profile\" /v \"HttpAcceptLanguageOptOut\" /t REG_DWORD /f /d 1" /f
-Reg.exe add "HKU\S-1-5-19\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32\" /v \"\" /t REG_SZ /f /d \"\"" /f
-Reg.exe add "HKU\S-1-5-19\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"AppsUseLightTheme\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\S-1-5-19\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"SystemUsesLightTheme\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\S-1-5-19\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" /v \"GlobalUserDisabled\" /t REG_DWORD /f /d 1" /f
-Reg.exe add "HKU\S-1-5-19\Control Panel\International\User Profile\" /v \"HttpAcceptLanguageOptOut\" /t REG_DWORD /f /d 1" /f
-Reg.exe add "HKU\S-1-5-20\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32\" /v \"\" /t REG_SZ /f /d \"\"" /f
-Reg.exe add "HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"AppsUseLightTheme\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"SystemUsesLightTheme\" /t REG_DWORD /f /d 0" /f
-Reg.exe add "HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" /v \"GlobalUserDisabled\" /t REG_DWORD /f /d 1" /f
-Reg.exe add "HKU\S-1-5-20\Control Panel\International\User Profile\" /v \"HttpAcceptLanguageOptOut\" /t REG_DWORD /f /d 1" /f
+Reg.exe add "HKLM\SYSTEM\ControlSet001\Services\dmwappushservice\" /v \"Start\" /t REG_DWORD /f /d 4" /f"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f" /f"
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v \"ShutdownWithoutLogon\" /t REG_DWORD /f /d 1" /f"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v \"DontDisplayLastUserName\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass\" /v \"UserAuthPolicy\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass\" /v \"BluetoothPolicy\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\.DEFAULT\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32\" /v \"\" /t REG_SZ /f /d \"\"" /f"
+Reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"AppsUseLightTheme\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"SystemUsesLightTheme\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" /v \"GlobalUserDisabled\" /t REG_DWORD /f /d 1" /f"
+Reg.exe add "HKU\.DEFAULT\Control Panel\International\User Profile\" /v \"HttpAcceptLanguageOptOut\" /t REG_DWORD /f /d 1" /f"
+Reg.exe add "HKU\S-1-5-18\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32\" /v \"\" /t REG_SZ /f /d \"\"" /f"
+Reg.exe add "HKU\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"AppsUseLightTheme\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"SystemUsesLightTheme\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" /v \"GlobalUserDisabled\" /t REG_DWORD /f /d 1" /f"
+Reg.exe add "HKU\S-1-5-18\Control Panel\International\User Profile\" /v \"HttpAcceptLanguageOptOut\" /t REG_DWORD /f /d 1" /f"
+Reg.exe add "HKU\S-1-5-19\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32\" /v \"\" /t REG_SZ /f /d \"\"" /f"
+Reg.exe add "HKU\S-1-5-19\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"AppsUseLightTheme\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\S-1-5-19\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"SystemUsesLightTheme\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\S-1-5-19\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" /v \"GlobalUserDisabled\" /t REG_DWORD /f /d 1" /f"
+Reg.exe add "HKU\S-1-5-19\Control Panel\International\User Profile\" /v \"HttpAcceptLanguageOptOut\" /t REG_DWORD /f /d 1" /f"
+Reg.exe add "HKU\S-1-5-20\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32\" /v \"\" /t REG_SZ /f /d \"\"" /f"
+Reg.exe add "HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"AppsUseLightTheme\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\" /v \"SystemUsesLightTheme\" /t REG_DWORD /f /d 0" /f"
+Reg.exe add "HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" /v \"GlobalUserDisabled\" /t REG_DWORD /f /d 1" /f"
+Reg.exe add "HKU\S-1-5-20\Control Panel\International\User Profile\" /v \"HttpAcceptLanguageOptOut\" /t REG_DWORD /f /d 1" /f"
 
 :: Ifeo
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\explorer.exe" /v "MitigationOptions" /t REG_QWORD /d "0x0000000000000100" /f
