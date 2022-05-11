@@ -2829,11 +2829,9 @@ Windows Registry Editor Version 5.00
 "CF_TEXT"=dword:00000001
 "CF_UNICODETEXT"=dword:0000000d
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v DontDisplayLastUserName /t REG_DWORD /f /d 0 /f]
-@=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v ShutdownWithoutLogon /t REG_DWORD /f /d 1 /f]
-@=""
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"DontDisplayLastUserName"=dword:00000001
+"ShutdownWithoutLogon"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\TextInput]
 "AllowLinguisticDataCollection"=dword:00000000
