@@ -51,11 +51,6 @@ icacls b: /remove "Users"
 icacls b: /remove "Authenticated Users"
 icacls b: /remove "Everyone"
 
-takeown /f c:
-icacls c: /inheritance:e /grant:r %username%:(OI)(CI)F
-icacls c: /remove "Authenticated Users"
-icacls c: /remove "Users"
-
 takeown /f d:
 icacls d: /inheritance:e /grant:r %username%:(OI)(CI)F
 icacls d: /inheritance:e /grant:r Administrators:(OI)(CI)F
