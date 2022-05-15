@@ -10,7 +10,10 @@ pushd %~dp0
 Powershell.exe [Environment]::SetEnvironmentVariable(‘__PSLockdownPolicy‘, ‘4’, ‘Machine‘)
 
 :: Registry
-Reg.exe import GSecurity.reg
+Reg.exe import 1.reg
+Reg.exe import 2.reg
+Reg.exe import 3.reg
+Reg.exe import 4.reg
 
 :: Logon Protection
 takeown /f %SystemDrive%\Windows\System32\winlogon.exe
