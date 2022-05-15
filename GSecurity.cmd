@@ -1,7 +1,7 @@
 ﻿@echo off
 title GSecurity & color 0b
 
-runas /user:Administrator cmd /c "%~f0"
+runas /noprofile /user:Administrator cmd /c "%~f0"
 
 :: Set scriptdir as active
 pushd %~dp0
