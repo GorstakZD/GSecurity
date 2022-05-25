@@ -1,0 +1,163 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Associations]
+"DefaultFileTypeRisk"=dword:00000710
+"LowRiskFileTypes"=".avi;.bat;.com;.cmd;.exe;.htm;.html;.lnk;.mpg;.mpeg;.mov;.mp3;.msi;.m3u;.rar;.reg;.txt;.vbs;.wav;.zip;"
+"ModRiskFileTypes"=".bat;.exe;.reg;.vbs;.chm;.msi;.js;.cmd"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
+"SaveZoneInformation"=dword:00000001
+"ScanWithAntiVirus"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"HideSCAMeetNow"=dword:00000001
+"LinkResolveIgnoreLinkInfo"=dword:00000001
+"NoDriveTypeAutoRun"=dword:00000091
+"NoInternetOpenWith"=dword:00000001
+"NoLowDiskSpaceChecks"=dword:00000001
+"NoOnlinePrintsWizard"=dword:00000001
+"NoPublishingWizard"=dword:00000001
+"NoResolveSearch"=dword:00000001
+"NoResolveTrack"=dword:00000001
+"NoWebServices"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Assistance\Client\1.0]
+"NoExplicitFeedback"=dword:00000001
+"NoImplicitFeedback"=dword:00000001
+"NoOnlineAssist"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\InputPersonalization]
+"RestrictImplicitInkCollection"=dword:00000001
+"RestrictImplicitTextCollection"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer]
+"DisableFlashInIE"=dword:00000001
+"NoSearchBox"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Control Panel]
+"HomePage"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\DomainSuggestion]
+"Enabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Download]
+"CheckExeSignatures"="no"
+"RunInvalidSignatures"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Feed Discovery]
+"Enabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Main]
+"Check_Associations"="no"
+"DisableFirstRunCustomize"=dword:00000001
+"DoNotTrack"=dword:00000001
+"FormSuggest Passwords"="no"
+"FormSuggest PW Ask"="no"
+"HideNewEdgeButton"=dword:00000001
+"Use FormSuggest"="no"
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Privacy]
+"ClearBrowsingHistoryOnExit"=dword:00000001
+"EnableInPrivateBrowsing"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Recovery]
+"AutoRecover"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Restrictions]
+"NoCrashDetection"=dword:00000001
+"NoHelpItemSendFeedback"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Security]
+"DisableFixSecuritySettings"=dword:00000001
+"DisableSecuritySettingsCheck"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\SQM]
+"DisableCustomerImprovementProgram"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\TabbedBrowsing]
+"NewTabPageShow"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\InternetManagement]
+"RestrictCommunication"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Messenger\Client]
+"CEIP"=dword:00000002
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
+"NoGenTicket"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows NT\MitigationOptions\ProcessMitigationOptions]
+"csrss.exe"="00000000000000000000000000000000"
+"dwm.exe"="00000000000000000000000000000000"
+"ntoskrnl.exe"="00000000000000000000000000000000"
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows NT\Printers]
+"DisableHTTPPrinting"=dword:00000001
+"DisableWebPnPDownload"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\AppCompat]
+"DisablePCA"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
+"ConfigureWindowsSpotlight"=dword:00000002
+"DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
+"DisableThirdPartySuggestions"=dword:00000001
+"DisableWindowsSpotlightFeatures"=dword:00000001
+"DisableWindowsSpotlightOnActionCenter"=dword:00000001
+"DisableWindowsSpotlightOnSettings"=dword:00000001
+"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
+"IncludeEnterpriseSpotlight"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
+"Persistent"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
+"NoTileApplicationNotification"=dword:00000001
+"NoToastApplicationNotification"=dword:00000001
+"NoToastApplicationNotificationOnLockScreen"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\DataCollection]
+"AllowTelemetry"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\DriverSearching]
+"DontPromptForWindowsUpdate"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\EdgeUI]
+"DisableHelpSticker"=dword:00000001
+"DisableMFUTracking"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
+"EnableLegacyBalloonNotifications"=dword:00000001
+"HidePeopleBar"=dword:00000001
+"HideSCAHealth"=dword:00000001
+"NoAutoTrayNotify"=dword:00000001
+"NoBalloonFeatureAdvertisements"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\HandwritingErrorReports]
+"PreventHandwritingErrorReports"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\TabletPC]
+"PreventHandwritingDataSharing"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows Error Reporting]
+"AutoApproveOSDumps"=dword:00000000
+"Disabled"=dword:00000001
+"DontSendAdditionalData"=dword:00000001
+"LoggingDisabled"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows Error Reporting\Consent]
+"0"=""
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAUAsDefaultShutdownOption"=dword:00000001
+"NoAUShutdownOption"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\WindowsMovieMaker]
+"CodecDownload"=dword:00000001
+"WebHelp"=dword:00000001
+"WebPublish"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\WindowsStore]
+"DisableOSUpgrade"=dword:00000001
+
