@@ -90,5 +90,4 @@ icacls %SystemDrive%\Windows\System32\logonui.exe /remove "Authenticated Users"
 icacls %SystemDrive%\Windows\System32\logonui.exe /remove Users
 icacls %SystemDrive%\Windows\System32\logonui.exe /remove TrustedInstaller
 icacls %SystemDrive%\Windows\System32\logonui.exe /deny Network:F
-pause
 shutdown -r -t 0
