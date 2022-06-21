@@ -90,12 +90,404 @@ rd "%ProgramFiles%\WindowsPowerShell" /s /q
 takeown /f "%ProgramFiles(x86)%\WindowsPowerShell" /r /d y
 icacls "%ProgramFiles(x86)%\WindowsPowerShell" /grant:r %username%:(OI)(CI)F /t /l /q /c
 rd "%ProgramFiles(x86)%\WindowsPowerShell" /s /q
-takeown /f "%WinDir%\System32\WindowsPowerShell" /r /d y
-icacls "%WinDir%\System32\WindowsPowerShell" /grant:r %username%:(OI)(CI)F /t /l /q /c
-rd "%WinDir%\System32\WindowsPowerShell" /s /q
-takeown /f "%WinDir%\SysWOW64\WindowsPowerShell" /r /d y
-icacls "%WinDir%\SysWOW64\WindowsPowerShell" /grant:r %username%:(OI)(CI)F /t /l /q /c
-rd "%WinDir%\SysWOW64\WindowsPowerShell" /s /q
+
+:: Prevent files from being run/altered/recreated
+takeown /f "%WINDIR%\System32\sethc.exe" /a
+icacls "%WINDIR%\System32\sethc.exe" /remove "Administrators" "Authenticated Users" "Users" "System"
+takeown /f "%WINDIR%\SysWOW64\sethc.exe" /a
+icacls "%WINDIR%\SysWOW64\sethc.exe" /remove "Administrators" "Authenticated Users" "Users" "System"
+takeown /f "%WINDIR%\System32\utilman.exe" /a
+icacls "%WINDIR%\System32\utilman.exe" /remove "Administrators" "Authenticated Users" "Users" "System"
+takeown /f "%WINDIR%\SysWOW64\utilman.exe" /a
+icacls "%WINDIR%\SysWOW64\utilman.exe" /remove "Administrators" "Authenticated Users" "Users" "System"
+
+
+:: Block all inbound network traffic and all outbound except allowed apps
+netsh advfirewall set DomainProfile firewallpolicy blockinboundalways,blockoutbound
+netsh advfirewall set PrivateProfile firewallpolicy blockinboundalways,blockoutbound
+netsh advfirewall set PublicProfile firewallpolicy blockinbound,allowoutbound
+
+:: Remove All Windows Firewall Rules
+netsh advfirewall firewall delete rule name=all
+
+:: Import registry
+Reg.exe import GSecurity.reg
+
+:: 0 - Use Autoplay for all media and devices
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" /v "DisableAutoplay" /t REG_DWORD /d "0" /f 
+
+:: Disable AutoRun
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoAutorun" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoDriveTypeAutoRun" /t REG_DWORD /d "255" /f
+
+:: Diagnostic and usage data - Select how much data you send to Microsoft / 0 - Security (Not aplicable on Home/Pro, it resets to Basic) / 1 - Basic / 2 - Enhanced (Hidden) / 3 - Full
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Application-Experience/Program-Telemetry" /v "Enabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection" /v "DoNotShowFeedbackNotifications" /t REG_DWORD /d "1" /f
+
+:: 1 - Let Microsoft provide more tailored experiences with relevant tips and recommendations by using your diagnostic data
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy" /v "TailoredExperiencesWithDiagnosticDataEnabled" /t REG_DWORD /d "0" /f
+
+:: Feedback Frequency - Windows should ask for my feedback: 0 - Never / Removed - Automatically
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules" /v "NumberOfSIUFInPeriod" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules" /v "PeriodInNanoSeconds" /t REG_DWORD /d "0" /f
+
+:: 2 - Enable Num Lock on Sign-in Screen / 2147483648 - Disable
+Reg.exe add "HKU\.DEFAULT\Control Panel\Keyboard" /v "InitialKeyboardIndicators" /t REG_SZ /d "2" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Input" /v "InputServiceEnabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Input" /v "InputServiceEnabledForCCI" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Input\TIPC" /v "Enabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization\TrainedDataStore" /v "HarvestContacts" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Personalization\Settings" /v "AcceptedPrivacyPolicy" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\InputPersonalization" /v "AllowInputPersonalization" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\HandwritingErrorReports" /v "PreventHandwritingErrorReports" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\TabletPC" /v "PreventHandwritingDataSharing" /t REG_DWORD /d "1" /f
+
+:: Autocorrect misspelled words (Privacy)
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7" /v "EnableAutocorrection" /t REG_DWORD /d "0" /f
+
+:: Highlight misspelled words (Privacy)
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7" /v "EnableSpellchecking" /t REG_DWORD /d "0" /f
+
+:: Show text suggestions as I type on the software keyboard (Privacy)
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7" /v "EnableTextPrediction" /t REG_DWORD /d "0" /f
+
+:: Add a space after I choose a text suggestion (Privacy)
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7" /v "EnablePredictionSpaceInsertion" /t REG_DWORD /d "0" /f
+
+:: Add a period after I double-tap the Spacebar (Privacy)
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7" /v "EnableDoubleTapSpace" /t REG_DWORD /d "0" /f
+
+:: Show recommended app suggestions (Privacy)
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace" /v "PenWorkspaceAppSuggestionsEnabled" /t REG_DWORD /d "0" /f
+
+:: Sticky Keys / 26 - Disable All / 511 - Default
+Reg.exe add "HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys" /v "Flags" /t REG_SZ /d "26" /f
+
+:: Let apps control radios / 0 - Default / 1 - Enabled / 2 - Disabled
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsAccessRadios" /t REG_DWORD /d "2" /f
+
+:: Networking Tweaks
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters" /v "autodisconnect" /t REG_DWORD /d "4294967295" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters" /v "Size" /t REG_DWORD /d "3" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters" /v "EnableOplocks" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters" /v "IRPStackSize" /t REG_DWORD /d "32" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters" /v "SharingViolationDelay" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters" /v "SharingViolationRetries" /t REG_DWORD /d "0" /f
+
+:: n - Disable Background disk defragmentation / y - Enable How long in milliseconds you want to have for a startup delay time for desktop apps that run at startup to load
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Dfrg\BootOptimizeFunction" /v "Enable" /t REG_SZ /d "n" /f
+
+:: 0 - Disable Background auto-layout / Disable Optimize Hard Disk when idle
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\OptimalLayout" /v "EnableAutoLayout" /t REG_DWORD /d "0" /f
+
+:: Disable Automatic Maintenance / Scheduled System Maintenance
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "MaintenanceDisabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f
+
+:: 0 - Enables 8dot3 name creation for all volumes on the system / 1 - Disables 8dot3 name creation for all volumes on the system / 2 - Sets 8dot3 name creation on a per volume basis / 3 - Disables 8dot3 name creation for all volumes except the system volume
+:: fsutil 8dot3name scan c:\
+fsutil behavior set disable8dot3 1
+
+:: 1 - Disable the Encrypting File System (EFS)
+fsutil behavior set disableencryption 1
+
+:: 1 - When listing directories, NTFS does not update the last-access timestamp, and it does not record time stamp updates in the NTFS log
+fsutil behavior set disablelastaccess 0
+
+:: 5 - 5 secs / Delay Chkdsk startup time at OS Boot
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager" /v "AutoChkTimeout" /t REG_DWORD /d "0" /f
+
+:: 0 - Establishes a standard size file-system cache of approximately 8 MB / 1 - Establishes a large system cache working set that can expand to physical memory, minus 4 MB, if needed
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t REG_DWORD /d "0" /f
+
+:: 0 - Drivers and the kernel can be paged to disk as needed / 1 - Drivers and the kernel must remain in physical memory
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "0" /f
+
+:: 0 - Disable Prefetch / 1 - Enable Prefetch when the application starts / 2 - Enable Prefetch when the device starts up / 3 - Enable Prefetch when the application or device starts up
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "3" /f
+
+:: 0 - Disable SuperFetch / 1 - Enable SuperFetch when the application starts up / 2 - Enable SuperFetch when the device starts up / 3 - Enable SuperFetch when the application or device starts up
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d "3" /f
+
+:: 0 - Disable It / 1 - Default
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "SfTracingState" /t REG_DWORD /d "0" /f
+
+:: 0 - Disable Fast Startup for a Full Shutdown / 1 - Enable Fast Startup (Hybrid Boot) for a Hybrid Shutdown
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" /v "LongPathsEnabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsAllowExtendedCharacter8dot3Rename" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsDisable8dot3NameCreation" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "AutoEndTasks" /t REG_SZ /d "1" /f
+Reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "HungAppTimeout" /t REG_SZ /d "1000" /f
+Reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "MenuShowDelay" /t REG_SZ /d "8" /f
+Reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t REG_SZ /d "2000" /f
+Reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "LowLevelHooksTimeout" /t REG_SZ /d "1000" /f
+Reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "ForegroundLockTimeout" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d "8" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoLowDiskSpaceChecks" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "LinkResolveIgnoreLinkInfo" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoResolveSearch" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoResolveTrack" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoInternetOpenWith" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "WaitToKillServiceTimeout" /t REG_SZ /d "2000" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "PagingFiles" /t REG_MULTI_SZ /d "" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "ExistingPageFiles" /t REG_MULTI_SZ /d "" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction" /v "Enable" /t REG_SZ /d "y" /f
+
+:: Logging
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\AppModel" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\AutoLogger-Diagtrack-Listener" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\Circular Kernel Context Logger" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\CShellCircular" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\CloudExperienceHostOobe" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\EventLog-Application" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\EventLog-Security" /v "Start" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\EventLog-System" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\DiagLog" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\FaceRecoTel" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\FaceUnlock" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\LwtNetLog" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\NetCore" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\NtfsLog" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\ReadyBoot" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\TileStore" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\Tpm" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\UBPM" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\WdiContextLog" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\WiFiDriverIHVSession" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\WiFiSession" /v "Start" /t REG_DWORD /d "0" /f
+
+:: Disable Microsoft Support Diagnostic Tool MSDT
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy" /v "DisableQueryRemoteServer" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy" /v "EnableQueryRemoteServer" /t REG_DWORD /d "0" /f
+
+:: Disable System Debugger (Dr. Watson)
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AeDebug" /v "Auto" /t REG_SZ /d "0" /f
+
+:: 1 - Disable Windows Error Reporting (WER)
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\PCHealth\ErrorReporting" /v "DoReport" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\PCHealth\ErrorReporting" /v "ShowUI" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting" /v "Disabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting" /v "Disabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Error Reporting" /v "Disabled" /t REG_DWORD /d "1" /f
+
+:: DefaultConsent / 1 - Always ask (default) / 2 - Parameters only / 3 - Parameters and safe data / 4 - All data
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultConsent" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultOverrideBehavior" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultConsent" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultOverrideBehavior" /t REG_DWORD /d "1" /f
+
+:: 1 - Disable WER sending second-level data
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting" /v "DontSendAdditionalData" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting" /v "DontSendAdditionalData" /t REG_DWORD /d "1" /f
+
+:: 1 - Disable WER crash dialogs, popups
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\PCHealth\ErrorReporting" /v "ShowUI" /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting" /v "DontShowUI" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting" /v "DontShowUI" /t REG_DWORD /d "1" /f
+
+:: 1 - Disable WER logging
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting" /v "LoggingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting" /v "LoggingDisabled" /t REG_DWORD /d "1" /f
+schtasks /Change /TN "Microsoft\Windows\ErrorDetails\EnableErrorDetailsUpdate" /Disable
+schtasks /Change /TN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /Disable
+
+:: Windows Error Reporting Service
+sc config WerSvc start= disabled
+
+:: Remove Windows Errror Reporting (to restore run "sfc /scannow")
+takeown /f "%WinDir%\System32\WerFault.exe" /a
+icacls "%WinDir%\System32\WerFault.exe" /grant:r Administrators:F /c
+taskkill /im WerFault.exe /f
+del "%WinDir%\System32\WerFault.exe" /s /f /q
+
+:: 1 - Show hidden files, folders and drives
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d "1" /f
+
+:: 0 - Show extensions for known file types
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t REG_DWORD /d "0" /f
+
+:: 0 - Hide protected operating system files 
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSuperHidden" /t REG_DWORD /d "0" /f
+
+:: 1 - Launch folder windows in a separate process
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "SeparateProcess" /t REG_DWORD /d "1" /f
+
+:: 1 - Show Sync Provider Notifications in Windows Explorer (ADs)
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSyncProviderNotifications" /t REG_DWORD /d "0" /f
+
+:: 1 - Use Sharing Wizard
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "SharingWizardOn" /t REG_DWORD /d "0" /f
+
+:: Navigation pane - 1 - Expand to open folder
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "NavPaneExpandToCurrentFolder" /t REG_DWORD /d "0" /f
+
+:: 0 - All of the components of Windows Explorer run a single process / 1 - All instances of Windows Explorer run in one process and the Desktop and Taskbar run in a separate process
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "DesktopProcess" /t REG_DWORD /d "1" /f
+
+:: Yes - Use Inline AutoComplete in File Explorer and Run Dialog / No
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete" /v "Append Completion" /t REG_SZ /d "No" /f
+
+:: 0 - Do this for all current items checkbox / 1 - Disabled
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" /v "ConfirmationCheckBoxDoForAll" /t REG_DWORD /d "0" /f
+
+:: 1 - Always show more details in copy dialog
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" /v "EnthusiastMode" /t REG_DWORD /d "1" /f
+
+:: 1 - Display confirmation dialog when deleting files
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "ConfirmFileDelete" /t REG_DWORD /d "1" /f
+
+:: 1075839525 - Auto arrange icons and Align icons to grid on Desktop / 1075839520 / 1075839521 / 1075839524
+Reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop" /v "FFlags" /t REG_DWORD /d "1075839525" /f
+
+:: Pagefile
+wmic computersystem where name="%computername%" set AutomaticManagedPagefile=True
+
+:: 0 - Foreground and background applications equally responsive / 1 - Foreground application more responsive than background / 2 - Best foreground application response time (Default)
+:: 38 - Adjust for best performance of Programs / 24 - Adjust for best performance of Background Services
+Reg.exe add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation " /t REG_DWORD /d "0" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "IRQ8Priority" /t REG_DWORD /d "1" /f
+
+:: System Restore
+Reg.exe delete "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\SystemRestore" /v "DisableSR" /f
+Reg.exe delete "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\SystemRestore" /v "DisableConfig" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\SPP\Clients" /v " {09F7EDC5-294E-4180-AF6A-FB0E6A0E9513}" /t REG_MULTI_SZ /d "1" /f
+schtasks /Change /TN "Microsoft\Windows\SystemRestore\SR" /Enable
+vssadmin Resize ShadowStorage /For=C: /On=C: /Maxsize=5GB
+sc config wbengine start= demand
+sc config swprv start= demand
+sc config vds start= demand
+sc config VSS start= demand
+
+:: Reduce windows size
+vssadmin delete shadows /all /quiet
+dism /online /cleanup-image /startcomponentcleanup /resetbase
+
+:: 1 - Disable File History (Creating previous versions of files/Windows Backup)
+Reg.exe add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\FileHistory" /v "Disabled" /t REG_DWORD /d "1" /f
+
+:: Tasks
+schtasks /DELETE /TN "Adobe Flash Player PPAPI Notifier" /f
+schtasks /DELETE /TN "Adobe Flash Player Updater" /f
+schtasks /DELETE /TN "AMDLinkUpdate" /f
+schtasks /DELETE /TN "Driver Easy Scheduled Scan" /f
+schtasks /DELETE /TN "GPU Tweak II" /f
+schtasks /DELETE /TN "klcp_update" /f
+schtasks /DELETE /TN "ModifyLinkUpdate" /f
+schtasks /DELETE /TN "Repairing Yandex Browser update service" /f
+schtasks /DELETE /TN "StartDVR" /f
+schtasks /DELETE /TN "StartCN" /f
+schtasks /DELETE /TN "System update for Yandex Browser" /f
+schtasks /DELETE /TN "Update for Yandex Browser" /f
+schtasks /Change /TN "CreateExplorerShellUnelevatedTask" /Enable
+schtasks /Change /TN "Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319" /Disable
+schtasks /Change /TN "Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64" /Disable
+schtasks /Change /TN "Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64 Critical" /Disable
+schtasks /Change /TN "Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 Critical" /Disable
+schtasks /Change /TN "Microsoft\Windows\ApplicationData\appuriverifierdaily" /Disable
+schtasks /Change /TN "Microsoft\Windows\ApplicationData\appuriverifierinstall" /Disable
+schtasks /Change /TN "Microsoft\Windows\ApplicationData\CleanupTemporaryState" /Disable
+schtasks /Change /TN "Microsoft\Windows\ApplicationData\DsSvcCleanup" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience\ProgramDataUpdater" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience\StartupAppTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\AppxDeploymentClient\Pre-staged app cleanup" /Disable
+schtasks /Change /TN "Microsoft\Windows\Autochk\Proxy" /Disable
+schtasks /Change /TN "Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\CloudExperienceHost\CreateObjectTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /Disable
+schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /Disable
+schtasks /Change /TN "Microsoft\Windows\Device Information\Device" /Disable
+schtasks /Change /TN "Microsoft\Windows\Defrag\ScheduledDefrag" /Disable
+schtasks /Change /TN "Microsoft\Windows\Diagnosis\Scheduled" /Disable
+schtasks /Change /TN "Microsoft\Windows\DiskCleanup\SilentCleanup" /Disable
+schtasks /Change /TN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable
+schtasks /Change /TN "Microsoft\Windows\DiskFootprint\Diagnostics" /Disable
+schtasks /Change /TN "Microsoft\Windows\DiskFootprint\StorageSense" /Disable
+schtasks /Change /TN "Microsoft\Windows\DUSM\dusmtask" /Disable
+schtasks /Change /TN "Microsoft\Windows\EnterpriseMgmt\MDMMaintenenceTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClient" /Disable
+schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" /Disable
+schtasks /Change /TN "Microsoft\Windows\FileHistory\File History (maintenance mode)" /Disable
+schtasks /Change /TN "Microsoft\Windows\Flighting\OneSettings\RefreshCache" /Disable
+schtasks /Change /TN "Microsoft\Windows\HelloFace\FODCleanupTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\InstallService\ScanForUpdates" /Disable
+schtasks /Change /TN "Microsoft\Windows\InstallService\ScanForUpdatesAsUser" /Disable
+schtasks /Change /TN "Microsoft\Windows\InstallService\WakeUpAndContinueUpdates" /Disable
+schtasks /Change /TN "Microsoft\Windows\InstallService\WakeUpAndScanForUpdates" /Disable
+schtasks /Change /TN "Microsoft\Windows\InstallService\SmartRetry" /Disable
+schtasks /Change /TN "Microsoft\Windows\LanguageComponentsInstaller\Installation" /Disable
+schtasks /Change /TN "Microsoft\Windows\LanguageComponentsInstaller\ReconcileLanguageResources" /Disable
+schtasks /Change /TN "Microsoft\Windows\LanguageComponentsInstaller\Uninstallation" /Disable
+schtasks /Change /TN "Microsoft\Windows\License Manager\TempSignedLicenseExchange" /Disable
+schtasks /Change /TN "Microsoft\Windows\Location\Notifications" /Disable
+schtasks /Change /TN "Microsoft\Windows\Location\WindowsActionDialog" /Disable
+schtasks /Change /TN "Microsoft\Windows\Management\Provisioning\Cellular" /Disable
+schtasks /Change /TN "Microsoft\Windows\Management\Provisioning\Logon" /Disable
+schtasks /Change /TN "Microsoft\Windows\Maintenance\WinSAT" /Disable
+schtasks /Change /TN "Microsoft\Windows\Maps\MapsToastTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Maps\MapsUpdateTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Mobile Broadband Accounts\MNO Metadata Parser" /Disable
+schtasks /Change /TN "Microsoft\Windows\Multimedia\SystemSoundsService" /Disable
+schtasks /Change /TN "Microsoft\Windows\NlaSvc\WiFiTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\NetTrace\GatherNetworkInfo" /Disable
+schtasks /Change /TN "Microsoft\Windows\PI\Sqm-Tasks" /Disable
+schtasks /Change /TN "Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /Disable
+schtasks /Change /TN "Microsoft\Windows\Printing\EduPrintProv" /Disable
+schtasks /Change /TN "Microsoft\Windows\PushToInstall\Registration" /Disable
+schtasks /Change /TN "Microsoft\Windows\Ras\MobilityManager" /Disable
+schtasks /Change /TN "Microsoft\Windows\RecoveryEnvironment\VerifyWinRE" /Disable
+schtasks /Change /TN "Microsoft\Windows\RemoteAssistance\RemoteAssistanceTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\RetailDemo\CleanupOfflineContent" /Disable
+schtasks /Change /TN "Microsoft\Windows\Servicing\StartComponentCleanup" /Disable
+schtasks /Change /TN "Microsoft\Windows\SettingSync\BackgroundUploadTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\SettingSync\BackupTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\SettingSync\NetworkStateChangeTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Shell\CreateObjectTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Setup\SetupCleanupTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\SpacePort\SpaceAgentTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\SpacePort\SpaceManagerTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Speech\HeadsetButtonPress" /Disable
+schtasks /Change /TN "Microsoft\Windows\Speech\SpeechModelDownloadTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Storage Tiers Management\Storage Tiers Management Initialization" /Disable
+schtasks /Change /TN "Microsoft\Windows\Subscription\EnableLicenseAcquisition" /Disable
+schtasks /Change /TN "Microsoft\Windows\Subscription\LicenseAcquisition" /Disable
+schtasks /Change /TN "Microsoft\Windows\Sysmain\ResPriStaticDbSync" /Disable
+schtasks /Change /TN "Microsoft\Windows\Sysmain\WsSwapAssessmentTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Task Manager\Interactive" /Disable
+schtasks /Change /TN "Microsoft\Windows\Time Synchronization\ForceSynchronizeTime" /Disable
+schtasks /Change /TN "Microsoft\Windows\Time Synchronization\SynchronizeTime" /Disable
+schtasks /Change /TN "Microsoft\Windows\Time Zone\SynchronizeTimeZone" /Disable
+schtasks /Change /TN "Microsoft\Windows\TPM\Tpm-HASCertRetr" /Disable
+schtasks /Change /TN "Microsoft\Windows\TPM\Tpm-Maintenance" /Disable
+schtasks /Change /TN "Microsoft\Windows\UPnP\UPnPHostConfig" /Disable
+schtasks /Change /TN "Microsoft\Windows\USB\Usb-Notifications" /Disable
+schtasks /Change /TN "Microsoft\Windows\User Profile Service\HiveUploadTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\WCM\WiFiTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Windows Filtering Platform\BfeOnServiceStartTypeChange" /Disable
+schtasks /Change /TN "Microsoft\Windows\Windows Media Sharing\UpdateLibrary" /Disable
+schtasks /Change /TN "Microsoft\Windows\WindowsUpdate\Scheduled Start" /Disable
+schtasks /Change /TN "Microsoft\Windows\WlanSvc\CDSSync" /Disable
+schtasks /Change /TN "Microsoft\Windows\WOF\WIM-Hash-Management" /Disable
+schtasks /Change /TN "Microsoft\Windows\WOF\WIM-Hash-Validation" /Disable
+schtasks /Change /TN "Microsoft\Windows\Work Folders\Work Folders Logon Synchronization" /Disable
+schtasks /Change /TN "Microsoft\Windows\Work Folders\Work Folders Maintenance Work" /Disable
+schtasks /Change /TN "Microsoft\Windows\Workplace Join\Automatic-Device-Join" /Disable
+schtasks /Change /TN "Microsoft\Windows\WwanSvc\NotificationTask" /Disable
+
+:: Save space
+dism.exe /Image:C:\test\offline /Cleanup-Image /StartComponentCleanup
+compact /s:%SystemDrive%\Windows\WinSxs\ /c /a /i /EXE:xpress16k
 
 :: Remove random reg keys (Startup/Privacy/Policies/Malware related)
 reg delete "HKCU\Software\Microsoft\Command Processor" /v "AutoRun" /f
@@ -578,6 +970,87 @@ Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\3b04d4fd-1cc7-4f23-ab1c-d1337819c4bb\DefaultPowerSchemeValues\381b4222-f694-41f0-9685-ff5bb260df2e" /v "DCSettingIndex" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\3b04d4fd-1cc7-4f23-ab1c-d1337819c4bb\DefaultPowerSchemeValues\8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c" /v "ACSettingIndex" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\F15576E8-98B7-4186-B944-EAFA664402D9" /v "Attributes" /t REG_DWORD /d "2" /f
+
+:: IPSec
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local" /ve /t REG_SZ /d "" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local" /v "ActivePolicy" /t REG_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /v "className" /t REG_SZ /d "ipsecFilter" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /v "name" /t REG_SZ /d "ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /v "ipsecName" /t REG_SZ /d "All IP Filter List" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /v "ipsecID" /t REG_SZ /d "{45f48cfc-241d-42f7-bcd4-927054db1b67}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /v "ipsecData" /t REG_BINARY /d "b520dc80c82ed111a89e00a0248d302146000000010000000200000000000200000000000200000000005125fa5c69bae64b9f1cd192432c2fee010000000000000000000000000000000000000000000000000000000000000000000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /v "whenChanged" /t REG_DWORD /d "1655772376" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /v "ipsecOwnersReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /v "className" /t REG_SZ /d "ipsecFilter" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /v "name" /t REG_SZ /d "ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /v "ipsecName" /t REG_SZ /d "Blocked IP Filter List" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /v "ipsecID" /t REG_SZ /d "{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /v "ipsecData" /t REG_BINARY /d "b520dc80c82ed111a89e00a0248d3021a80700001c000000020000000000020000000000020000000000757925a15f3053418149a2c497624ca201000000000000000000000000000000000000000000000006000000160000000000000002000000000002000000000002000000000098774cc5da9abd4680ecfdd85a24a0360100000000000000000000000000000000000000000000000600000017000000000000000200000000000200000000000200000000003e8a09256115a145bf3e229906e4da8c0100000000000000000000000000000000000000000000000600000087000000000000000200000000000200000000000200000000005e40a4d8e7064049911b62798efdc5c9010000000000000000000000000000000000000000000000060000008900000000000000020000000000020000000000020000000000b294968fb8e52945acca287c74b1834b010000000000000000000000000000000000000000000000060000008a0000000000000002000000000002000000000002000000000021f1448913133b47b7f7e69ad1451684010000000000000000000000000000000000000000000000060000008b000000000000000200000000000200000000000200000000001dd54cc05bdda54da1bd744bbed65b9001000000000000000000000000000000000000000000000006000000bd01000000000000020000000000020000000000020000000000bfec6a7a3d36364ebde879ea93c474640100000000000000000000000000000000000000000000000600000000001600000000000200000000000200000000000200000000000e637263a3dff64b82d36312f130c087010000000000000000000000000000000000000000000000060000000000170000000000020000000000020000000000020000000000e1a875ed0f2f0943a7478f0dcf126c41010000000000000000000000000000000000000000000000060000000000870000000000020000000000020000000000020000000000f83a50795e307340beae751e49c44cb40100000000000000000000000000000000000000000000000600000000008900000000000200000000000200000000000200000000002839488282178e4889799ded5c41372b0100000000000000000000000000000000000000000000000600000000008a000000000002000000000002000000000002000000000010e8e2dad2458745bdbd77cc03ed8e9f0100000000000000000000000000000000000000000000000600000000008b000000000002000000000002000000000002000000000006ee7ce2c753324a98e9f92e7cd603d2010000000000000000000000000000000000000000000000060000000000bd01000000000200000000000200000000000200000000007ddae2ca7d42944b9ef9f4b048cd02910100000000000000000000000000000000000000000000001100000016000000000000000200000000000200000000000200000000006248d976240e8248a91ebfc6bf1a290c010000000000000000000000000000000000000000000000110000001700000000000000020000000000020000000000020000000000c5c6166e1fe6ca4ab8230b3be06dc901010000000000000000000000000000000000000000000000110000008700000000000000020000000000020000000000020000000000500a4b5de38af245beef6f36d887268601000000000000000000000000000000000000000000000011000000890000000000000002000000000002000000000002000000000081f9d93995158341b290bfe6a5bb3473010000000000000000000000000000000000000000000000110000008a0000000000000002000000000002000000000002000000000057786828ed03ea4eafb8a373823164bb010000000000000000000000000000000000000000000000110000008b00000000000000020000000000020000000000020000000000e215652113cf684bb9456148903e542201000000000000000000000000000000000000000000000011000000bd01000000000000020000000000020000000000020000000000365f7e4589fdff4daa9ea710219862c00100000000000000000000000000000000000000000000001100000000001600000000000200000000000200000000000200000000007eec5185dcb1ef4e9cc4d8af0673afa2010000000000000000000000000000000000000000000000110000000000170000000000020000000000020000000000020000000000e65259f9acd2544abf0bf712ee1d7c060100000000000000000000000000000000000000000000001100000000008700000000000200000000000200000000000200000000003878a23ed1dc4944b077f694082208a9010000000000000000000000000000000000000000000000110000000000890000000000020000000000020000000000020000000000177dcf7a8034d44481f44d54bd88e2b80100000000000000000000000000000000000000000000001100000000008a0000000000020000000000020000000000020000000000a497ab261f0dd441b858664f727e54d30100000000000000000000000000000000000000000000001100000000008b0000000000020000000000020000000000020000000000a42f7a9fa5e6ac419dde1c76b9b179a2010000000000000000000000000000000000000000000000110000000000bd0100000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /v "whenChanged" /t REG_DWORD /d "1654308630" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /v "ipsecOwnersReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /v "className" /t REG_SZ /d "ipsecISAKMPPolicy" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /v "name" /t REG_SZ /d "ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /v "ipsecID" /t REG_SZ /d "{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /v "ipsecData" /t REG_BINARY /d "b820dc80c82ed111a89e00a0248d302180000000000000000000000000000000000000000000000000000000000000000000000000000000807000000000000000000000000000000000000000000000010000000000000003000000000000000000000002000000000000000000000000000000000000000000000000000000020000000000000000000000807000000000000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /v "whenChanged" /t REG_DWORD /d "1654308019" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /v "ipsecOwnersReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "className" /t REG_SZ /d "ipsecNegotiationPolicy" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "name" /t REG_SZ /d "ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "ipsecID" /t REG_SZ /d "{ab61c8e1-10e8-4207-b84d-681caa72b848}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "ipsecNegotiationPolicyAction" /t REG_SZ /d "{8a171dd3-77e3-11d1-8659-a04f00000000}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "ipsecNegotiationPolicyType" /t REG_SZ /d "{62f49e13-6c37-11d1-864c-14a300000000}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "ipsecData" /t REG_BINARY /d "b920dc80c82ed111a89e00a0248d3021a4000000020000000000000000000000000000000000000001000000030000000200000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000002000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "whenChanged" /t REG_DWORD /d "1654308020" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /v "ipsecOwnersReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "className" /t REG_SZ /d "ipsecNegotiationPolicy" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "name" /t REG_SZ /d "ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "ipsecName" /t REG_SZ /d "Block" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "ipsecID" /t REG_SZ /d "{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "ipsecNegotiationPolicyAction" /t REG_SZ /d "{3f91a819-7647-11d1-864d-d46a00000000}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "ipsecNegotiationPolicyType" /t REG_SZ /d "{62f49e10-6c37-11d1-864c-14a300000000}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "ipsecData" /t REG_BINARY /d "b920dc80c82ed111a89e00a0248d3021040000000000000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "whenChanged" /t REG_DWORD /d "1654308646" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /v "ipsecOwnersReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}\0SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /v "className" /t REG_SZ /d "ipsecNFA" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /v "name" /t REG_SZ /d "ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /v "ipsecID" /t REG_SZ /d "{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /v "ipsecData" /t REG_BINARY /d "00acbb118d49d111863900a0248d30212a0000000100000005000000020000000000fdffffff0200000000000000000000000000000000000200000000000101010101010101010101010101010101000000050000000000000001010101010101010101010101010102010000000000000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /v "ipsecNegotiationPolicyReference" /t REG_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{ab61c8e1-10e8-4207-b84d-681caa72b848}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /v "whenChanged" /t REG_DWORD /d "1654308020" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /v "ipsecOwnersReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "className" /t REG_SZ /d "ipsecNFA" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "name" /t REG_SZ /d "ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "ipsecID" /t REG_SZ /d "{78e7557c-d821-4f61-9144-f089c30899f6}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "ipsecData" /t REG_BINARY /d "00acbb118d49d111863900a0248d30212a0000000100000005000000020000000000ffffffff0200000000000000000000000000010000000200000000000101010101010101010101010101010101000000050000000000000001010101010101010101010101010102010000000000000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "ipsecNegotiationPolicyReference" /t REG_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "ipsecFilterReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{45f48cfc-241d-42f7-bcd4-927054db1b67}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "whenChanged" /t REG_DWORD /d "1655772385" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}" /v "ipsecOwnersReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "className" /t REG_SZ /d "ipsecNFA" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "name" /t REG_SZ /d "ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "ipsecID" /t REG_SZ /d "{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "ipsecData" /t REG_BINARY /d "00acbb118d49d111863900a0248d30212a0000000100000005000000020000000000fdffffff0200000000000000000000000000010000000200000000000101010101010101010101010101010101000000050000000000000001010101010101010101010101010102010000000000000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "ipsecNegotiationPolicyReference" /t REG_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNegotiationPolicy{c4b410bf-dd4c-4275-bedc-abd92cca3f19}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "ipsecFilterReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecFilter{641c767c-fe15-40d4-831d-bd9a5d4fb9cf}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "whenChanged" /t REG_DWORD /d "1654308653" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}" /v "ipsecOwnersReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "className" /t REG_SZ /d "ipsecPolicy" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "name" /t REG_SZ /d "ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "ipsecName" /t REG_SZ /d "GSecurity IP Policy" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "ipsecID" /t REG_SZ /d "{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "ipsecDataType" /t REG_DWORD /d "256" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "ipsecData" /t REG_BINARY /d "632120224c4fd111863b00a0248d302104000000302a000000" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "ipsecISAKMPReference" /t REG_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecISAKMPPolicy{e627a7fc-634a-466b-bd85-4b84ffa02dee}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "whenChanged" /t REG_DWORD /d "1655772386" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "ipsecNFAReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}\0SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}\0SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /f
 
 :: PatchMyPC
 curl -# https://patchmypc.com/freeupdater/PatchMyPC.exe -o %userprofile%\Desktop\PatchMyPC.exe
