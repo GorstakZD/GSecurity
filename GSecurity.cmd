@@ -1052,6 +1052,24 @@ Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPo
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "whenChanged" /t REG_DWORD /d "1655772386" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecPolicy{c0ccd3b2-2871-436c-be91-4e919c8b5aa0}" /v "ipsecNFAReference" /t REG_MULTI_SZ /d "SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{78e7557c-d821-4f61-9144-f089c30899f6}\0SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{7f50b588-f6a5-4187-861f-d7ae6c28f78b}\0SOFTWARE\Policies\Microsoft\Windows\IPSEC\Policy\Local\ipsecNFA{57c1533e-02ee-4ca2-9bc2-69e4b6aaaba2}" /f
 
+:: New Startup Entries
+bcdedit /set disabledynamictick yes
+bcdedit /set useplatformtick yes
+bcdedit /timeout 3
+bcdedit /set nx OptIn
+bcdedit /set bootux disabled
+bcdedit /set bootmenupolicy legacy
+bcdedit /set tscsyncpolicy Enhanced
+bcdedit /set quietboot yes
+bcdedit /set {globalsettings} custom:16000067 true
+bcdedit /set {globalsettings} custom:16000069 true
+bcdedit /set {globalsettings} custom:16000068 true
+
+:: Sign
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DisableAutomaticRestartSignOn" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "StartMenuLogOff" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "StartMenuLogOff" /t REG_DWORD /d "1" /f
+
 :: PatchMyPC
 curl -# https://patchmypc.com/freeupdater/PatchMyPC.exe -o %userprofile%\Desktop\PatchMyPC.exe
 
