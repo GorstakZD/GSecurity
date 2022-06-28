@@ -629,27 +629,6 @@ Reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\Firewall
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /v "{1E78ACD0-2EB2-4C5B-BE1E-C3AF5786D813}" /t REG_SZ /d "v2.31|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort2_10=1-66|LPort2_10=69-55554|LPort2_10=55556-65535|Name=TCP|EmbedCtxt=GSecurity|" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /v "{7647502E-A6B0-4DCD-BD65-6B0E48EEFDF7}" /t REG_SZ /d "v2.31|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort2_10=1-66|LPort2_10=69-55554|LPort2_10=55556-65535|Name=UDP|EmbedCtxt=GSecurity|" /f
 
-:: Software Restriction Policy
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "DefaultLevel" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "TransparentEnabled" /t REG_DWORD /d "1" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "PolicyScope" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "ExecutableTypes" /t REG_MULTI_SZ /d "ADE\0ADP\0BAS\0BAT\0CHM\0CMD\0COM\0CPL\0CRT\0EXE\0HLP\0HTA\0INF\0INS\0ISP\0LNK\0MDB\0MDE\0MSC\0MSI\0MSP\0MST\0OCX\0PCD\0PIF\0REG\0SCR\0SHS\0URL\0VB\0WSC" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{a5258ff7-27f6-4877-a457-dc596c887b22}" /v "Description" /t REG_SZ /d "" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{a5258ff7-27f6-4877-a457-dc596c887b22}" /v "SaferFlags" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{a5258ff7-27f6-4877-a457-dc596c887b22}" /v "ItemData" /t REG_SZ /d "smb*" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{17418e05-efed-437b-951c-a9265b95b621}" /v "Description" /t REG_SZ /d "" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{17418e05-efed-437b-951c-a9265b95b621}" /v "SaferFlags" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{17418e05-efed-437b-951c-a9265b95b621}" /v "ItemData" /t REG_SZ /d "E:\*" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{9dfbf5eb-4077-44c8-b574-5e7f22afa8bc}" /v "Description" /t REG_SZ /d "" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{9dfbf5eb-4077-44c8-b574-5e7f22afa8bc}" /v "SaferFlags" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{9dfbf5eb-4077-44c8-b574-5e7f22afa8bc}" /v "ItemData" /t REG_SZ /d "D:\*" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{aceaf38b-7dbe-43ba-9a65-49b54c6b09af}" /v "Description" /t REG_SZ /d "" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{aceaf38b-7dbe-43ba-9a65-49b54c6b09af}" /v "SaferFlags" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{aceaf38b-7dbe-43ba-9a65-49b54c6b09af}" /v "ItemData" /t REG_SZ /d "C:\*" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{b062012e-0ca9-4ba9-88c6-337a9cb362d5}" /v "Description" /t REG_SZ /d "" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{b062012e-0ca9-4ba9-88c6-337a9cb362d5}" /v "SaferFlags" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{b062012e-0ca9-4ba9-88c6-337a9cb362d5}" /v "ItemData" /t REG_SZ /d "F:\*" /f
-
 :: Spectre and Meltdown protection off
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "4" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "4" /f
@@ -1250,17 +1229,17 @@ Reg.exe delete "HKLM\software\policies\microsoft\windows nt\terminal services\cl
 Reg.exe add "HKLM\software\policies\microsoft\windows nt\terminal services\client" /f
 
 :: New Startup Entries
-bcdedit /set disabledynamictick yes
-bcdedit /set useplatformtick yes
-bcdedit /timeout 3
-bcdedit /set nx OptIn
-bcdedit /set bootux disabled
-bcdedit /set bootmenupolicy legacy
-bcdedit /set tscsyncpolicy Enhanced
-bcdedit /set quietboot yes
-bcdedit /set {globalsettings} custom:16000067 true
-bcdedit /set {globalsettings} custom:16000069 true
-bcdedit /set {globalsettings} custom:16000068 true
+rem bcdedit /set disabledynamictick yes
+rem bcdedit /set useplatformtick yes
+rem bcdedit /timeout 3
+rem bcdedit /set nx OptIn
+rem bcdedit /set bootux disabled
+rem bcdedit /set bootmenupolicy legacy
+rem bcdedit /set tscsyncpolicy Enhanced
+rem bcdedit /set quietboot yes
+rem bcdedit /set {globalsettings} custom:16000067 true
+rem bcdedit /set {globalsettings} custom:16000069 true
+rem bcdedit /set {globalsettings} custom:16000068 true
 
 :: Sign
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DisableAutomaticRestartSignOn" /t REG_DWORD /d "0" /f
@@ -1270,5 +1249,302 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /
 :: PatchMyPC
 curl -# https://patchmypc.com/freeupdater/PatchMyPC.exe -o %userprofile%\Desktop\PatchMyPC.exe
 
+:: Software Restriction Policy
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "DefaultLevel" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "TransparentEnabled" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "PolicyScope" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "ExecutableTypes" /t REG_MULTI_SZ /d "ADE\0ADP\0BAS\0CHM\0CRT\0HLP\0HTA\0INF\0INS\0ISP\0MDB\0MDE\0MSC\0MSI\0MSP\0MST\0PCD\0PIF\0REG\0SHS\0VB\0WSC\0HTC\0JOB\0PS1\0SCT\0TMP\0WPC" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "AuthentiCodeEnabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "Levels" /t REG_DWORD /d "462848" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers" /v "LogFileName" /t REG_SZ /d "C:\Windows\system32\LogFiles\SAFER.LOG" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Hashes" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B92F9B-EE8C-41D5-9AA1-B33D35DB49FB}" /v "Description" /t REG_SZ /d "Alle lokalen Pfade" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B92F9B-EE8C-41D5-9AA1-B33D35DB49FB}" /v "ItemData" /t REG_SZ /d "?:\\" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B92F9B-EE8C-41D5-9AA1-B33D35DB49FB}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B97DA0-641E-474E-BDCC-3F2294507AC3}" /v "Description" /t REG_SZ /d "Alle Netzwerkpfade" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B97DA0-641E-474E-BDCC-3F2294507AC3}" /v "ItemData" /t REG_SZ /d "\\\\" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B97DA0-641E-474E-BDCC-3F2294507AC3}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9A46A-64A1-4BE5-A896-6E0B4B1C502C}" /v "Description" /t REG_SZ /d "System Volume Information" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9A46A-64A1-4BE5-A896-6E0B4B1C502C}" /v "ItemData" /t REG_SZ /d "?:\System Volume Information" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9A46A-64A1-4BE5-A896-6E0B4B1C502C}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9D2EC-FB61-4161-1341-3DBEF03AF18E}" /v "Description" /t REG_SZ /d "Papierkorb (Windows XP/2003 [R2])" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9D2EC-FB61-4161-1341-3DBEF03AF18E}" /v "ItemData" /t REG_SZ /d "?:\RECYCLE?" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9D2EC-FB61-4161-1341-3DBEF03AF18E}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9DFE4-ED08-4328-B355-4BC63D6267B2}" /v "Description" /t REG_SZ /d "Papierkorb (Windows Vista/7/8/10/11)" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9DFE4-ED08-4328-B355-4BC63D6267B2}" /v "ItemData" /t REG_SZ /d "?:\$RECYCLE.BIN" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{00B9DFE4-ED08-4328-B355-4BC63D6267B2}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{06FFDEFE-4EC8-4CCB-BA70-86C7054B2AC6}" /v "Description" /t REG_SZ /d "%%ProgramData%%" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{06FFDEFE-4EC8-4CCB-BA70-86C7054B2AC6}" /v "ItemData" /t REG_SZ /d "C:\ProgramData" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{06FFDEFE-4EC8-4CCB-BA70-86C7054B2AC6}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{10011479-708B-41F7-A992-CF1FD376BBB7}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\RunAs.Exe" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{10011479-708B-41F7-A992-CF1FD376BBB7}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\RunAs.Exe" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{10011479-708B-41F7-A992-CF1FD376BBB7}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{1001AAF1-749F-49F4-8010-297BD6CA33A0}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\RunAs.Exe" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{1001AAF1-749F-49F4-8010-297BD6CA33A0}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\RunAs.Exe" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{1001AAF1-749F-49F4-8010-297BD6CA33A0}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{1001DEEE-128A-4A4D-A684-2C7035340E4B}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysWoW64\RunAs.Exe" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{1001DEEE-128A-4A4D-A684-2C7035340E4B}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysWoW64\RunAs.Exe" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{1001DEEE-128A-4A4D-A684-2C7035340E4B}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{2742F840-C2D8-4EB3-A486-0A9D0879F29F}" /v "Description" /t REG_SZ /d "Macromedia Flash" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{2742F840-C2D8-4EB3-A486-0A9D0879F29F}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Macromed\Flash" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{2742F840-C2D8-4EB3-A486-0A9D0879F29F}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{a5258ff7-27f6-4877-a457-dc596c887b22}" /v "Description" /t REG_SZ /d "" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{a5258ff7-27f6-4877-a457-dc596c887b22}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{a5258ff7-27f6-4877-a457-dc596c887b22}" /v "ItemData" /t REG_SZ /d "smb*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A69B6C-8792-426D-89AB-CE11B1DB3017}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\CSC" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A69B6C-8792-426D-89AB-CE11B1DB3017}" /v "ItemData" /t REG_SZ /d "C:\Windows\CSC" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A69B6C-8792-426D-89AB-CE11B1DB3017}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A80AF5-D291-4464-8D15-A877F332A666}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Debug\WIA" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A80AF5-D291-4464-8D15-A877F332A666}" /v "ItemData" /t REG_SZ /d "C:\Windows\Debug\WIA" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A80AF5-D291-4464-8D15-A877F332A666}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A84AEC-7487-494A-891A-09EB13942A77}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Debug\WIA:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A84AEC-7487-494A-891A-09EB13942A77}" /v "ItemData" /t REG_SZ /d "C:\Windows\Debug\WIA:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A84AEC-7487-494A-891A-09EB13942A77}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A879D0-94C6-4145-9039-19A1DD94E2F5}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Logs" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A879D0-94C6-4145-9039-19A1DD94E2F5}" /v "ItemData" /t REG_SZ /d "C:\Windows\Logs" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A879D0-94C6-4145-9039-19A1DD94E2F5}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A8C62E-75B6-4447-B54F-B351757BF34E}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Media" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A8C62E-75B6-4447-B54F-B351757BF34E}" /v "ItemData" /t REG_SZ /d "C:\Windows\Media" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A8C62E-75B6-4447-B54F-B351757BF34E}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A8F941-D7CB-4042-8C04-AAA87ADB8FC2}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Registration\CRMLog" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A8F941-D7CB-4042-8C04-AAA87ADB8FC2}" /v "ItemData" /t REG_SZ /d "C:\Windows\Registration\CRMLog" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A8F941-D7CB-4042-8C04-AAA87ADB8FC2}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A90615-4ABE-4937-879C-47C19F107CC8}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Registration\CRMLog:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A90615-4ABE-4937-879C-47C19F107CC8}" /v "ItemData" /t REG_SZ /d "C:\Windows\Registration\CRMLog:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A90615-4ABE-4937-879C-47C19F107CC8}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A918B9-7529-44E7-9C6D-5098F8B1D90F}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\ServiceProfiles" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A918B9-7529-44E7-9C6D-5098F8B1D90F}" /v "ItemData" /t REG_SZ /d "C:\Windows\ServiceProfiles" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A918B9-7529-44E7-9C6D-5098F8B1D90F}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A919D4-AF0E-44F1-A205-414D8F39E12B}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\AppMgmt" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A919D4-AF0E-44F1-A205-414D8F39E12B}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\AppMgmt" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A919D4-AF0E-44F1-A205-414D8F39E12B}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A920B3-02C4-4F7A-BA23-D282A57394D6}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A920B3-02C4-4F7A-BA23-D282A57394D6}" /v "ItemData" /t REG_SZ /d "C:\Windows\system32\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A920B3-02C4-4F7A-BA23-D282A57394D6}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A92CBF-44F7-4E1E-A29D-FA166125C8B8}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A92CBF-44F7-4E1E-A29D-FA166125C8B8}" /v "ItemData" /t REG_SZ /d "C:\Windows\system32\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A92CBF-44F7-4E1E-A29D-FA166125C8B8}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A945C6-411A-4C85-9C98-1A196616BCC9}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\COM\Dmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A945C6-411A-4C85-9C98-1A196616BCC9}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\COM\Dmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A945C6-411A-4C85-9C98-1A196616BCC9}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A958A9-54CF-4336-8123-D7FB74D5CD06}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\COM\Dmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A958A9-54CF-4336-8123-D7FB74D5CD06}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\COM\Dmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A958A9-54CF-4336-8123-D7FB74D5CD06}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A98E1D-1577-134F-9B9C-75278D6318EB}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Config" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A98E1D-1577-134F-9B9C-75278D6318EB}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Config" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7A98E1D-1577-134F-9B9C-75278D6318EB}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA3C3E-3E5D-48D1-9E46-E3DDDBFE0B5B}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Drivers\Etc" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA3C3E-3E5D-48D1-9E46-E3DDDBFE0B5B}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Drivers\Etc" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA3C3E-3E5D-48D1-9E46-E3DDDBFE0B5B}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA4CFF-DAF2-4649-8D74-8CFF1F50FDF8}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\DriverStore" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA4CFF-DAF2-4649-8D74-8CFF1F50FDF8}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\DriverStore" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA4CFF-DAF2-4649-8D74-8CFF1F50FDF8}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA71AB-90A6-4621-82B1-FF348DAD6D85}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\FxsTmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA71AB-90A6-4621-82B1-FF348DAD6D85}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\FxsTmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AA71AB-90A6-4621-82B1-FF348DAD6D85}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAB6D7-0010-4BA1-9AD1-A440202167D3}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\FxsTmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAB6D7-0010-4BA1-9AD1-A440202167D3}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\FxsTmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAB6D7-0010-4BA1-9AD1-A440202167D3}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAC585-C34F-4BFD-8941-AAF1B1AD77E5}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\LogFiles\WMI" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAC585-C34F-4BFD-8941-AAF1B1AD77E5}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\LogFiles\WMI" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAC585-C34F-4BFD-8941-AAF1B1AD77E5}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAE749-8B75-4BE5-84C3-C728EC2A57DF}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Microsoft\Crypto\RSA\MachineKeys" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAE749-8B75-4BE5-84C3-C728EC2A57DF}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Microsoft\Crypto\RSA\MachineKeys:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAE749-8B75-4BE5-84C3-C728EC2A57DF}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAFAC1-17A0-4834-A55C-7B9FCEBEB4FB}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Microsoft\Crypto\RSA\MachineKeys:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAFAC1-17A0-4834-A55C-7B9FCEBEB4FB}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Microsoft\Crypto\RSA\MachineKeys:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AAFAC1-17A0-4834-A55C-7B9FCEBEB4FB}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB3254-7E0F-4213-8F86-749F5EDAEDA4}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Spool\Drivers\Color" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB3254-7E0F-4213-8F86-749F5EDAEDA4}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Spool\Drivers\Color" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB3254-7E0F-4213-8F86-749F5EDAEDA4}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB32D0-7400-45F8-9646-7C954FC2B8FB}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Spool\Drivers\Color:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB32D0-7400-45F8-9646-7C954FC2B8FB}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Spool\Drivers\Color:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB32D0-7400-45F8-9646-7C954FC2B8FB}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB3EA3-E425-40B2-B4F5-8163DE60B306}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Spool\Printers" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB3EA3-E425-40B2-B4F5-8163DE60B306}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Spool\Printers" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB3EA3-E425-40B2-B4F5-8163DE60B306}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB4C34-83EF-4AAD-A1B9-12F7AA18487B}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Spool\Printers:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB4C34-83EF-4AAD-A1B9-12F7AA18487B}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Spool\Printers:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB4C34-83EF-4AAD-A1B9-12F7AA18487B}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB5787-EB67-4727-8DE8-CEC6106EA3F6}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Spool\Servers" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB5787-EB67-4727-8DE8-CEC6106EA3F6}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Spool\Servers" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AB5787-EB67-4727-8DE8-CEC6106EA3F6}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABA2A7-2D33-42A9-AC8B-A5FEDE1DF6FA}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Spool\Servers:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABA2A7-2D33-42A9-AC8B-A5FEDE1DF6FA}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Spool\Servers:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABA2A7-2D33-42A9-AC8B-A5FEDE1DF6FA}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABAF83-F923-4DD8-ADF2-98D4D48842BE}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Tasks" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABAF83-F923-4DD8-ADF2-98D4D48842BE}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Tasks" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABAF83-F923-4DD8-ADF2-98D4D48842BE}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABB2D1-A6AF-4D87-AE2C-838C6524EDA4}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Tasks:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABB2D1-A6AF-4D87-AE2C-838C6524EDA4}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Tasks:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABB2D1-A6AF-4D87-AE2C-838C6524EDA4}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABC579-730B-463E-A23D-30778998D7A3}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Tasks_Migrated" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABC579-730B-463E-A23D-30778998D7A3}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Tasks_Migrated" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABC579-730B-463E-A23D-30778998D7A3}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABD4BC-FD03-4473-9468-D6707BD6CA20}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\System32\Tasks_Migrated:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABD4BC-FD03-4473-9468-D6707BD6CA20}" /v "ItemData" /t REG_SZ /d "C:\Windows\System32\Tasks_Migrated:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ABD4BC-FD03-4473-9468-D6707BD6CA20}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC0754-8034-4F7B-B12B-C68A5002E657}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC0754-8034-4F7B-B12B-C68A5002E657}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC0754-8034-4F7B-B12B-C68A5002E657}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC11AA-68C6-4994-B232-4B1930D3E799}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC11AA-68C6-4994-B232-4B1930D3E799}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC11AA-68C6-4994-B232-4B1930D3E799}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC1CC0-9FF7-4D8D-876C-948707693763}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\COM\Dmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC1CC0-9FF7-4D8D-876C-948707693763}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\COM\Dmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC1CC0-9FF7-4D8D-876C-948707693763}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC2154-25AA-4993-9290-6609A76C03F1}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\COM\Dmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC2154-25AA-4993-9290-6609A76C03F1}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\COM\Dmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC2154-25AA-4993-9290-6609A76C03F1}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC48BA-7F96-4EEC-9946-7E7417BBDC67}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Config" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC48BA-7F96-4EEC-9946-7E7417BBDC67}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Config" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AC48BA-7F96-4EEC-9946-7E7417BBDC67}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACA63F-AC8E-4EFF-9F6A-15BBE60F1402}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\FxsTmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACA63F-AC8E-4EFF-9F6A-15BBE60F1402}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\FxsTmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACA63F-AC8E-4EFF-9F6A-15BBE60F1402}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACA930-BC79-4A8F-B118-C540259C08EC}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\FxsTmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACA930-BC79-4A8F-B118-C540259C08EC}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\FxsTmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACA930-BC79-4A8F-B118-C540259C08EC}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACAC25-9EAB-44E5-DE51-6FA35DBCB0D3}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\LogFiles\WMI" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACAC25-9EAB-44E5-DE51-6FA35DBCB0D3}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\LogFiles\WMI" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACAC25-9EAB-44E5-DE51-6FA35DBCB0D3}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACAFD8-4F1E-4647-AFB4-ADBD728FBD40}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Microsoft\Crypto\RSA\MachineKeys" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACAFD8-4F1E-4647-AFB4-ADBD728FBD40}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Microsoft\Crypto\RSA\MachineKeys" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACAFD8-4F1E-4647-AFB4-ADBD728FBD40}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB0A2-8718-4D8E-BA26-1C31795EAF9B}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Microsoft\Crypto\RSA\MachineKeys:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB0A2-8718-4D8E-BA26-1C31795EAF9B}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Microsoft\Crypto\RSA\MachineKeys:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB0A2-8718-4D8E-BA26-1C31795EAF9B}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB4E9-42DB-48D9-B0ED-FD7352942E0D}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Spool\Drivers\Color" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB4E9-42DB-48D9-B0ED-FD7352942E0D}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Spool\Drivers\Color" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB4E9-42DB-48D9-B0ED-FD7352942E0D}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB7C1-0CF7-4F05-806F-2A30D4C8ABFD}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Spool\Drivers\Color:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB7C1-0CF7-4F05-806F-2A30D4C8ABFD}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Spool\Drivers\Color:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACB7C1-0CF7-4F05-806F-2A30D4C8ABFD}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACBB4C-267E-4158-99E3-096F6BC91C94}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Spool\Printers" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACBB4C-267E-4158-99E3-096F6BC91C94}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Spool\Printers" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACBB4C-267E-4158-99E3-096F6BC91C94}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACBEE8-F68F-4D58-8F36-CA5DC15D0969}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Spool\Printers:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACBEE8-F68F-4D58-8F36-CA5DC15D0969}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Spool\Printers:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACBEE8-F68F-4D58-8F36-CA5DC15D0969}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACCCFF-CF45-4D7C-B94B-5FB48C5A1F0D}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Spool\Servers" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACCCFF-CF45-4D7C-B94B-5FB48C5A1F0D}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Spool\Servers" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACCCFF-CF45-4D7C-B94B-5FB48C5A1F0D}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACD77E-C11D-4277-AF6B-600B5C6ADEB7}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Spool\Servers:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACD77E-C11D-4277-AF6B-600B5C6ADEB7}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Spool\Servers:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACD77E-C11D-4277-AF6B-600B5C6ADEB7}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACE1FA-9898-48CF-AD02-79364398B3AC}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Tasks" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACE1FA-9898-48CF-AD02-79364398B3AC}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Tasks" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACE1FA-9898-48CF-AD02-79364398B3AC}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACE652-E740-4011-B274-F0B6D16E8240}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Tasks:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACE652-E740-4011-B274-F0B6D16E8240}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Tasks:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACE652-E740-4011-B274-F0B6D16E8240}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACEAA8-1CEE-4D0B-B025-6F6627586F40}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Tasks_Migrated" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACEAA8-1CEE-4D0B-B025-6F6627586F40}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Tasks_Migrated" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACEAA8-1CEE-4D0B-B025-6F6627586F40}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACEECC-73A2-458A-8760-45EEFC65BFCF}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysNative\Tasks_Migrated:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACEECC-73A2-458A-8760-45EEFC65BFCF}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysNative\Tasks_Migrated:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACEECC-73A2-458A-8760-45EEFC65BFCF}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACF3C4-F983-4B2F-9715-E2A254DBD4C5}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysWoW64\COM\Dmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACF3C4-F983-4B2F-9715-E2A254DBD4C5}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysWoW64\COM\Dmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ACF3C4-F983-4B2F-9715-E2A254DBD4C5}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD2E28-11F1-4DFC-9A4B-8C5DCCE49AD4}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Tasks" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD2E28-11F1-4DFC-9A4B-8C5DCCE49AD4}" /v "ItemData" /t REG_SZ /d "C:\Windows\Tasks" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD2E28-11F1-4DFC-9A4B-8C5DCCE49AD4}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD2E44-65DA-4361-817E-90D80F1CF631}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Tasks:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD2E44-65DA-4361-817E-90D80F1CF631}" /v "ItemData" /t REG_SZ /d "C:\Windows\Tasks:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD2E44-65DA-4361-817E-90D80F1CF631}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD3132-2585-42E3-84A9-EB500E0CD407}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysWoW64\COM\Dmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD3132-2585-42E3-84A9-EB500E0CD407}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysWoW64\COM\Dmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD3132-2585-42E3-84A9-EB500E0CD407}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD33EF-639B-44A5-A636-7EA11EBDC769}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysWoW64\Config" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD33EF-639B-44A5-A636-7EA11EBDC769}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysWoW64\Config" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD33EF-639B-44A5-A636-7EA11EBDC769}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD3418-5BF7-4C2B-AEAF-711D6F9914E0}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysWoW64\FxsTmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD3418-5BF7-4C2B-AEAF-711D6F9914E0}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysWoW64\FxsTmp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AD3418-5BF7-4C2B-AEAF-711D6F9914E0}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADA7B0-96EE-46A2-8BE4-ED0A088DAE7C}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysWoW64\FxsTmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADA7B0-96EE-46A2-8BE4-ED0A088DAE7C}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysWoW64\FxsTmp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADA7B0-96EE-46A2-8BE4-ED0A088DAE7C}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADAAE2-ECB6-4F67-9866-EBF3C16FC497}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysWoW64\Tasks" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADAAE2-ECB6-4F67-9866-EBF3C16FC497}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysWoW64\Tasks" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADAAE2-ECB6-4F67-9866-EBF3C16FC497}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADC554-00AF-4BDE-A192-FF2914E2653F}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Temp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADC554-00AF-4BDE-A192-FF2914E2653F}" /v "ItemData" /t REG_SZ /d "C:\Windows\Temp" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADC554-00AF-4BDE-A192-FF2914E2653F}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADD2B8-A529-491E-BB39-4F7694557B88}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Temp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADD2B8-A529-491E-BB39-4F7694557B88}" /v "ItemData" /t REG_SZ /d "C:\Windows\Temp:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADD2B8-A529-491E-BB39-4F7694557B88}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADD848-DED7-472F-8D27-0C4080D18F17}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\SysWoW64\Tasks:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADD848-DED7-472F-8D27-0C4080D18F17}" /v "ItemData" /t REG_SZ /d "C:\Windows\SysWoW64\Tasks:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7ADD848-DED7-472F-8D27-0C4080D18F17}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE1B00-211E-4076-A064-C0BD8EAFA742}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Temporary Internet Files" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE1B00-211E-4076-A064-C0BD8EAFA742}" /v "ItemData" /t REG_SZ /d "C:\Windows\Temporary Internet Files" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE1B00-211E-4076-A064-C0BD8EAFA742}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE8F25-7D29-4ABE-A5F3-4E7F99FA5B74}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Tracing" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE8F25-7D29-4ABE-A5F3-4E7F99FA5B74}" /v "ItemData" /t REG_SZ /d "C:\Windows\Tracing" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE8F25-7D29-4ABE-A5F3-4E7F99FA5B74}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE9BE3-3292-47C3-AC36-65E40B2818DA}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Tracing:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE9BE3-3292-47C3-AC36-65E40B2818DA}" /v "ItemData" /t REG_SZ /d "C:\Windows\Tracing:*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AE9BE3-3292-47C3-AC36-65E40B2818DA}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AF2ED3-7F52-49AA-9970-712A1D8FB8F5}" /v "Description" /t REG_SZ /d "%%SystemRoot%%\Web" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AF2ED3-7F52-49AA-9970-712A1D8FB8F5}" /v "ItemData" /t REG_SZ /d "C:\Windows\Web" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{C7AF2ED3-7F52-49AA-9970-712A1D8FB8F5}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE30-2030-45AA-B54D-6C407941D825}" /v "ItemData" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE30-2030-45AA-B54D-6C407941D825}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE31-2030-45AA-B54D-6C407941D825}" /v "ItemData" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE31-2030-45AA-B54D-6C407941D825}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE32-2030-45AA-B54D-6C407941D825}" /v "ItemData" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE32-2030-45AA-B54D-6C407941D825}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE33-2030-45AA-B54D-6C407941D825}" /v "ItemData" /t REG_DWORD /d "3" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE33-2030-45AA-B54D-6C407941D825}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE34-2030-45AA-B54D-6C407941D825}" /v "ItemData" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\URLZones\{643ADE34-2030-45AA-B54D-6C407941D825}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\131072\Hashes" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\131072\Paths" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\131072\URLZones" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Hashes" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{17418e05-efed-437b-951c-a9265b95b621}" /v "Description" /t REG_SZ /d "" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{17418e05-efed-437b-951c-a9265b95b621}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{17418e05-efed-437b-951c-a9265b95b621}" /v "ItemData" /t REG_SZ /d "E:\*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191CD7FA-F240-4A17-8986-94D480A6C8CA}" /v "Description" /t REG_SZ /d "%%SystemRoot%%" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191CD7FA-F240-4A17-8986-94D480A6C8CA}" /v "ItemData" /t REG_SZ /d "C:\Windows" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191CD7FA-F240-4A17-8986-94D480A6C8CA}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{9dfbf5eb-4077-44c8-b574-5e7f22afa8bc}" /v "Description" /t REG_SZ /d "" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{9dfbf5eb-4077-44c8-b574-5e7f22afa8bc}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{9dfbf5eb-4077-44c8-b574-5e7f22afa8bc}" /v "ItemData" /t REG_SZ /d "D:\*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{aceaf38b-7dbe-43ba-9a65-49b54c6b09af}" /v "Description" /t REG_SZ /d "" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{aceaf38b-7dbe-43ba-9a65-49b54c6b09af}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{aceaf38b-7dbe-43ba-9a65-49b54c6b09af}" /v "ItemData" /t REG_SZ /d "C:\*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{b062012e-0ca9-4ba9-88c6-337a9cb362d5}" /v "Description" /t REG_SZ /d "" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{b062012e-0ca9-4ba9-88c6-337a9cb362d5}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{b062012e-0ca9-4ba9-88c6-337a9cb362d5}" /v "ItemData" /t REG_SZ /d "F:\*" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{C77CC673-3BA3-427D-C9DE-76D54F6DC97E}" /v "Description" /t REG_SZ /d "%%ProgramFiles(x86)%%" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{C77CC673-3BA3-427D-C9DE-76D54F6DC97E}" /v "ItemData" /t REG_SZ /d "C:\Program Files (x86)" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{C77CC673-3BA3-427D-C9DE-76D54F6DC97E}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{C77F1D47-1FE1-4E7A-869C-57659099E912}" /v "Description" /t REG_SZ /d "%%CommonProgramFiles(x86)%%" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{C77F1D47-1FE1-4E7A-869C-57659099E912}" /v "ItemData" /t REG_SZ /d "C:\Program Files (x86)\Common Files" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{C77F1D47-1FE1-4E7A-869C-57659099E912}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2C34AB2-529A-46B2-B293-FC853FCE72EA}" /v "Description" /t REG_SZ /d "%%ProgramFiles%%" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2C34AB2-529A-46B2-B293-FC853FCE72EA}" /v "ItemData" /t REG_SZ /d "C:\Program Files" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2C34AB2-529A-46B2-B293-FC853FCE72EA}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2C37D40-EA2D-11DC-8F61-0004760DFF53}" /v "Description" /t REG_SZ /d "%%CommonProgramFiles%%" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2C37D40-EA2D-11DC-8F61-0004760DFF53}" /v "ItemData" /t REG_SZ /d "C:\Program Files\Common Files" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2C37D40-EA2D-11DC-8F61-0004760DFF53}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2CA0FDC-56AF-465F-9C2A-AE5B25D4AA90}" /v "Description" /t REG_SZ /d "%%ProgramData%%\Microsoft\Windows Defender\Platform (KB4052623)" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2CA0FDC-56AF-465F-9C2A-AE5B25D4AA90}" /v "ItemData" /t REG_SZ /d "C:\ProgramData\Microsoft\Windows Defender\Platform" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{D2CA0FDC-56AF-465F-9C2A-AE5B25D4AA90}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\URLZones" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\4096\Hashes" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\4096\Paths" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\4096\URLZones" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Hashes" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A10}" /v "ItemData" /t REG_SZ /d "c7375705.inf" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A10}" /v "Description" /t REG_SZ /d "Amd" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A10}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A20}" /v "ItemData" /t REG_SZ /d "nv_dispi.inf" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A20}" /v "Description" /t REG_SZ /d "Nvidia" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A20}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\URLZones" /f
+
 ::Exit
-Exit
+mshta vbscript:Execute("msgbox ""Restart, and if you get a black screen after restart, restart again."":close")
