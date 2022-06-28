@@ -1544,6 +1544,9 @@ Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\6553
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A20}" /v "ItemData" /t REG_SZ /d "nv_dispi.inf" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A20}" /v "Description" /t REG_SZ /d "Nvidia" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A20}" /v "SaferFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A30}" /v "ItemData" /t REG_SZ /d "iigd*.inf" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A30}" /v "Description" /t REG_SZ /d "Intel" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\Paths\{00B97DA0-641E-474E-BDCC-3F2294507A30}" /v "SaferFlags" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\65536\URLZones" /f
 
 ::Exit
