@@ -318,9 +318,9 @@ sc config SecondaryLogon Start= disabled
 :: Registry
 Reg.exe import %~dp0GSecurity.reg
 
+:: Install Sandbox, Hyper-V
+>nul 2>&1 DISM /Online /Enable-Feature /All /Quiet /NoRestart /FeatureName:Microsoft-Hyper-V
+>nul 2>&1 DISM /Online /Enable-Feature /All /Quiet /NoRestart /FeatureName:Containers-DisposableClientVM
+
 ::Exit
-cls
-echo This file will self destruct in 5 seconds.
-timeout 5
-del /q /f %~dpGSecurity.reg
-del /q /f "%0"
+exit
