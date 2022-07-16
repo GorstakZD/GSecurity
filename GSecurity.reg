@@ -2,8 +2,6 @@ Windows Registry Editor Version 5.00
 
 ; GSecurity
 
-; Device Restrictions
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
@@ -13,72 +11,3 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses]
 "1"="{c8ebdfb0-b510-11d0-80e5-00a0c92542e3}"
 "2"="{4d36e97d-e325-11ce-bfc1-08002be10318}"
-
-; Software Restrictions
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers]
-"authenticodeenabled"=dword:00000000
-"DefaultLevel"=dword:00040000
-"TransparentEnabled"=dword:00000001
-"PolicyScope"=dword:00000000
-"ExecutableTypes"=hex(7):41,00,44,00,45,00,00,00,41,00,44,00,50,00,00,00,42,00,\
-  41,00,53,00,00,00,42,00,41,00,54,00,00,00,43,00,48,00,4d,00,00,00,43,00,4d,\
-  00,44,00,00,00,43,00,4f,00,4d,00,00,00,43,00,50,00,4c,00,00,00,43,00,52,00,\
-  54,00,00,00,45,00,58,00,45,00,00,00,48,00,4c,00,50,00,00,00,48,00,54,00,41,\
-  00,00,00,49,00,4e,00,46,00,00,00,49,00,4e,00,53,00,00,00,49,00,53,00,50,00,\
-  00,00,4c,00,4e,00,4b,00,00,00,4d,00,44,00,42,00,00,00,4d,00,44,00,45,00,00,\
-  00,4d,00,53,00,43,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,50,00,00,00,\
-  4d,00,53,00,54,00,00,00,4f,00,43,00,58,00,00,00,50,00,43,00,44,00,00,00,50,\
-  00,49,00,46,00,00,00,52,00,45,00,47,00,00,00,53,00,43,00,52,00,00,00,53,00,\
-  48,00,53,00,00,00,55,00,52,00,4c,00,00,00,56,00,42,00,00,00,57,00,53,00,43,\
-  00,00,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{00B92F9B-EE8C-41D5-9AA1-B33D35DB49FB}]
-"Description"="$"
-"ItemData"="?:\\$*"
-"SaferFlags"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{00B92F9B-EE8C-41D5-9AA1-B33D35DB48FB}]
-"Description"="db"
-"ItemData"="db*.dll"
-"SaferFlags"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{1f182b12-19bc-426c-9f47-b01c5e08b93e}]
-"Description"=""
-"SaferFlags"=dword:00000000
-"ItemData"="livecomm.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{4327bb7a-7f7b-4902-bfe5-ec199cbe55e2}]
-"Description"=""
-"SaferFlags"=dword:00000000
-"ItemData"="cscapi.dll"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{50c4c5aa-a78b-4e47-96d1-303805ea38bb}]
-"Description"=""
-"SaferFlags"=dword:00000000
-"ItemData"="wmiprvse.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{5c505da2-31a8-4c82-b873-a4d94a8b3bae}]
-"Description"=""
-"SaferFlags"=dword:00000000
-"ItemData"="progman.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{86871d8f-1ca9-4736-bd19-762b0a08b4a5}]
-"Description"=""
-"SaferFlags"=dword:00000000
-"ItemData"="smb*"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\0\Paths\{dc9a8be5-6497-4909-842a-3bbaf0c0ad46}]
-"Description"=""
-"SaferFlags"=dword:00000000
-"ItemData"="sc.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\262144]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\codeidentifiers\262144\Paths]
