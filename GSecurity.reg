@@ -1,0 +1,19 @@
+Windows Registry Editor Version 5.00
+
+; GSecurity
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
+"DenyDeviceIDs"=dword:00000001
+"DenyDeviceIDsRetroactive"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceIDs]
+"1"="USB\\VID_04E8&PID_6860&MI_01"
+"2"="ACPI\\INT3451"
+"3"="ACPI\\MSFT0101"
+"4"="PCI\\VEN_8086&DEV_A3A3&CC_0C05"
+"5"="PCI\\VEN_8086&DEV_A3BA&CC_0780"
+"6"="PCI\\VEN_8086&DEV_A3A1&CC_0580"
+"7"="PCI\\VEN_8086&DEV_A3B1&CC_1180"
+"8"="PCI\VEN_8086&DEV_A3BA&CC_0780"
