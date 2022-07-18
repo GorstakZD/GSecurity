@@ -1,0 +1,1019 @@
+Windows Registry Editor Version 5.00
+
+; Context menus
+
+[HKEY_CLASSES_ROOT]
+
+[HKEY_CLASSES_ROOT\*]
+
+[HKEY_CLASSES_ROOT\*\shell]
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner]
+"HasLUAShield"=""
+"MUIVerb"="Change Owner"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell]
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\01Owner]
+@="See Current Owner"
+"Icon"="imageres.dll,-1029"
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\01Owner\command]
+@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\Administrators]
+@="Change Owner to Administrators"
+"CommandFlags"=dword:00000020
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\Administrators\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\Everyone]
+@="Change Owner to Everyone"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\Everyone\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\SYSTEM]
+@="Change Owner to SYSTEM"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\SYSTEM\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"SYSTEM\" /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"SYSTEM\" /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\TrustedInstaller]
+@="Change Owner to TrustedInstaller"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\*\shell\ChangeOwner\shell\TrustedInstaller\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\CLSID]
+
+[HKEY_CLASSES_ROOT\CLSID\{106ee807-9e5d-451b-a9c5-74908630cefb}]
+"InfoTip"="Change the color of your taskbar, window borders, and Start menu"
+"System.ApplicationName"="Microsoft.Personalization"
+"System.ControlPanel.Category"=dword:00000001
+"System.Software.TasksFileUrl"="Internal"
+
+[HKEY_CLASSES_ROOT\CLSID\{106ee807-9e5d-451b-a9c5-74908630cefb}\Shell]
+
+[HKEY_CLASSES_ROOT\CLSID\{106ee807-9e5d-451b-a9c5-74908630cefb}\Shell\Open]
+
+[HKEY_CLASSES_ROOT\CLSID\{106ee807-9e5d-451b-a9c5-74908630cefb}\Shell\Open\command]
+@="explorer shell:::{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921} -Microsoft.Personalization\\pageColorization"
+
+[HKEY_CLASSES_ROOT\DesktopBackground]
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell]
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth]
+"Icon"="bthudtask.exe"
+"MUIVerb"="Bluetooth"
+"Position"="Middle"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell]
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\01menu]
+"Icon"=""
+"MUIVerb"="Bluetooth Devices (classic)"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\01menu\command]
+@="explorer shell:::{28803F59-3A75-4058-995F-4EE5503B023C}"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\02menu]
+"Icon"=""
+"MUIVerb"="Bluetooth Devices"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\02menu\command]
+@="explorer ms-settings:bluetooth"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\03menu]
+"CommandFlags"=dword:00000020
+"Icon"=""
+"MUIVerb"="Bluetooth File Transfer"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\03menu\command]
+@="fsquirt.exe"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\04menu]
+"CommandFlags"=dword:00000020
+"Icon"=""
+"MUIVerb"="Options in Bluetooth Settings"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\04menu\command]
+@="rundll32.exe shell32.dll,Control_RunDLL bthprops.cpl,,1"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\05menu]
+"Icon"=""
+"MUIVerb"="COM Ports in Bluetooth Settings"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\05menu\command]
+@="rundll32.exe shell32.dll,Control_RunDLL bthprops.cpl,,2"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\06menu]
+"Icon"=""
+"MUIVerb"="Hardware in Bluetooth Settings"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Bluetooth\shell\06menu\command]
+@="rundll32.exe shell32.dll,Control_RunDLL bthprops.cpl,,3"
+
+[HKEY_CLASSES_ROOT\Directory]
+
+[HKEY_CLASSES_ROOT\Directory\shell]
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner]
+"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\Users\" OR System.ItemPathDisplay:=\"C:\\ProgramData\\\" OR System.ItemPathDisplay:=\"C:\\Windows\\\" OR System.ItemPathDisplay:=\"C:\\Windows\\SysWOW64\\\" OR System.ItemPathDisplay:=\"C:\\Program Files (x86)\\\" OR System.ItemPathDisplay:=\"C:\\Program Files (x86)\\\")"
+"HasLUAShield"=""
+"MUIVerb"="Change Owner"
+"NoWorkingDirectory"=""
+"Position"="middle"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell]
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\01Owner]
+@="See Current Owner"
+"Icon"="imageres.dll,-1029"
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\01Owner\command]
+@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\Administrators]
+@="Change Owner to Administrators"
+"CommandFlags"=dword:00000020
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\Administrators\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\Everyone]
+@="Change Owner to Everyone"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\Everyone\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\SYSTEM]
+@="Change Owner to SYSTEM"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\SYSTEM\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"SYSTEM\" /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"SYSTEM\" /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\TrustedInstaller]
+@="Change Owner to TrustedInstaller"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\ChangeOwner\shell\TrustedInstaller\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Drive]
+
+[HKEY_CLASSES_ROOT\Drive\shell]
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner]
+"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\\")"
+"HasLUAShield"=""
+"MUIVerb"="Change Owner"
+"NoWorkingDirectory"=""
+"Position"="middle"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell]
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\01Owner]
+@="See Current Owner"
+"Icon"="imageres.dll,-1029"
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\01Owner\command]
+@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\Administrators]
+@="Change Owner to Administrators"
+"CommandFlags"=dword:00000020
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\Administrators\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"Administrators\" /c' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"Administrators\" /c' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\Everyone]
+@="Change Owner to Everyone"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\Everyone\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/k icacls \"%1\\\" /setowner \"Everyone\" /c' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/k icacls \"%1\\\" /setowner \"Everyone\" /c' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\SYSTEM]
+@="Change Owner to SYSTEM"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\SYSTEM\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"SYSTEM\" /c' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"SYSTEM\" /c' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\TrustedInstaller]
+@="Change Owner to TrustedInstaller"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\ChangeOwner\shell\TrustedInstaller\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /c' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /c' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Drive\shell\Windows.CleanUp]
+"CommandStateSync"=""
+"ExplorerCommandHandler"="{9cca66bb-9c78-4e59-a76f-a5e9990b8aa0}"
+"Icon"="%SystemRoot%\\System32\\cleanmgr.exe,-104"
+"ImpliedSelectionModel"=dword:00000001
+
+[HKEY_CURRENT_USER]
+
+[HKEY_CURRENT_USER\Control Panel]
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"JPEGImportQuality"=dword:00000064
+
+[HKEY_CURRENT_USER\Software]
+
+[HKEY_CURRENT_USER\Software\Classes]
+
+[HKEY_CURRENT_USER\Software\Classes\*]
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner]
+"HasLUAShield"=""
+"MUIVerb"="Change owner"
+"SubCommands"=""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\01View_Owner]
+"Icon"="imageres.dll,-1029"
+"MUIVerb"="See current owner"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\01View_Owner\Command]
+@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\02Set_Administrators]
+"CommandFlags"=dword:00000020
+"HasLUAShield"=""
+"MUIVerb"="Change to Administrators"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\02Set_Administrators\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\03Set_Everyone]
+"HasLUAShield"=""
+"MUIVerb"="Change to Everyone"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\03Set_Everyone\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\04Set_SYSTEM]
+"HasLUAShield"=""
+"MUIVerb"="Change to TrustedInstaller"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\04Set_SYSTEM\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash]
+"MUIVerb"="Hash"
+"SubCommands"=""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\01SHA1]
+"MUIVerb"="SHA1"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\01SHA1\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\02SHA256]
+"MUIVerb"="SHA256"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\02SHA256\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA256 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\03SHA384]
+"MUIVerb"="SHA384"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\03SHA384\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA384 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\04SHA512]
+"MUIVerb"="SHA512"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\04SHA512\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA512 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\05MACTripleDES]
+"MUIVerb"="MACTripleDES"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\05MACTripleDES\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\06MD5]
+"MUIVerb"="MD5"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\06MD5\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm MD5 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\07RIPEMD160]
+"MUIVerb"="RIPEMD160"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\07RIPEMD160\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory]
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner]
+"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\\")"
+"HasLUAShield"=""
+"MUIVerb"="Change owner"
+"NoWorkingDirectory"=""
+"Position"="middle"
+"SubCommands"=""
+"middle"=""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\01View_Owner]
+"Icon"="imageres.dll,-1029"
+"MUIVerb"="See current owner"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\01View_Owner\Command]
+@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\02Set_Administrators]
+"CommandFlags"=dword:00000020
+"HasLUAShield"=""
+"MUIVerb"="Change to Administrators"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\02Set_Administrators\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"Administrators\" /c & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"Administrators\" /c & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\03Set_Everyone]
+"HasLUAShield"=""
+"MUIVerb"="Change to Everyone"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\03Set_Everyone\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/k icacls \"%1\\\" /setowner \"Everyone\" /c & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/k icacls \"%1\\\" /setowner \"Everyone\" /c & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\04Set_SYSTEM]
+"HasLUAShield"=""
+"MUIVerb"="Change to TrustedInstaller"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\04Set_SYSTEM\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /c & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /c & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\05Set_TrustedInstaller]
+"HasLUAShield"=""
+"MUIVerb"="Change to TrustedInstaller"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\05Set_TrustedInstaller\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\exefile]
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell]
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority]
+"Icon"="shell32.dll,-25"
+"MUIVerb"="Run with priority"
+"SubCommands"=""
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\01Low]
+"MUIVerb"="Low"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\01Low\Command]
+@="cmd.exe /c start \"\" /Low \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\02BelowNormal]
+"MUIVerb"="Below normal"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\02BelowNormal\Command]
+@="cmd.exe /c start \"\" /BelowNormal \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\03Normal]
+"MUIVerb"="Normal"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\03Normal\Command]
+@="cmd.exe /c start \"\" /Normal \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\04AboveNormal]
+"MUIVerb"="Above Normal"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\04AboveNormal\Command]
+@="cmd.exe /c start \"\" /AboveNormal \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\05High]
+"MUIVerb"="High"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\05High\Command]
+@="cmd.exe /c start \"\" /High \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\06Realtime]
+"MUIVerb"="Realtime"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\Shell\RunWithPriority\shell\06Realtime\Command]
+@="cmd.exe /c start \"\" /Realtime \"%1\""
+
+[HKEY_CURRENT_USER\Software\Microsoft]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"MultipleInvokePromptMinimum"=dword:000000c8
+
+[HKEY_CURRENT_USER\Software]
+
+[HKEY_CURRENT_USER\Software\Classes]
+
+[HKEY_CURRENT_USER\Software\Classes\*]
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner]
+"HasLUAShield"=""
+"MUIVerb"="Change owner"
+"SubCommands"=""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\01View_Owner]
+"Icon"="imageres.dll,-1029"
+"MUIVerb"="See current owner"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\01View_Owner\Command]
+@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\02Set_Administrators]
+"CommandFlags"=dword:00000020
+"HasLUAShield"=""
+"MUIVerb"="Change to Administrators"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\02Set_Administrators\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\03Set_Everyone]
+"HasLUAShield"=""
+"MUIVerb"="Change to Everyone"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\03Set_Everyone\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\04Set_SYSTEM]
+"HasLUAShield"=""
+"MUIVerb"="Change to TrustedInstaller"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\Change_Owner\shell\04Set_SYSTEM\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash]
+"MUIVerb"="Hash"
+"SubCommands"=""
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\01SHA1]
+"MUIVerb"="SHA1"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\01SHA1\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\02SHA256]
+"MUIVerb"="SHA256"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\02SHA256\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA256 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\03SHA384]
+"MUIVerb"="SHA384"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\03SHA384\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA384 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\04SHA512]
+"MUIVerb"="SHA512"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\04SHA512\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA512 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\05MACTripleDES]
+"MUIVerb"="MACTripleDES"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\05MACTripleDES\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\06MD5]
+"MUIVerb"="MD5"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\06MD5\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm MD5 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\07RIPEMD160]
+"MUIVerb"="RIPEMD160"
+
+[HKEY_CURRENT_USER\Software\Classes\*\shell\GetFileHash\shell\07RIPEMD160\Command]
+@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory]
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner]
+"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\\")"
+"HasLUAShield"=""
+"MUIVerb"="Change owner"
+"NoWorkingDirectory"=""
+"Position"="middle"
+"SubCommands"=""
+"middle"=""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\01View_Owner]
+"Icon"="imageres.dll,-1029"
+"MUIVerb"="See current owner"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\01View_Owner\Command]
+@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\02Set_Administrators]
+"CommandFlags"=dword:00000020
+"HasLUAShield"=""
+"MUIVerb"="Change to Administrators"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\02Set_Administrators\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"Administrators\" /c & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"Administrators\" /c & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\03Set_Everyone]
+"HasLUAShield"=""
+"MUIVerb"="Change to Everyone"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\03Set_Everyone\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/k icacls \"%1\\\" /setowner \"Everyone\" /c & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/k icacls \"%1\\\" /setowner \"Everyone\" /c & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\04Set_SYSTEM]
+"HasLUAShield"=""
+"MUIVerb"="Change to TrustedInstaller"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\04Set_SYSTEM\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /c & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /c & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\05Set_TrustedInstaller]
+"HasLUAShield"=""
+"MUIVerb"="Change to TrustedInstaller"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\Change_Owner\shell\05Set_TrustedInstaller\Command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CURRENT_USER\Software\Microsoft]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Bluetooth]
+"QuickPair"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"MultipleInvokePromptMinimum"=dword:000000c8
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy]
+"01"=dword:00000001
+"1024"=dword:00000001
+"2048"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\History]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\History\Colors]
+
+[HKEY_LOCAL_MACHINE]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\shell\runas]
+@="Install this update"
+"HasLUAShield"=""
+"NeverDefault"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\shell\runas\command]
+@="cmd /k dism /online /add-package /packagepath:\"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\RestartExplorer]
+"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,65,00,00,00
+"MUIVerb"="Restart Explorer"
+"Position"="Bottom"
+"SubCommands"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\RestartExplorer\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\RestartExplorer\shell\01RestartExplorer]
+"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,65,00,00,00
+"MUIVerb"="Restart Explorer"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\RestartExplorer\shell\01RestartExplorer\Command]
+@="cmd.exe /c taskkill /f /im explorer.exe  & start explorer.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\RestartExplorer\shell\02RestartWithPause]
+"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,00,00
+"MUIVerb"="Restart Explorer with pause"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\RestartExplorer\shell\02RestartWithPause\Command]
+@="cmd.exe /c @echo off & echo The explorer.exe process will be terminated & echo. & taskkill /f /im explorer.exe & echo. & echo Done & echo. & echo Press any key to start explorer.exe process & pause>NUL & start explorer.exe & exit"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode]
+"Icon"="shell32.dll,77"
+"MUIVerb"="Safe Mode"
+"Position"="Bottom"
+"SubCommands"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\01SafeMode]
+"MUIVerb"="Safe Mode"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\01SafeMode\Command]
+@="wscript.exe \"C:\\ProgramData\\WinaeroTweaker\\SafeMode.vbs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\02SafeModeNet]
+"MUIVerb"="Safe Mode with Networking"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\02SafeModeNet\Command]
+@="wscript.exe \"C:\\ProgramData\\WinaeroTweaker\\SafeModeNetworking.vbs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\03SafeModeCmd]
+"MUIVerb"="Safe Mode with Command Prompt"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\03SafeModeCmd\Command]
+@="wscript.exe \"C:\\ProgramData\\WinaeroTweaker\\SafeModeCommandPrompt.vbs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\04SafeModeNormal]
+"CommandFlags"=dword:00000020
+"MUIVerb"="Exit Safe Mode"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\04SafeModeNormal\Command]
+@="wscript.exe \"C:\\ProgramData\\WinaeroTweaker\\SafeModeNormalMode.vbs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\taskmgr]
+"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,74,00,61,00,73,00,6b,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,00,00
+"MUIVerb"="Task Manager"
+"Position"="Bottom"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\taskmgr\Command]
+@="taskmgr.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedCmd]
+@="Command Prompt (Administrator)"
+"Icon"="cmd.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"Icon"="PowerShell.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedCmd]
+@="Command Prompt (Administrator)"
+"Icon"="cmd.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"Icon"="PowerShell.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedCmd]
+@="Command Prompt (Administrator)"
+"Icon"="cmd.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"Icon"="PowerShell.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedCmd]
+@="Command Prompt (Administrator)"
+"Icon"="cmd.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"Icon"="PowerShell.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1\Shell\runas]
+"HasLUAShield"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1\Shell\runas\command]
+@=hex(2):70,00,6f,00,77,00,65,00,72,00,73,00,68,00,65,00,6c,00,6c,00,2e,00,65,00,78,00,65,00,20,00,22,00,2d,00,43,00,6f,00,6d,00,6d,00,61,00,6e,00,64,00,22,00,20,00,22,00,69,00,66,00,28,00,28,00,47,00,65,00,74,00,2d,00,45,00,78,00,65,00,63,00,75,00,74,00,69,00,6f,00,6e,00,50,00,6f,00,6c,00,69,00,63,00,79,00,20,00,29,00,20,00,2d,00,6e,00,65,00,20,00,27,00,41,00,6c,00,6c,00,53,00,69,00,67,00,6e,00,65,00,64,00,27,00,29,00,20,00,7b,00,20,00,53,00,65,00,74,00,2d,00,45,00,78,00,65,00,63,00,75,00,74,00,69,00,6f,00,6e,00,50,00,6f,00,6c,00,69,00,63,00,79,00,20,00,2d,00,53,00,63,00,6f,00,70,00,65,00,20,00,50,00,72,00,6f,00,63,00,65,00,73,00,73,00,20,00,42,00,79,00,70,00,61,00,73,00,73,00,20,00,7d,00,3b,00,20,00,26,00,20,00,27,00,25,00,31,00,27,00,22,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\Extract]
+@="Extract the contents"
+"NeverDefault"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\Extract\command]
+@="msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 Contents\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\runas]
+"HasLUAShield"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\runas\command]
+@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,73,00,69,00,65,00,78,00,65,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,69,00,20,00,22,00,25,00,31,00,22,00,20,00,25,00,2a,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile\Shell\runas]
+"HasLUAShield"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile\Shell\runas\command]
+@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,57,00,53,00,63,00,72,00,69,00,70,00,74,00,2e,00,65,00,78,00,65,00,22,00,20,00,22,00,25,00,31,00,22,00,20,00,25,00,2a,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\Shell\runas]
+@="Install this update"
+"HasLUAShield"=""
+"NeverDefault"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\Shell\runas\command]
+@="cmd /k dism /online /add-package /packagepath:\"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode]
+"Icon"="shell32.dll,77"
+"MUIVerb"="Safe Mode"
+"Position"="Bottom"
+"SubCommands"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\01SafeMode]
+"MUIVerb"="Safe Mode"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\01SafeMode\Command]
+@="wscript.exe \"C:\\ProgramData\\WinaeroTweaker\\SafeMode.vbs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\02SafeModeNet]
+"MUIVerb"="Safe Mode with Networking"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\02SafeModeNet\Command]
+@="wscript.exe \"C:\\ProgramData\\WinaeroTweaker\\SafeModeNetworking.vbs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\03SafeModeCmd]
+"MUIVerb"="Safe Mode with Command Prompt"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\03SafeModeCmd\Command]
+@="wscript.exe \"C:\\ProgramData\\WinaeroTweaker\\SafeModeCommandPrompt.vbs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\04SafeModeNormal]
+"CommandFlags"=dword:00000020
+"MUIVerb"="Exit Safe Mode"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SafeMode\shell\04SafeModeNormal\Command]
+@="wscript.exe \"C:\\ProgramData\\WinaeroTweaker\\SafeModeNormalMode.vbs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedCmd]
+@="Command Prompt (Administrator)"
+"Icon"="cmd.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"Icon"="PowerShell.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedCmd]
+@="Command Prompt (Administrator)"
+"Icon"="cmd.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"Icon"="PowerShell.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedCmd]
+@="Command Prompt (Administrator)"
+"Icon"="cmd.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"Icon"="PowerShell.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedCmd]
+@="Command Prompt (Administrator)"
+"Icon"="cmd.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"Icon"="PowerShell.exe"
+"NeverDefault"=""
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1\Shell\runas]
+"HasLUAShield"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1\Shell\runas\command]
+@=hex(2):70,00,6f,00,77,00,65,00,72,00,73,00,68,00,65,00,6c,00,6c,00,2e,00,65,00,78,00,65,00,20,00,22,00,2d,00,43,00,6f,00,6d,00,6d,00,61,00,6e,00,64,00,22,00,20,00,22,00,69,00,66,00,28,00,28,00,47,00,65,00,74,00,2d,00,45,00,78,00,65,00,63,00,75,00,74,00,69,00,6f,00,6e,00,50,00,6f,00,6c,00,69,00,63,00,79,00,20,00,29,00,20,00,2d,00,6e,00,65,00,20,00,27,00,41,00,6c,00,6c,00,53,00,69,00,67,00,6e,00,65,00,64,00,27,00,29,00,20,00,7b,00,20,00,53,00,65,00,74,00,2d,00,45,00,78,00,65,00,63,00,75,00,74,00,69,00,6f,00,6e,00,50,00,6f,00,6c,00,69,00,63,00,79,00,20,00,2d,00,53,00,63,00,6f,00,70,00,65,00,20,00,50,00,72,00,6f,00,63,00,65,00,73,00,73,00,20,00,42,00,79,00,70,00,61,00,73,00,73,00,20,00,7d,00,3b,00,20,00,26,00,20,00,27,00,25,00,31,00,27,00,22,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\Extract]
+@="Extract the contents"
+"NeverDefault"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\Extract\command]
+@="msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 Contents\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\runas]
+"HasLUAShield"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\runas\command]
+@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,73,00,69,00,65,00,78,00,65,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,69,00,20,00,22,00,25,00,31,00,22,00,20,00,25,00,2a,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile\Shell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile\Shell\runas]
+"HasLUAShield"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile\Shell\runas\command]
+@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,57,00,53,00,63,00,72,00,69,00,70,00,74,00,2e,00,65,00,78,00,65,00,22,00,20,00,22,00,25,00,31,00,22,00,20,00,25,00,2a,00,00,00

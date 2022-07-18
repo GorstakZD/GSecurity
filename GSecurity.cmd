@@ -316,7 +316,16 @@ sc config LanmanServer start= disabled
 sc config SecondaryLogon Start= disabled
 
 :: Registry
-Reg.exe import %~dp0GSecurity.reg
+pushd %~dp0
+Reg.exe import BFE.reg
+Reg.exe import ContextMenus.reg
+Reg.exe import ControlSet001.reg
+Reg.exe import Immunity.reg
+Reg.exe import Performance.reg
+Reg.exe import Privacy.reg
+Reg.exe import Restrictions.reg
+Reg.exe import Routes.reg
+Reg.exe import Security.reg
 
 :: Install Sandbox, Hyper-V
 >nul 2>&1 DISM /Online /Enable-Feature /All /Quiet /NoRestart /FeatureName:Microsoft-Hyper-V
