@@ -17,27 +17,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\software\policies\microsoft\Windows\WinRM\Service\WinRS]
 "AllowRemoteShellAccess"=dword:00000000
 
-; Device Restrictions
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
-"DenyDeviceClasses"=dword:00000001
-"DenyDeviceClassesRetroactive"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses]
-"1"="{c8ebdfb0-b510-11d0-80e5-00a0c92542e3}"
-"2"="{4d36e97d-e325-11ce-bfc1-08002be10318}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceIDs]
-"1"="USB\\VID_04E8&PID_6860&MI_01"
-"2"="ACPI\\INT3451"
-"3"="ACPI\\MSFT0101"
-"4"="PCI\\VEN_8086&DEV_A3A3&CC_0C05"
-"5"="PCI\\VEN_8086&DEV_A3BA&CC_0780"
-"6"="PCI\\VEN_8086&DEV_A3A1&CC_0580"
-"7"="PCI\\VEN_8086&DEV_A3B1&CC_1180"
-
 ; Terminal services
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\windows nt\terminal services]
