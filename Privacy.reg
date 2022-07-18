@@ -1,8 +1,6 @@
 Windows Registry Editor Version 5.00
 
-; Created with Winaero Tweaker 1.33.0.0
-; https://winaero.com
-
+; Privacy
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "EnableActivityFeed"=dword:00000000
