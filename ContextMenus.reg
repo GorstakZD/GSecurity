@@ -1,5 +1,7 @@
 Windows Registry Editor Version 5.00
 
+; Context menus
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\shell\runas]
 @="Install this update"
 "HasLUAShield"=""
