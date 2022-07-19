@@ -146,22 +146,22 @@ Windows Registry Editor Version 5.00
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
-"Value"="Deny"
+"Value"="Allow"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
-"Value"="Deny"
+"Value"="Allow"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
-"Value"="Deny"
+"Value"="Allow"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
-"Value"="Deny"
+"Value"="Allow"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone]
-"Value"="Deny"
+"Value"="Allow"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone]
-"Value"="Deny"
+"Value"="Allow"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps]
 "AgentActivationLastUsed"=dword:00000000
