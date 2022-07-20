@@ -124,10 +124,8 @@ Windows Registry Editor Version 5.00
 "{7647502E-A6B0-4DCD-BD65-6B0E48EEFDF7}"="v2.31|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort2_10=1-66|LPort2_10=69-55554|LPort2_10=55556-65535|Name=UDP|EmbedCtxt=GSecurity|"
 "{f016bbe0-a716-428b-822e-5E544B6A3105}"="v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\explorer.exe|Name=explorer|EmbedCtxt=GSecurity|"
 "{f016bbe0-a716-428b-822e-5E544B6A3173}"="v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\SysWOW64\\ntoskrnl.exe|Name=Kernel|EmbedCtxt=GSecurity|"
-"{1328DBFE-5C4D-45C0-A1DC-E8C4ACA191F1}"="v2.31|Action=Allow|Active=TRUE|Dir=Out|Name=Allow outgoing|LUAuth=O:LSD:(A;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|"
-"{2FE0B25C-3959-48DD-8A30-044DEC9D2D21}"="v2.31|Action=Allow|Active=TRUE|Dir=In|Name=Allow inbound|LUAuth=O:LSD:(A;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|"
-"{B2BFE478-9FAB-4F16-B788-3EB1362244F0}"="v2.31|Action=Block|Active=TRUE|Dir=In|Name=Block inbound|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|"
-"{4EC2F4B0-25C5-4B77-AA18-D63616EEC2B1}"="v2.31|Action=Block|Active=TRUE|Dir=Out|Name=Block outbound|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|"
+"{B43D2176-DB11-4BFE-A414-92B652615AB4}"="v2.31|Action=Block|Active=TRUE|Dir=In|Name=Block all users except locally logged on|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|"
+"{667CCE4E-DDCF-44B2-BF11-0467A6D57A88}"="v2.31|Action=Block|Active=TRUE|Dir=Out|Name=Block all users except locally logged on|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile]
 "DisableNotifications"=dword:00000000
