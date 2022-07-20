@@ -1,2094 +1,205 @@
 Windows Registry Editor Version 5.00
 
-; Created with Winaero Tweaker 1.40.0.0
-; https://winaero.com
+; Context Menus
 
+[-HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
+[-HKEY_CLASSES_ROOT\*\shell\runas]
 
-[HKEY_CLASSES_ROOT\*]
-"AlwaysShowExt"=""
-"ConflictPrompt"="prop:System.ItemTypeText;System.Size;System.DateModified;System.DateCreated"
-"ContentViewModeForBrowse"="prop:~System.ItemNameDisplay;System.ItemTypeText;~System.LayoutPattern.PlaceHolder;~System.LayoutPattern.PlaceHolder;System.DateModified;System.Size"
-"ContentViewModeForSearch"="prop:~System.ItemNameDisplay;~System.ItemFolderPathDisplay;~System.LayoutPattern.PlaceHolder;System.ItemTypeText;System.DateModified;System.Size"
-"ContentViewModeLayoutPatternForBrowse"="delta"
-"ContentViewModeLayoutPatternForSearch"="delta"
-"ExtendedTileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified;System.OfflineAvailability"
-"FullDetails"="prop:System.PropGroup.FileSystem;System.ItemNameDisplay;System.ItemTypeText;System.ItemFolderPathDisplay;System.Size;System.DateCreated;System.DateModified;System.FileAttributes;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith;*System.FileOwner;*System.ComputerName"
-"InfoTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
-"NoRecentDocs"=""
-"NoStaticDefaultVerb"=""
-"PreviewDetails"="prop:System.DateModified;System.Size;System.DateCreated;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith"
-"PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
-"QuickTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
-"SetDefaultsFor"="prop:System.Author;System.Document.DateCreated"
-"TileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified"
-
-[HKEY_CLASSES_ROOT\*\OpenWithList]
-
-[HKEY_CLASSES_ROOT\*\OpenWithList\Excel.exe]
-
-[HKEY_CLASSES_ROOT\*\OpenWithList\IExplore.exe]
-
-[HKEY_CLASSES_ROOT\*\OpenWithList\Winword.exe]
-
-[HKEY_CLASSES_ROOT\*\OpenWithProgids]
-"AppXkv2jqn1pq8ajm0p5dhgqde7aafykkrrn"=hex(0):
-
-[HKEY_CLASSES_ROOT\*\shell]
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner]
-"MUIVerb"="Change owner"
+[HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
+@="Take Ownership"
+"Extended"=-
 "HasLUAShield"=""
-"SubCommands"=""
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell]
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell\01View_Owner]
-"MUIVerb"="See current owner"
-"Icon"="imageres.dll,-1029"
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell\01View_Owner\Command]
-@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell\02Set_Administrators]
-"MUIVerb"="Change to Administrators"
-"HasLUAShield"=""
-"CommandFlags"=dword:00000020
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell\02Set_Administrators\Command]
-@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l & pause' -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Administrators\" /t /c /l & pause' -Verb runAs\""
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell\03Set_Everyone]
-"MUIVerb"="Change to Everyone"
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell\03Set_Everyone\Command]
-@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l & pause' -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"Everyone\" /t /c /l & pause' -Verb runAs\""
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell\04Set_SYSTEM]
-"MUIVerb"="Change to TrustedInstaller"
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\*\shell\Change_Owner\shell\04Set_SYSTEM\Command]
-@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash]
-"MUIVerb"="Hash"
-"SubCommands"=""
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell]
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\01SHA1]
-"MUIVerb"="SHA1"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\01SHA1\Command]
-@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\02SHA256]
-"MUIVerb"="SHA256"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\02SHA256\Command]
-@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA256 | format-list"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\03SHA384]
-"MUIVerb"="SHA384"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\03SHA384\Command]
-@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA384 | format-list"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\04SHA512]
-"MUIVerb"="SHA512"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\04SHA512\Command]
-@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm SHA512 | format-list"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\05MACTripleDES]
-"MUIVerb"="MACTripleDES"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\05MACTripleDES\Command]
-@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\06MD5]
-"MUIVerb"="MD5"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\06MD5\Command]
-@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm MD5 | format-list"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\07RIPEMD160]
-"MUIVerb"="RIPEMD160"
-
-[HKEY_CLASSES_ROOT\*\shell\GetFileHash\shell\07RIPEMD160\Command]
-@="powershell.exe -noexit get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list"
-
-[HKEY_CLASSES_ROOT\*\shell\pintohomefile]
-"CommandStateHandler"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-"CommandStateSync"=""
-"MUIVerb"="@shell32.dll,-51389"
-"NeverDefault"=""
-"SkipCloudDownload"=dword:00000000
-
-[HKEY_CLASSES_ROOT\*\shell\pintohomefile\command]
-"DelegateExecute"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-
-[HKEY_CLASSES_ROOT\*\shell\removeproperties]
-"ProgrammaticAccessOnly"="Apartment"
-
-[HKEY_CLASSES_ROOT\*\shell\removeproperties\DropTarget]
-"CLSID"="{09a28848-0e97-4cef-b950-cea037161155}"
-
-[HKEY_CLASSES_ROOT\*\shell\UpdateEncryptionSettingsWork]
-"AppliesTo"="System.StorageProviderId:<>\"network\" AND System.StorageProviderProtectionMode:<>1 AND System.StorageProviderProtectionMode:<>2"
-"AttributeMask"=dword:00002000
-"AttributeValue"=dword:00002000
-"ExtendedSubCommandsKey"="*\\shell\\UpdateEncryptionSettingsWork"
-"ImpliedSelectionModel"=dword:00000000
-"MUIVerb"="@efscore.dll,-101"
-"MultiSelectModel"="Player"
-"Position"="Bottom"
-
-[HKEY_CLASSES_ROOT\*\shell\UpdateEncryptionSettingsWork\Shell]
-
-[HKEY_CLASSES_ROOT\*\shell\UpdateEncryptionSettingsWork\Shell\Decrypt]
-"AttributeMask"=dword:00002000
-"AttributeValue"=dword:00002000
-"CommandStateHandler"="{5B6D1451-B1E1-4372-90F5-88E541B4DAB9}"
-"Icon"="edputil.dll,-1002"
-"MUIVerb"="@efscore.dll,-103"
-"ShowAsDisabledIfHidden"=""
-"UpdateType"=dword:00000000
-
-[HKEY_CLASSES_ROOT\*\shell\UpdateEncryptionSettingsWork\Shell\Decrypt\command]
-"DelegateExecute"="{5B6D1451-B1E1-4372-90F5-88E541B4DAB9}"
-
-[HKEY_CLASSES_ROOT\*\shell\Z001AAR]
-"MUIVerb"="Open with Notepad"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,6e,00,6f,00,74,00,65,00,70,00,61,00,64,00,2e,00,65,00,78,00,\
-  65,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z001AAR\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,6e,00,6f,00,74,00,65,00,70,00,61,00,64,00,2e,00,65,00,78,00,\
-  65,00,22,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z002AAS]
-"MUIVerb"="Copy Text Contents"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,33,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z002AAS\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,6f,00,\
-  70,00,79,00,54,00,65,00,78,00,74,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z003AAL]
-"MUIVerb"="Take Ownership"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z003AAL\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,74,00,61,00,6b,00,65,00,6f,00,77,00,6e,00,20,\
-  00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z004AAM]
-"MUIVerb"="Block Access"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,35,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z004AAM\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,42,00,6c,00,6f,00,63,00,6b,00,41,00,63,00,63,\
-  00,65,00,73,00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z005AAO]
-"MUIVerb"="Permanently Delete"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,31,00,33,\
-  00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z005AAO\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,50,00,65,00,\
-  72,00,6d,00,61,00,6e,00,65,00,6e,00,74,00,6c,00,79,00,44,00,65,00,6c,00,65,\
-  00,74,00,65,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z006AAP]
-"MUIVerb"="Change Attributes"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,34,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shell\Z006AAP\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,68,00,\
-  61,00,6e,00,67,00,65,00,41,00,74,00,74,00,72,00,69,00,62,00,75,00,74,00,65,\
-  00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\*\shellex]
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers]
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\ FileSyncEx]
-@="{CB3D0F55-BC2C-4C1A-85ED-23ED75B5106B}"
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\EPP]
-@="{09A47860-11B0-4DA5-AFA5-26D86198A780}"
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\Open With]
-@="{09799AFB-AD67-11d1-ABCD-00C04FC30936}"
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\Open With EncryptionMenu]
-@="{A470F8CF-A1E8-4f65-8335-227475AA5C46}"
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\WorkFolders]
-@="{E61BF828-5E63-4287-BEF1-60B1A4FDE0E3}"
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\{90AA3A4E-1CBA-4233-B8BB-535773D48449}]
-@="Taskband Pin"
-
-[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}]
-@="Start Menu Pin"
-
-[HKEY_CLASSES_ROOT\*\shellex\PropertySheetHandlers]
-
-[HKEY_CLASSES_ROOT\*\shellex\PropertySheetHandlers\CryptoSignMenu]
-@="{7444C719-39BF-11D1-8CD9-00C04FC29D45}"
-
-[HKEY_CLASSES_ROOT\*\shellex\PropertySheetHandlers\FCI Properties]
-@="{748F920F-FB24-4D09-B360-BAF6F199AD6D}"
-
-[HKEY_CLASSES_ROOT\*\shellex\PropertySheetHandlers\{1f2e5c40-9550-11ce-99d2-00aa006e086c}]
-
-[HKEY_CLASSES_ROOT\*\shellex\PropertySheetHandlers\{3EA48300-8CF6-101B-84FB-666CCB9BCD32}]
-@="OLE DocFile Property Page"
-
-[HKEY_CLASSES_ROOT\*\shellex\PropertySheetHandlers\{883373C3-BF89-11D1-BE35-080036B11A03}]
-@="Summary Properties Page"
-
-
-
-[HKEY_CLASSES_ROOT\Drive]
-@="Drive"
-"ContentViewModeForBrowse"="prop:~System.ItemNameDisplay;~System.PercentFull;~System.LayoutPattern.PlaceHolder;~System.LayoutPattern.PlaceHolder;~System.Volume.FileSystem;~System.Computer.DecoratedFreeSpace"
-"ContentViewModeLayoutPatternForBrowse"="delta"
-"EditFlags"=hex:d2,01,00,00
-"InfoTip"="prop:System.FreeSpace;System.Capacity"
-"PreviewDetails"="prop:*System.PercentFull;System.FreeSpace;System.Capacity;System.Volume.FileSystem;*System.Volume.BitLockerProtection"
-"PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
-"TileInfo"="prop:*System.PercentFull;System.Computer.DecoratedFreeSpace;System.Volume.FileSystem"
-
-[HKEY_CLASSES_ROOT\Drive\Commands]
-
-[HKEY_CLASSES_ROOT\Drive\Commands\Shell]
-
-[HKEY_CLASSES_ROOT\Drive\Commands\Shell\Windows.EnhancedStorage.Lock]
-@="Enhanced Storage Lock Command"
-"CommandStateSync"=""
-"ExplorerCommandHandler"="{CC55EE92-FE67-43C9-95E7-E646918A4A04}"
-
-[HKEY_CLASSES_ROOT\Drive\Commands\Shell\Windows.EnhancedStorage.Unlock]
-@="Enhanced Storage Unlock Command"
-"CommandStateSync"=""
-"ExplorerCommandHandler"="{CC55EE92-FE67-43C9-95E7-E646918A4A04}"
-
-[HKEY_CLASSES_ROOT\Drive\DefaultIcon]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,68,00,\
-  65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,38,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell]
-@="none"
-
-[HKEY_CLASSES_ROOT\Drive\shell\change-passphrase]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,37,\
-  00,31,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#On OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Encrypting OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended) AND System.Volume.BitLockerCanChangePassphraseByProxy:=System.StructuredQueryType.Boolean#True"
-"MultiSelectModel"="Single"
-
-[HKEY_CLASSES_ROOT\Drive\shell\change-passphrase\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,62,00,64,00,\
-  65,00,63,00,68,00,61,00,6e,00,67,00,65,00,70,00,69,00,6e,00,2e,00,65,00,78,\
-  00,65,00,20,00,2d,00,70,00,77,00,20,00,25,00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\change-pin]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,37,\
-  00,30,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#On OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Encrypting OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended) AND System.Volume.BitLockerCanChangePin:=System.StructuredQueryType.Boolean#True"
-"MultiSelectModel"="Single"
-
-[HKEY_CLASSES_ROOT\Drive\shell\change-pin\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,62,00,64,00,\
-  65,00,63,00,68,00,61,00,6e,00,67,00,65,00,70,00,69,00,6e,00,2e,00,65,00,78,\
-  00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,30,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Off OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#OnPreProvisioned) AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#False"
-"MultiSelectModel"="Single"
-
-[HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,54,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde-elev]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,30,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Off OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#OnPreProvisioned) AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#True"
-"HasLUAShield"=""
-"MultiSelectModel"="Single"
-
-[HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde-elev\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,45,00,6c,00,65,00,76,00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,\
-  54,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\find]
-"LegacyDisable"=""
-"SuppressionPolicy"=dword:00000080
-
-[HKEY_CLASSES_ROOT\Drive\shell\find\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,\
-  65,00,00,00
-"DelegateExecute"="{a015411a-f97d-4ef3-8425-8a38d022aebc}"
-
-[HKEY_CLASSES_ROOT\Drive\shell\manage-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,34,\
-  00,39,00,00,00
-"AppliesTo"="System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#On OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Encrypting OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended"
-"MultiSelectModel"="Single"
-
-[HKEY_CLASSES_ROOT\Drive\shell\manage-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6f,00,\
-  6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,20,00,2f,00,6e,00,61,\
-  00,6d,00,65,00,20,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,\
-  2e,00,42,00,69,00,74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,44,00,72,00,69,\
-  00,76,00,65,00,45,00,6e,00,63,00,72,00,79,00,70,00,74,00,69,00,6f,00,6e,00,\
-  20,00,2f,00,70,00,61,00,67,00,65,00,20,00,3f,00,49,00,6e,00,69,00,74,00,69,\
-  00,61,00,6c,00,56,00,6f,00,6c,00,75,00,6d,00,65,00,3d,00,3d,00,25,00,31,00,\
-  00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\OpenElevatedCmd]
-@="Command Prompt (Administrator)"
 "NoWorkingDirectory"=""
 "NeverDefault"=""
-"Icon"="cmd.exe"
 
-[HKEY_CLASSES_ROOT\Drive\shell\OpenElevatedCmd\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\Drive\shell\OpenElevatedPS]
-@="Windows PowerShell (Run as Administrator)"
-"NoWorkingDirectory"=""
-"NeverDefault"=""
-"Icon"="PowerShell.exe"
-
-[HKEY_CLASSES_ROOT\Drive\shell\OpenElevatedPS\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\Drive\shell\pintohome]
-"CommandStateHandler"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-"CommandStateSync"=""
-"MUIVerb"="@shell32.dll,-51377"
-"NeverDefault"=""
-"SkipCloudDownload"=dword:00000000
-
-[HKEY_CLASSES_ROOT\Drive\shell\pintohome\command]
-"DelegateExecute"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-
-[HKEY_CLASSES_ROOT\Drive\shell\Powershell]
-@="@shell32.dll,-8508"
-"Extended"=""
-"NoWorkingDirectory"=""
-"ShowBasedOnVelocityId"=dword:00639bc8
-
-[HKEY_CLASSES_ROOT\Drive\shell\Powershell\command]
-@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_CLASSES_ROOT\Drive\shell\resume-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,31,00,00,00
-"AppliesTo"="System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#False"
-"MultiSelectModel"="Single"
-
-[HKEY_CLASSES_ROOT\Drive\shell\resume-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,56,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\resume-bde-elev]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,31,00,00,00
-"AppliesTo"="System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#True"
-"HasLUAShield"=""
-"MultiSelectModel"="Single"
-
-[HKEY_CLASSES_ROOT\Drive\shell\resume-bde-elev\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,45,00,6c,00,65,00,76,00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,\
-  56,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\unlock-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,62,00,\
-  64,00,65,00,75,00,6e,00,6c,00,6f,00,63,00,6b,00,2e,00,65,00,78,00,65,00,2c,\
-  00,2d,00,31,00,30,00,30,00,00,00
-"AppliesTo"="System.Volume.BitLockerProtection:=6"
-"DefaultAppliesTo"=""
-"MultiSelectModel"="Single"
-
-[HKEY_CLASSES_ROOT\Drive\shell\unlock-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,62,00,64,00,\
-  65,00,75,00,6e,00,6c,00,6f,00,63,00,6b,00,2e,00,65,00,78,00,65,00,20,00,25,\
-  00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\Z001AAA]
-"MUIVerb"="Open Command Prompt Here"
-"Extended"=""
-"NoWorkingDirectory"=""
-
-[HKEY_CLASSES_ROOT\Drive\shell\Z001AAA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,75,00,\
-  6e,00,41,00,64,00,6d,00,69,00,6e,00,20,00,22,00,25,00,53,00,79,00,73,00,74,\
-  00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,\
-  65,00,6d,00,33,00,32,00,5c,00,63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,22,\
-  00,20,00,2f,00,73,00,20,00,2f,00,6b,00,20,00,70,00,75,00,73,00,68,00,64,00,\
-  20,00,22,00,25,00,4c,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\Z002AAI]
-"MUIVerb"="Disk Cleanup"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6c,00,65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\Z002AAI\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6c,00,65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,22,00,20,\
-  00,2f,00,64,00,20,00,25,00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\Z003AAJ]
-"MUIVerb"="Defrag"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,31,00,36,\
-  00,36,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\Z003AAJ\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,\
-  65,00,66,00,72,00,61,00,67,00,2e,00,65,00,78,00,65,00,22,00,20,00,25,00,31,\
-  00,20,00,2d,00,76,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\Z004AAK]
-"MUIVerb"="Change Icon"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,32,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shell\Z004AAK\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,43,00,68,00,61,00,6e,00,67,00,65,00,49,00,63,\
-  00,6f,00,6e,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Drive\shellex]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\EnhancedStorageShell]
-@="{2854F705-3548-414C-A113-93E27C808C85}"
-
-[HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\EPP]
-@="{09A47860-11B0-4DA5-AFA5-26D86198A780}"
-
-[HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\{D6791A63-E7E2-4fee-BF52-5DED8E86E9B8}]
-"{D6791A63-E7E2-4fee-BF52-5DED8E86E9B8}"="Portable Devices Menu"
-
-[HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\{fbeb8a05-beee-4442-804e-409d6c4515e9}]
-@=""
-
-[HKEY_CLASSES_ROOT\Drive\shellex\FolderExtensions]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\FolderExtensions\{fbeb8a05-beee-4442-804e-409d6c4515e9}]
-"DriveMask"=dword:00000020
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers]
-@="{5F5295E0-429F-1069-A2E2-08002B30309D}"
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{1f2e5c40-9550-11ce-99d2-00aa006e086c}]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{4a7ded0a-ad25-11d0-98a8-0800361b1103}]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{55B3A0BD-4D28-42fe-8CFB-FA3EDFF969B8}]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{5F5295E0-429F-1069-A2E2-08002B30309D}]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{7988B573-EC89-11cf-9C00-00AA00A14F56}]
-@=""
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{ECCDF543-45CC-11CE-B9BF-0080C87CDBA6}]
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{ef43ecfe-2ab9-4632-bf21-58909dd177f0}]
-@=""
-
-[HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{fbeb8a05-beee-4442-804e-409d6c4515e9}]
-@=""
-
-[HKEY_CLASSES_ROOT\Drive\tabsets]
-"location"=dword:00000703
-"selection"=dword:00000703
-
-
-
-[HKEY_CLASSES_ROOT\Folder]
-@="Folder"
-"AppUserModelID"="Microsoft.Windows.Explorer"
-"ContentViewModeForBrowse"="prop:~System.ItemNameDisplay;~System.LayoutPattern.PlaceHolder;~System.LayoutPattern.PlaceHolder;~System.LayoutPattern.PlaceHolder;System.DateModified"
-"ContentViewModeForSearch"="prop:~System.ItemNameDisplay;System.DateModified;~System.ItemFolderPathDisplay"
-"ContentViewModeLayoutPatternForBrowse"="delta"
-"ContentViewModeLayoutPatternForSearch"="alpha"
-"EditFlags"=hex:d2,03,00,00
-"FullDetails"="prop:System.PropGroup.Description;System.ItemNameDisplay;System.ItemTypeText;System.Size"
-"NoRecentDocs"=""
-"ThumbnailCutoff"=dword:00000000
-"TileInfo"="prop:System.Title"
-
-[HKEY_CLASSES_ROOT\Folder\DefaultIcon]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,68,00,\
-  65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,33,00,00,00
-
-[HKEY_CLASSES_ROOT\Folder\shell]
-
-[HKEY_CLASSES_ROOT\Folder\shell\explore]
-"LaunchExplorerFlags"=dword:00000018
-"MultiSelectModel"="Document"
-"ProgrammaticAccessOnly"=""
-
-[HKEY_CLASSES_ROOT\Folder\shell\explore\command]
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_CLASSES_ROOT\Folder\shell\open]
-"MultiSelectModel"="Document"
-
-[HKEY_CLASSES_ROOT\Folder\shell\open\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,\
-  65,00,00,00
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_CLASSES_ROOT\Folder\shell\opennewprocess]
-"ExplorerHost"="{ceff45ee-c862-41de-aee2-a022c81eda92}"
-"Extended"=""
-"LaunchExplorerFlags"=dword:00000003
-"MUIVerb"="@shell32.dll,-8518"
-"MultiSelectModel"="Document"
-
-[HKEY_CLASSES_ROOT\Folder\shell\opennewprocess\command]
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_CLASSES_ROOT\Folder\shell\opennewtab]
-"CommandStateHandler"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-"CommandStateSync"=""
-"LaunchExplorerFlags"=dword:00000020
-"MUIVerb"="@windows.storage.dll,-8519"
-"MultiSelectModel"="Document"
-"OnlyInBrowserWindow"=""
-
-[HKEY_CLASSES_ROOT\Folder\shell\opennewtab\command]
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_CLASSES_ROOT\Folder\shell\opennewwindow]
-"LaunchExplorerFlags"=dword:00000001
-"MUIVerb"="@windows.storage.dll,-8517"
-"MultiSelectModel"="Document"
-"OnlyInBrowserWindow"=""
-
-[HKEY_CLASSES_ROOT\Folder\shell\opennewwindow\command]
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_CLASSES_ROOT\Folder\shell\pintohome]
-"CommandStateHandler"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-"CommandStateSync"=""
-"MUIVerb"="@shell32.dll,-51377"
-"SkipCloudDownload"=dword:00000000
-
-[HKEY_CLASSES_ROOT\Folder\shell\pintohome\command]
-"DelegateExecute"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx]
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers]
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers\Library Location]
-@="{3dad6c5d-2167-4cae-9914-f99e41c12cfa}"
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers\Offline Files]
-@="{474C98EE-CF3D-41f5-80E3-4AAB0AB04301}"
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers\PintoStartScreen]
-@="{470C0EBD-5D73-4d58-9CED-E91E22E23282}"
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers\{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}]
-@="Start Menu Pin"
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\DragDropHandlers]
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\DragDropHandlers\{BD472F60-27FA-11cf-B8B4-444553540000}]
-@=""
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\PropertySheetHandlers]
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\PropertySheetHandlers\FCI Properties]
-@="{748F920F-FB24-4D09-B360-BAF6F199AD6D}"
-
-[HKEY_CLASSES_ROOT\Folder\ShellEx\PropertySheetHandlers\Offline Files]
-@="{7EFA68C6-086B-43e1-A2D2-55A113531240}"
-
-[HKEY_CLASSES_ROOT\Folder\ShellNew]
-"Directory"=""
-"IconPath"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,\
-  74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,\
-  00,68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,33,00,\
-  00,00
-"ItemName"="@shell32.dll,-30396"
-"MenuText"="@shell32.dll,-30317"
-"NonLFNFileSpec"="@shell32.dll,-30319"
-
-[HKEY_CLASSES_ROOT\Folder\ShellNew\Config]
-"AllDrives"=""
-"IsFolder"=""
-"NoExtension"=""
-
-
-
-[HKEY_CLASSES_ROOT\exefile]
-@="Application"
-"EditFlags"=hex:38,07,00,00
-"FriendlyTypeName"=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,\
-  00,6f,00,6f,00,74,00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,\
-  32,00,5c,00,73,00,68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,\
-  00,2c,00,2d,00,31,00,30,00,31,00,35,00,36,00,00,00
-
-[HKEY_CLASSES_ROOT\exefile\DefaultIcon]
-@="%1"
-
-[HKEY_CLASSES_ROOT\exefile\Shell]
-
-[HKEY_CLASSES_ROOT\exefile\Shell\open]
-"EditFlags"=hex:00,00,00,00
-
-[HKEY_CLASSES_ROOT\exefile\Shell\open\command]
-@="\"%1\" %*"
-"IsolatedCommand"="\"%1\" %*"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\runas]
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\exefile\Shell\runas\command]
-@="\"%1\" %*"
-"IsolatedCommand"="\"%1\" %*"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\runasuser]
-@="@shell32.dll,-50944"
-"Extended"=""
-"SuppressionPolicyEx"="{F211AA05-D4DF-4370-A2A0-9F19C09756A7}"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\runasuser\command]
-"DelegateExecute"="{ea72d00e-4960-42fa-ba92-7792a7944c1d}"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority]
-"MUIVerb"="Run with priority"
-"SubCommands"=""
-"Icon"="shell32.dll,-25"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell]
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\01Low]
-"MUIVerb"="Low"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\01Low\Command]
-@="cmd.exe /c start \"\" /Low \"%1\""
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\02BelowNormal]
-"MUIVerb"="Below normal"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\02BelowNormal\Command]
-@="cmd.exe /c start \"\" /BelowNormal \"%1\""
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\03Normal]
-"MUIVerb"="Normal"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\03Normal\Command]
-@="cmd.exe /c start \"\" /Normal \"%1\""
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\04AboveNormal]
-"MUIVerb"="Above Normal"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\04AboveNormal\Command]
-@="cmd.exe /c start \"\" /AboveNormal \"%1\""
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\05High]
-"MUIVerb"="High"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\05High\Command]
-@="cmd.exe /c start \"\" /High \"%1\""
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\06Realtime]
-"MUIVerb"="Realtime"
-
-[HKEY_CLASSES_ROOT\exefile\Shell\RunWithPriority\shell\06Realtime\Command]
-@="cmd.exe /c start \"\" /Realtime \"%1\""
-
-[HKEY_CLASSES_ROOT\exefile\Shell\Z001AAT]
-"MUIVerb"="Run with Parameters"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,32,00,34,\
-  00,00,00
-
-[HKEY_CLASSES_ROOT\exefile\Shell\Z001AAT\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,75,00,\
-  6e,00,50,00,61,00,72,00,61,00,6d,00,65,00,74,00,65,00,72,00,73,00,20,00,22,\
-  00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\exefile\Shell\Z002AAU]
-"MUIVerb"="Add To Firewall"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,69,00,\
-  6d,00,61,00,67,00,65,00,72,00,65,00,73,00,2e,00,64,00,6c,00,6c,00,2c,00,31,\
-  00,30,00,30,00,00,00
-
-[HKEY_CLASSES_ROOT\exefile\Shell\Z002AAU\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,66,00,69,00,72,00,65,00,77,00,61,00,6c,00,6c,\
-  00,5f,00,61,00,64,00,64,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\exefile\Shell\Z003AAV]
-"MUIVerb"="Delete From Firewall"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,69,00,\
-  6d,00,61,00,67,00,65,00,72,00,65,00,73,00,2e,00,64,00,6c,00,6c,00,2c,00,31,\
-  00,30,00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\exefile\Shell\Z003AAV\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,66,00,69,00,72,00,65,00,77,00,61,00,6c,00,6c,\
-  00,5f,00,64,00,65,00,6c,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\exefile\shellex]
-
-[HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers]
-@="Compatibility"
-
-[HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\Compatibility]
-@="{1d27f844-3a1f-4410-85ac-14651078412d}"
-
-[HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\NvAppShExt]
-@="{A929C4CE-FD36-4270-B4F5-34ECAC5BD63C}"
-
-[HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\OpenGLShExt]
-@="{E97DEC16-A50D-49bb-AE24-CF682282E08D}"
-
-[HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\PintoStartScreen]
-@="{470C0EBD-5D73-4d58-9CED-E91E22E23282}"
-
-[HKEY_CLASSES_ROOT\exefile\shellex\DropHandler]
-@="{86C86720-42A0-1069-A2E8-08002B30309D}"
-
-[HKEY_CLASSES_ROOT\exefile\shellex\PropertySheetHandlers]
-
-[HKEY_CLASSES_ROOT\exefile\shellex\PropertySheetHandlers\ShimLayer Property Page]
-@="{513D916F-2A8E-4F51-AEAB-0CBC76FB1AF8}"
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder]
-@="Folder"
-"AppUserModelID"="Microsoft.Windows.Explorer"
-"ContentViewModeForBrowse"="prop:~System.ItemNameDisplay;~System.LayoutPattern.PlaceHolder;~System.LayoutPattern.PlaceHolder;~System.LayoutPattern.PlaceHolder;System.DateModified"
-"ContentViewModeForSearch"="prop:~System.ItemNameDisplay;System.DateModified;~System.ItemFolderPathDisplay"
-"ContentViewModeLayoutPatternForBrowse"="delta"
-"ContentViewModeLayoutPatternForSearch"="alpha"
-"EditFlags"=hex:d2,03,00,00
-"FullDetails"="prop:System.PropGroup.Description;System.ItemNameDisplay;System.ItemTypeText;System.Size"
-"NoRecentDocs"=""
-"ThumbnailCutoff"=dword:00000000
-"TileInfo"="prop:System.Title"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\DefaultIcon]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,68,00,\
-  65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,33,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\explore]
-"LaunchExplorerFlags"=dword:00000018
-"MultiSelectModel"="Document"
-"ProgrammaticAccessOnly"=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\explore\command]
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\open]
-"MultiSelectModel"="Document"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\open\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,\
-  65,00,00,00
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\opennewprocess]
-"ExplorerHost"="{ceff45ee-c862-41de-aee2-a022c81eda92}"
-"Extended"=""
-"LaunchExplorerFlags"=dword:00000003
-"MUIVerb"="@shell32.dll,-8518"
-"MultiSelectModel"="Document"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\opennewprocess\command]
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\opennewtab]
-"CommandStateHandler"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-"CommandStateSync"=""
-"LaunchExplorerFlags"=dword:00000020
-"MUIVerb"="@windows.storage.dll,-8519"
-"MultiSelectModel"="Document"
-"OnlyInBrowserWindow"=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\opennewtab\command]
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\opennewwindow]
-"LaunchExplorerFlags"=dword:00000001
-"MUIVerb"="@windows.storage.dll,-8517"
-"MultiSelectModel"="Document"
-"OnlyInBrowserWindow"=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\opennewwindow\command]
-"DelegateExecute"="{11dbb47c-a525-400b-9e80-a54615a090c0}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome]
-"CommandStateHandler"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-"CommandStateSync"=""
-"MUIVerb"="@shell32.dll,-51377"
-"SkipCloudDownload"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome\command]
-"DelegateExecute"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Library Location]
-@="{3dad6c5d-2167-4cae-9914-f99e41c12cfa}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Offline Files]
-@="{474C98EE-CF3D-41f5-80E3-4AAB0AB04301}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\PintoStartScreen]
-@="{470C0EBD-5D73-4d58-9CED-E91E22E23282}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}]
-@="Start Menu Pin"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\DragDropHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\DragDropHandlers\{BD472F60-27FA-11cf-B8B4-444553540000}]
-@=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\PropertySheetHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\PropertySheetHandlers\FCI Properties]
-@="{748F920F-FB24-4D09-B360-BAF6F199AD6D}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\PropertySheetHandlers\Offline Files]
-@="{7EFA68C6-086B-43e1-A2D2-55A113531240}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellNew]
-"Directory"=""
-"IconPath"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,\
-  74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,\
-  00,68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,33,00,\
-  00,00
-"ItemName"="@shell32.dll,-30396"
-"MenuText"="@shell32.dll,-30317"
-"NonLFNFileSpec"="@shell32.dll,-30319"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellNew\Config]
-"AllDrives"=""
-"IsFolder"=""
-"NoExtension"=""
-
-
-
-[HKEY_CLASSES_ROOT\Directory]
-@="File Folder"
-"AlwaysShowExt"=""
-"EditFlags"=hex:d2,01,00,00
-"FriendlyTypeName"=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,\
-  00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,\
-  32,00,5c,00,77,00,69,00,6e,00,64,00,6f,00,77,00,73,00,2e,00,73,00,74,00,6f,\
-  00,72,00,61,00,67,00,65,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,31,00,30,00,\
-  31,00,35,00,32,00,00,00
-"FullDetails"="prop:System.PropGroup.Description;System.DateCreated;System.FileCount;System.TotalFileSize"
-"InfoTip"="prop:System.Comment;System.DateCreated"
-"NoRecentDocs"=""
-"PreviewDetails"="prop:System.DateModified;*System.SharedWith;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus"
-"PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
-
-[HKEY_CLASSES_ROOT\Directory\Background]
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell]
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenElevatedCmd]
-@="Command Prompt (Administrator)"
-"NoWorkingDirectory"=""
-"NeverDefault"=""
-"Icon"="cmd.exe"
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenElevatedCmd\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenElevatedPS]
-@="Windows PowerShell (Run as Administrator)"
-"NoWorkingDirectory"=""
-"NeverDefault"=""
-"Icon"="PowerShell.exe"
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenElevatedPS\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Powershell]
-@="@shell32.dll,-8508"
-"Extended"=""
-"NoWorkingDirectory"=""
-"ShowBasedOnVelocityId"=dword:00639bc8
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Powershell\command]
-@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z001AAA]
-"MUIVerb"="Open Command Prompt Here"
-"Extended"=""
-"NoWorkingDirectory"=""
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z001AAA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,75,00,\
-  6e,00,41,00,64,00,6d,00,69,00,6e,00,20,00,22,00,25,00,53,00,79,00,73,00,74,\
-  00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,\
-  65,00,6d,00,33,00,32,00,5c,00,63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,22,\
-  00,20,00,2f,00,73,00,20,00,2f,00,6b,00,20,00,70,00,75,00,73,00,68,00,64,00,\
-  20,00,22,00,25,00,56,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z002AAB]
-"MUIVerb"="Select All Files"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z002AAB\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,65,00,\
-  6c,00,65,00,63,00,74,00,41,00,6c,00,6c,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC]
-"SubCommands"=""
-"MUIVerb"="Tools"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,32,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell]
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z004ACA]
-"MUIVerb"="Delete Temporary Files"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,32,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z004ACA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,54,00,65,00,\
-  6d,00,70,00,43,00,6c,00,65,00,61,00,6e,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z005ACB]
-"MUIVerb"="Restart Windows Explorer"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,33,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z005ACB\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,65,00,\
-  45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z006ACC]
-"MUIVerb"="Reduce Memory"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,34,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z006ACC\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,52,00,65,00,64,00,75,00,63,00,65,00,4d,00,65,\
-  00,6d,00,6f,00,72,00,79,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z007ACD]
-"MUIVerb"="Block Mouse And Keyboard"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,35,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z007ACD\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,42,00,6c,00,6f,00,63,00,6b,00,49,00,6e,00,70,\
-  00,75,00,74,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z008ACE]
-"MUIVerb"="Block Keyboard"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,35,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z008ACE\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,42,00,6c,00,\
-  6f,00,63,00,6b,00,4b,00,65,00,79,00,62,00,6f,00,61,00,72,00,64,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z009ACF]
-"MUIVerb"="Show or Hide Hidden Files and Folders"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,36,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z009ACF\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,48,00,69,00,\
-  64,00,64,00,65,00,6e,00,46,00,69,00,6c,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z010ACG]
-"MUIVerb"="Show or Hide File Extensions"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,37,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z010ACG\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,48,00,69,00,\
-  64,00,65,00,46,00,69,00,6c,00,65,00,45,00,78,00,74,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z011ACH]
-"MUIVerb"="Rebuild Shell Icon Cache"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,38,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z011ACH\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,65,00,\
-  49,00,63,00,6f,00,6e,00,43,00,61,00,63,00,68,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z012ACI]
-"MUIVerb"="Fix Print Spooler"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,39,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z012ACI\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,46,00,69,00,78,00,50,00,72,00,69,00,6e,00,74,\
-  00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z013ACJ]
-"MUIVerb"="Copy IP"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,30,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z003AAC\shell\Z013ACJ\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,6f,00,\
-  70,00,79,00,49,00,50,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD]
-"SubCommands"=""
-"MUIVerb"="System Tools"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,33,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell]
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z015AEA]
-"MUIVerb"="Computer Management"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  6d,00,63,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z015AEA\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  6d,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,73,00,20,00,25,00,53,\
-  00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,\
-  79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6f,00,6d,00,70,00,6d,\
-  00,67,00,6d,00,74,00,2e,00,6d,00,73,00,63,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z016AEB]
-"MUIVerb"="Task Manager"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,74,00,\
-  61,00,73,00,6b,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z016AEB\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,74,00,\
-  61,00,73,00,6b,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z017AEC]
-"MUIVerb"="Command Prompt"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6d,00,64,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z017AEC\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6d,00,64,00,2e,00,65,00,78,00,65,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z018AED]
-"MUIVerb"="Registry Editor"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,72,00,65,00,67,00,65,00,64,00,69,00,74,00,2e,00,65,00,78,00,\
-  65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z018AED\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,72,00,65,00,67,00,65,00,64,00,69,00,74,00,2e,00,65,00,78,00,\
-  65,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z019AEE]
-"MUIVerb"="Run"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,32,00,34,\
-  00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z019AEE\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,\
-  78,00,65,00,22,00,20,00,73,00,68,00,65,00,6c,00,6c,00,3a,00,3a,00,3a,00,7b,\
-  00,32,00,35,00,35,00,39,00,41,00,31,00,46,00,33,00,2d,00,32,00,31,00,44,00,\
-  37,00,2d,00,31,00,31,00,44,00,34,00,2d,00,42,00,44,00,41,00,46,00,2d,00,30,\
-  00,30,00,43,00,30,00,34,00,46,00,36,00,30,00,42,00,39,00,46,00,30,00,7d,00,\
-  00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z020AEF]
-"MUIVerb"="Snipping Tool"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  6e,00,69,00,70,00,70,00,69,00,6e,00,67,00,54,00,6f,00,6f,00,6c,00,2e,00,65,\
-  00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z020AEF\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  6e,00,69,00,70,00,70,00,69,00,6e,00,67,00,54,00,6f,00,6f,00,6c,00,2e,00,65,\
-  00,78,00,65,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z021AEG]
-"MUIVerb"="Sticky Notes"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  74,00,69,00,6b,00,79,00,4e,00,6f,00,74,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z021AEG\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  74,00,69,00,6b,00,79,00,4e,00,6f,00,74,00,2e,00,65,00,78,00,65,00,22,00,00,\
-  00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z022AEH]
-"MUIVerb"="Programs and Features"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,61,00,\
-  70,00,70,00,77,00,69,00,7a,00,2e,00,63,00,70,00,6c,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z022AEH\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6f,00,6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,22,00,20,00,61,\
-  00,70,00,70,00,77,00,69,00,7a,00,2e,00,63,00,70,00,6c,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z023AEI]
-"MUIVerb"="All Tasks"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6f,00,6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z023AEI\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,\
-  78,00,65,00,22,00,20,00,73,00,68,00,65,00,6c,00,6c,00,3a,00,3a,00,3a,00,7b,\
-  00,45,00,44,00,37,00,42,00,41,00,34,00,37,00,30,00,2d,00,38,00,45,00,35,00,\
-  34,00,2d,00,34,00,36,00,35,00,45,00,2d,00,38,00,32,00,35,00,43,00,2d,00,39,\
-  00,39,00,37,00,31,00,32,00,30,00,34,00,33,00,45,00,30,00,31,00,43,00,7d,00,\
-  00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z024AEP]
-"MUIVerb"="Msconfig"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  73,00,63,00,6f,00,6e,00,66,00,69,00,67,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z024AEP\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  73,00,63,00,6f,00,6e,00,66,00,69,00,67,00,2e,00,65,00,78,00,65,00,22,00,00,\
-  00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z025AEK]
-"MUIVerb"="Device Manager"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,\
-  65,00,76,00,6d,00,67,00,72,00,2e,00,64,00,6c,00,6c,00,2c,00,34,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z025AEK\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  6d,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,73,00,20,00,25,00,53,\
-  00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,\
-  79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,65,00,76,00,6d,00,67,\
-  00,6d,00,74,00,2e,00,6d,00,73,00,63,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z026AEL]
-"MUIVerb"="Services"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  48,00,45,00,4c,00,4c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,39,00,30,\
-  00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z026AEL\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  6d,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,73,00,20,00,25,00,53,\
-  00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,\
-  79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,65,00,72,00,76,00,69,\
-  00,63,00,65,00,73,00,2e,00,6d,00,73,00,63,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z027AEM]
-"MUIVerb"="Network Connections"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6e,00,\
-  63,00,70,00,61,00,2e,00,63,00,70,00,6c,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z027AEM\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6f,00,6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,22,00,20,00,6e,\
-  00,63,00,70,00,61,00,2e,00,63,00,70,00,6c,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z028AEN]
-"MUIVerb"="Control Panel"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,32,00,31,\
-  00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z028AEN\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6f,00,6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z029AEO]
-"MUIVerb"="Empty Recycle Bin"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,33,00,31,\
-  00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z014AAD\shell\Z029AEO\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,46,00,69,00,6c,\
-  00,65,00,73,00,5c,00,6e,00,69,00,72,00,63,00,6d,00,64,00,5c,00,6e,00,69,00,\
-  72,00,63,00,6d,00,64,00,5f,00,58,00,36,00,34,00,2e,00,65,00,78,00,65,00,22,\
-  00,20,00,65,00,6d,00,70,00,74,00,79,00,62,00,69,00,6e,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE]
-"SubCommands"=""
-"MUIVerb"="Turn Off Options"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,34,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell]
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z031ADA]
-"MUIVerb"="Turn Off Menu"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,32,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z031ADA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,4d,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z032ADB]
-"MUIVerb"="Lock User"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,35,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z032ADB\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,55,00,4c,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z033ADC]
-"MUIVerb"="Switch User"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,36,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z033ADC\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,55,00,53,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z034ADD]
-"MUIVerb"="Log Off"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,37,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z034ADD\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,4c,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z035ADE]
-"MUIVerb"="Sleep"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,38,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z035ADE\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,53,00,4d,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z036ADF]
-"MUIVerb"="Hibernate"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,39,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z036ADF\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,48,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z037ADG]
-"MUIVerb"="Restart"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,30,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z037ADG\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,52,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z038ADH]
-"MUIVerb"="Shut Down"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,34,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z038ADH\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,53,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z039ADI]
-"MUIVerb"="Shut Down Force"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,34,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\Z030AAE\shell\Z039ADI\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,53,00,20,00,2f,00,46,00,00,\
-  00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex]
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers]
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\ FileSyncEx]
-@="{CB3D0F55-BC2C-4C1A-85ED-23ED75B5106B}"
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
-@="{D969A300-E7FF-11d0-A93B-00A0C90F2719}"
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\NvCplDesktopContext]
-@="{3D1975AF-48C6-4f8e-A182-BE0E08FA86A9}"
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\WorkFolders]
-@="{E61BF828-5E63-4287-BEF1-60B1A4FDE0E3}"
-
-[HKEY_CLASSES_ROOT\Directory\DefaultIcon]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,68,00,\
-  65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,33,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell]
-@="none"
-
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner]
-"MUIVerb"="Change owner"
-"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\\")"
+[HKEY_CLASSES_ROOT\*\shell\TakeOwnership\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c takeown /f \\\"%1\\\" && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c takeown /f \\\"%1\\\" && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\TakeOwnership]
+@="Take Ownership"
+"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\Users\" OR System.ItemPathDisplay:=\"C:\\ProgramData\" OR System.ItemPathDisplay:=\"C:\\Windows\" OR System.ItemPathDisplay:=\"C:\\Windows\\System32\" OR System.ItemPathDisplay:=\"C:\\Program Files\" OR System.ItemPathDisplay:=\"C:\\Program Files (x86)\")"
+"Extended"=-
 "HasLUAShield"=""
 "NoWorkingDirectory"=""
 "Position"="middle"
-"SubCommands"=""
-"middle"=""
 
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell]
+[HKEY_CLASSES_ROOT\Directory\shell\TakeOwnership\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c takeown /f \\\"%1\\\" /r /d y && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l /q' -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c takeown /f \\\"%1\\\" /r /d y && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l /q' -Verb runAs\""
 
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\01View_Owner]
-"MUIVerb"="See current owner"
-"Icon"="imageres.dll,-1029"
-
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\01View_Owner\Command]
-@="powershell -NoExit Get-ACL '%1'| Format-List -Property Owner"
-
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\02Set_Administrators]
-"MUIVerb"="Change to Administrators"
+[HKEY_CLASSES_ROOT\Drive\shell\runas]
+@="Take Ownership"
+"Extended"=-
 "HasLUAShield"=""
+"NoWorkingDirectory"=""
+"Position"="middle"
+"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\\")"
+
+[HKEY_CLASSES_ROOT\Drive\shell\runas\command]
+@="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c"
+"IsolatedCommand"="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel]
+"MUIVerb"="Control Panel"
+"SubCommands"=""
+"Icon"="imageres.dll,-27"
+"Position"="Bottom"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\001flyout]
+@="Control Panel (Category)"
+"Icon"="imageres.dll,-27"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\001flyout\command]
+@="explorer.exe shell:::{26EE0668-A00A-44D7-9371-BEB064C98683}"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\002flyout]
+@="All Control Panel Items (Icons)"
+"Icon"="imageres.dll,-27"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\002flyout\command]
+@="explorer.exe shell:::{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\003flyout]
+@="All Tasks (God mode)"
+"Icon"="imageres.dll,-27"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\003flyout\command]
+@="explorer.exe shell:::{ED7BA470-8E54-465E-825C-99712043E01C}"
+
+[HKEY_CLASSES_ROOT\Msi.Package\shell\Extract All...\command]
+@="msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 Contents\""
+
+[HKEY_CLASSES_ROOT\*\shell\hash]
+"MUIVerb"="Hash"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu]
+"MUIVerb"="SHA1"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu]
+"MUIVerb"="SHA256"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA256 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu]
+"MUIVerb"="SHA384"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA384 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu]
+"MUIVerb"="SHA512"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA512 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu]
+"MUIVerb"="MACTripleDES"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu]
+"MUIVerb"="MD5"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm MD5 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu]
+"MUIVerb"="RIPEMD160"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu]
+"CommandFlags"=dword:00000020
+"MUIVerb"="Show all"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list;get-filehash -literalpath '%1' -algorithm SHA256 | format-list;get-filehash -literalpath '%1' -algorithm SHA384 | format-list;get-filehash -literalpath '%1' -algorithm SHA512 | format-list;get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list;get-filehash -literalpath '%1' -algorithm MD5 | format-list;get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list"
+
+[HKEY_CLASSES_ROOT\Msi.Package\Shell\runas]
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Msi.Package\shell\runas\command]
+@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
+  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
+  73,00,69,00,65,00,78,00,65,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,\
+  00,69,00,20,00,22,00,25,00,31,00,22,00,20,00,25,00,2a,00,00,00
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Restart Explorer]
+"icon"="explorer.exe"
+"Position"="Bottom"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Restart Explorer\shell\01menu]
+"MUIVerb"="Restart Explorer Now"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Restart Explorer\shell\01menu\command]
+@=hex(2):63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,20,00,2f,00,63,00,20,00,74,\
+  00,61,00,73,00,6b,00,6b,00,69,00,6c,00,6c,00,20,00,2f,00,66,00,20,00,2f,00,\
+  69,00,6d,00,20,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,\
+  00,78,00,65,00,20,00,20,00,26,00,20,00,73,00,74,00,61,00,72,00,74,00,20,00,\
+  65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,65,00,00,\
+  00
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Restart Explorer\shell\02menu]
+"MUIVerb"="Restart Explorer with Pause"
 "CommandFlags"=dword:00000020
 
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\02Set_Administrators\Command]
-@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"Administrators\" /c & pause' -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"Administrators\" /c & pause' -Verb runAs\""
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Restart Explorer\shell\02menu\command]
+@=hex(2):63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,20,00,2f,00,63,00,20,00,40,\
+  00,65,00,63,00,68,00,6f,00,20,00,6f,00,66,00,66,00,20,00,26,00,20,00,65,00,\
+  63,00,68,00,6f,00,2e,00,20,00,26,00,20,00,65,00,63,00,68,00,6f,00,20,00,53,\
+  00,74,00,6f,00,70,00,70,00,69,00,6e,00,67,00,20,00,65,00,78,00,70,00,6c,00,\
+  6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,65,00,20,00,70,00,72,00,6f,00,63,\
+  00,65,00,73,00,73,00,20,00,2e,00,20,00,2e,00,20,00,2e,00,20,00,26,00,20,00,\
+  65,00,63,00,68,00,6f,00,2e,00,20,00,26,00,20,00,74,00,61,00,73,00,6b,00,6b,\
+  00,69,00,6c,00,6c,00,20,00,2f,00,66,00,20,00,2f,00,69,00,6d,00,20,00,65,00,\
+  78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,65,00,20,00,26,\
+  00,20,00,65,00,63,00,68,00,6f,00,2e,00,20,00,26,00,20,00,65,00,63,00,68,00,\
+  6f,00,2e,00,20,00,26,00,20,00,65,00,63,00,68,00,6f,00,20,00,57,00,61,00,69,\
+  00,74,00,69,00,6e,00,67,00,20,00,74,00,6f,00,20,00,73,00,74,00,61,00,72,00,\
+  74,00,20,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,\
+  00,65,00,20,00,70,00,72,00,6f,00,63,00,65,00,73,00,73,00,20,00,77,00,68,00,\
+  65,00,6e,00,20,00,79,00,6f,00,75,00,20,00,61,00,72,00,65,00,20,00,72,00,65,\
+  00,61,00,64,00,79,00,20,00,2e,00,20,00,2e,00,20,00,2e,00,20,00,26,00,20,00,\
+  70,00,61,00,75,00,73,00,65,00,20,00,26,00,26,00,20,00,73,00,74,00,61,00,72,\
+  00,74,00,20,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,\
+  78,00,65,00,20,00,26,00,26,00,20,00,65,00,78,00,69,00,74,00,00,00
 
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\03Set_Everyone]
-"MUIVerb"="Change to Everyone"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Compact]
+"MUIVerb"="Compact"
+"NoWorkingDirectory"=""
+"Position"="middle"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Compact\Command]
+@="Compact /c /q /i /exe:lzx \"%1\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\Shell\runas]
+@="Install this update"
 "HasLUAShield"=""
+"NeverDefault"=""
 
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\03Set_Everyone\Command]
-@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/k icacls \"%1\\\" /setowner \"Everyone\" /c & pause' -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/k icacls \"%1\\\" /setowner \"Everyone\" /c & pause' -Verb runAs\""
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CABFolder\Shell\runas\command]
+@="cmd /k C:\Windows\SysWOW64\Dism.exe /online /add-package /packagepath:\"%1\""
 
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\04Set_SYSTEM]
-"MUIVerb"="Change to TrustedInstaller"
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\04Set_SYSTEM\Command]
-@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /c & pause' -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /c & pause' -Verb runAs\""
-
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\05Set_TrustedInstaller]
-"MUIVerb"="Change to TrustedInstaller"
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\Directory\shell\Change_Owner\shell\05Set_TrustedInstaller\Command]
-@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c icacls \\\"%1\\\" /setowner \"\"\"NT Service\\TrustedInstaller\"\"\" /t /c /l & pause' -Verb runAs\""
-
-[HKEY_CLASSES_ROOT\Directory\shell\find]
-"LegacyDisable"=""
-"SuppressionPolicy"=dword:00000080
-
-[HKEY_CLASSES_ROOT\Directory\shell\find\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,\
-  65,00,00,00
-"DelegateExecute"="{a015411a-f97d-4ef3-8425-8a38d022aebc}"
-
-[HKEY_CLASSES_ROOT\Directory\shell\OpenElevatedCmd]
-@="Command Prompt (Administrator)"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedCmd]
+@="Command Prompt (Run as Administrator)"
 "NoWorkingDirectory"=""
 "NeverDefault"=""
 "Icon"="cmd.exe"
 
-[HKEY_CLASSES_ROOT\Directory\shell\OpenElevatedCmd\command]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedCmd\command]
 @="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
 
-[HKEY_CLASSES_ROOT\Directory\shell\OpenElevatedPS]
-@="Windows PowerShell (Run as Administrator)"
-"NoWorkingDirectory"=""
-"NeverDefault"=""
-"Icon"="PowerShell.exe"
-
-[HKEY_CLASSES_ROOT\Directory\shell\OpenElevatedPS\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\Directory\shell\Powershell]
-@="@shell32.dll,-8508"
-"Extended"=""
-"NoWorkingDirectory"=""
-"ShowBasedOnVelocityId"=dword:00639bc8
-
-[HKEY_CLASSES_ROOT\Directory\shell\Powershell\command]
-@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_CLASSES_ROOT\Directory\shell\UpdateEncryptionSettings]
-"AppliesTo"="System.StorageProviderId:<>\"network\" AND System.StorageProviderProtectionMode:<>1 AND System.StorageProviderProtectionMode:<>2"
-"AttributeMask"=dword:00002000
-"AttributeValue"=dword:00002000
-"ExtendedSubCommandsKey"="Directory\\shell\\UpdateEncryptionSettings"
-"ImpliedSelectionModel"=dword:00000000
-"MUIVerb"="@efscore.dll,-101"
-"MultiSelectModel"="Player"
-"Position"="Bottom"
-
-[HKEY_CLASSES_ROOT\Directory\shell\UpdateEncryptionSettings\Shell]
-
-[HKEY_CLASSES_ROOT\Directory\shell\UpdateEncryptionSettings\Shell\Decrypt]
-"AttributeMask"=dword:00002000
-"AttributeValue"=dword:00002000
-"CommandStateHandler"="{5B6D1451-B1E1-4372-90F5-88E541B4DAB9}"
-"Icon"="edputil.dll,-1002"
-"MUIVerb"="@efscore.dll,-103"
-"ShowAsDisabledIfHidden"=""
-"UpdateType"=dword:00000000
-
-[HKEY_CLASSES_ROOT\Directory\shell\UpdateEncryptionSettings\Shell\Decrypt\command]
-"DelegateExecute"="{5B6D1451-B1E1-4372-90F5-88E541B4DAB9}"
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z001AAA]
-"MUIVerb"="Open Command Prompt Here"
-"Extended"=""
-"NoWorkingDirectory"=""
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z001AAA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,75,00,\
-  6e,00,41,00,64,00,6d,00,69,00,6e,00,20,00,22,00,25,00,53,00,79,00,73,00,74,\
-  00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,\
-  65,00,6d,00,33,00,32,00,5c,00,63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,22,\
-  00,20,00,2f,00,73,00,20,00,2f,00,6b,00,20,00,70,00,75,00,73,00,68,00,64,00,\
-  20,00,22,00,25,00,4c,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z002AAL]
-"MUIVerb"="Take Ownership"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z002AAL\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,74,00,61,00,6b,00,65,00,6f,00,77,00,6e,00,20,\
-  00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z003AAM]
-"MUIVerb"="Block Access"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,35,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z003AAM\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,42,00,6c,00,6f,00,63,00,6b,00,41,00,63,00,63,\
-  00,65,00,73,00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z004AAK]
-"MUIVerb"="Change Icon"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,32,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z004AAK\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,43,00,68,00,61,00,6e,00,67,00,65,00,49,00,63,\
-  00,6f,00,6e,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z005AAN]
-"MUIVerb"="Copy Folder Contents List"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,33,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z005AAN\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,6f,00,\
-  70,00,79,00,46,00,6f,00,6c,00,64,00,65,00,72,00,43,00,6f,00,6e,00,74,00,65,\
-  00,6e,00,74,00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z006AAO]
-"MUIVerb"="Permanently Delete"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,31,00,33,\
-  00,31,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z006AAO\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,50,00,65,00,\
-  72,00,6d,00,61,00,6e,00,65,00,6e,00,74,00,6c,00,79,00,44,00,65,00,6c,00,65,\
-  00,74,00,65,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z007AAP]
-"MUIVerb"="Change Attributes"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,34,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shell\Z007AAP\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,68,00,\
-  61,00,6e,00,67,00,65,00,41,00,74,00,74,00,72,00,69,00,62,00,75,00,74,00,65,\
-  00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_CLASSES_ROOT\Directory\shellex]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\ FileSyncEx]
-@="{CB3D0F55-BC2C-4C1A-85ED-23ED75B5106B}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\EncryptionMenu]
-@="{A470F8CF-A1E8-4f65-8335-227475AA5C46}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\EPP]
-@="{09A47860-11B0-4DA5-AFA5-26D86198A780}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\Offline Files]
-@="{474C98EE-CF3D-41f5-80E3-4AAB0AB04301}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\WorkFolders]
-@="{E61BF828-5E63-4287-BEF1-60B1A4FDE0E3}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\CopyHookHandlers]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\CopyHookHandlers\FileSystem]
-@="{217FC9C0-3AEA-1069-A2DB-08002B30309D}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\CopyHookHandlers\Sharing]
-@="{40dd6e20-7c17-11ce-a804-00aa003ca9f6}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\Offline Files]
-@="{7EFA68C6-086B-43e1-A2D2-55A113531240}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\{1f2e5c40-9550-11ce-99d2-00aa006e086c}]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\{4a7ded0a-ad25-11d0-98a8-0800361b1103}]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\{ECCDF543-45CC-11CE-B9BF-0080C87CDBA6}]
-
-[HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\{ef43ecfe-2ab9-4632-bf21-58909dd177f0}]
-@=""
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*]
-"AlwaysShowExt"=""
-"ConflictPrompt"="prop:System.ItemTypeText;System.Size;System.DateModified;System.DateCreated"
-"ContentViewModeForBrowse"="prop:~System.ItemNameDisplay;System.ItemTypeText;~System.LayoutPattern.PlaceHolder;~System.LayoutPattern.PlaceHolder;System.DateModified;System.Size"
-"ContentViewModeForSearch"="prop:~System.ItemNameDisplay;~System.ItemFolderPathDisplay;~System.LayoutPattern.PlaceHolder;System.ItemTypeText;System.DateModified;System.Size"
-"ContentViewModeLayoutPatternForBrowse"="delta"
-"ContentViewModeLayoutPatternForSearch"="delta"
-"ExtendedTileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified;System.OfflineAvailability"
-"FullDetails"="prop:System.PropGroup.FileSystem;System.ItemNameDisplay;System.ItemTypeText;System.ItemFolderPathDisplay;System.Size;System.DateCreated;System.DateModified;System.FileAttributes;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith;*System.FileOwner;*System.ComputerName"
-"InfoTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
-"NoRecentDocs"=""
-"NoStaticDefaultVerb"=""
-"PreviewDetails"="prop:System.DateModified;System.Size;System.DateCreated;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith"
-"PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
-"QuickTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
-"SetDefaultsFor"="prop:System.Author;System.Document.DateCreated"
-"TileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\OpenWithList]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\OpenWithList\Excel.exe]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\OpenWithList\IExplore.exe]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\OpenWithList\Winword.exe]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\pintohomefile]
-"CommandStateHandler"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-"CommandStateSync"=""
-"MUIVerb"="@shell32.dll,-51389"
-"NeverDefault"=""
-"SkipCloudDownload"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\pintohomefile\command]
-"DelegateExecute"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\removeproperties]
-"ProgrammaticAccessOnly"="Apartment"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\removeproperties\DropTarget]
-"CLSID"="{09a28848-0e97-4cef-b950-cea037161155}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\UpdateEncryptionSettingsWork]
-"AppliesTo"="System.StorageProviderId:<>\"network\" AND System.StorageProviderProtectionMode:<>1 AND System.StorageProviderProtectionMode:<>2"
-"AttributeMask"=dword:00002000
-"AttributeValue"=dword:00002000
-"ExtendedSubCommandsKey"="*\\shell\\UpdateEncryptionSettingsWork"
-"ImpliedSelectionModel"=dword:00000000
-"MUIVerb"="@efscore.dll,-101"
-"MultiSelectModel"="Player"
-"Position"="Bottom"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\UpdateEncryptionSettingsWork\Shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\UpdateEncryptionSettingsWork\Shell\Decrypt]
-"AttributeMask"=dword:00002000
-"AttributeValue"=dword:00002000
-"CommandStateHandler"="{5B6D1451-B1E1-4372-90F5-88E541B4DAB9}"
-"Icon"="edputil.dll,-1002"
-"MUIVerb"="@efscore.dll,-103"
-"ShowAsDisabledIfHidden"=""
-"UpdateType"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\UpdateEncryptionSettingsWork\Shell\Decrypt\command]
-"DelegateExecute"="{5B6D1451-B1E1-4372-90F5-88E541B4DAB9}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z001AAR]
-"MUIVerb"="Open with Notepad"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,6e,00,6f,00,74,00,65,00,70,00,61,00,64,00,2e,00,65,00,78,00,\
-  65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z001AAR\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,6e,00,6f,00,74,00,65,00,70,00,61,00,64,00,2e,00,65,00,78,00,\
-  65,00,22,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z002AAS]
-"MUIVerb"="Copy Text Contents"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,33,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z002AAS\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,6f,00,\
-  70,00,79,00,54,00,65,00,78,00,74,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z003AAL]
-"MUIVerb"="Take Ownership"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,31,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z003AAL\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,74,00,61,00,6b,00,65,00,6f,00,77,00,6e,00,20,\
-  00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z004AAM]
-"MUIVerb"="Block Access"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,35,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z004AAM\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,42,00,6c,00,6f,00,63,00,6b,00,41,00,63,00,63,\
-  00,65,00,73,00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z005AAO]
-"MUIVerb"="Permanently Delete"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,31,00,33,\
-  00,31,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z005AAO\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,50,00,65,00,\
-  72,00,6d,00,61,00,6e,00,65,00,6e,00,74,00,6c,00,79,00,44,00,65,00,6c,00,65,\
-  00,74,00,65,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z006AAP]
-"MUIVerb"="Change Attributes"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,34,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Z006AAP\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,68,00,\
-  61,00,6e,00,67,00,65,00,41,00,74,00,74,00,72,00,69,00,62,00,75,00,74,00,65,\
-  00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers\EPP]
-@="{09A47860-11B0-4DA5-AFA5-26D86198A780}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers\Open With]
-@="{09799AFB-AD67-11d1-ABCD-00C04FC30936}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers\Open With EncryptionMenu]
-@="{A470F8CF-A1E8-4f65-8335-227475AA5C46}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers\WorkFolders]
-@="{E61BF828-5E63-4287-BEF1-60B1A4FDE0E3}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers\{90AA3A4E-1CBA-4233-B8BB-535773D48449}]
-@="Taskband Pin"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\ContextMenuHandlers\{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}]
-@="Start Menu Pin"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\PropertySheetHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\PropertySheetHandlers\CryptoSignMenu]
-@="{7444C719-39BF-11D1-8CD9-00C04FC29D45}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\PropertySheetHandlers\FCI Properties]
-@="{748F920F-FB24-4D09-B360-BAF6F199AD6D}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\PropertySheetHandlers\{1f2e5c40-9550-11ce-99d2-00aa006e086c}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\PropertySheetHandlers\{3EA48300-8CF6-101B-84FB-666CCB9BCD32}]
-@="OLE DocFile Property Page"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shellex\PropertySheetHandlers\{883373C3-BF89-11D1-BE35-080036B11A03}]
-@="Summary Properties Page"
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory]
-@="File Folder"
-"AlwaysShowExt"=""
-"EditFlags"=hex:d2,01,00,00
-"FriendlyTypeName"=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,\
-  00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,\
-  32,00,5c,00,77,00,69,00,6e,00,64,00,6f,00,77,00,73,00,2e,00,73,00,74,00,6f,\
-  00,72,00,61,00,67,00,65,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,31,00,30,00,\
-  31,00,35,00,32,00,00,00
-"FullDetails"="prop:System.PropGroup.Description;System.DateCreated;System.FileCount;System.TotalFileSize"
-"InfoTip"="prop:System.Comment;System.DateCreated"
-"NoRecentDocs"=""
-"PreviewDetails"="prop:System.DateModified;*System.SharedWith;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus"
-"PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedCmd]
-@="Command Prompt (Administrator)"
+@="Command Prompt (Run as Administrator)"
 "NoWorkingDirectory"=""
 "NeverDefault"=""
 "Icon"="cmd.exe"
@@ -2096,591 +207,26 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedCmd\command]
 @="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedPS]
-@="Windows PowerShell (Run as Administrator)"
-"NoWorkingDirectory"=""
-"NeverDefault"=""
-"Icon"="PowerShell.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedPS\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Powershell]
-@="@shell32.dll,-8508"
-"Extended"=""
-"NoWorkingDirectory"=""
-"ShowBasedOnVelocityId"=dword:00639bc8
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Powershell\command]
-@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z001AAA]
-"MUIVerb"="Open Command Prompt Here"
-"Extended"=""
-"NoWorkingDirectory"=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z001AAA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,75,00,\
-  6e,00,41,00,64,00,6d,00,69,00,6e,00,20,00,22,00,25,00,53,00,79,00,73,00,74,\
-  00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,\
-  65,00,6d,00,33,00,32,00,5c,00,63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,22,\
-  00,20,00,2f,00,73,00,20,00,2f,00,6b,00,20,00,70,00,75,00,73,00,68,00,64,00,\
-  20,00,22,00,25,00,56,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z002AAB]
-"MUIVerb"="Select All Files"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,31,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z002AAB\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,65,00,\
-  6c,00,65,00,63,00,74,00,41,00,6c,00,6c,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC]
-"SubCommands"=""
-"MUIVerb"="Tools"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,32,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z004ACA]
-"MUIVerb"="Delete Temporary Files"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,32,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z004ACA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,54,00,65,00,\
-  6d,00,70,00,43,00,6c,00,65,00,61,00,6e,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z005ACB]
-"MUIVerb"="Restart Windows Explorer"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,33,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z005ACB\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,65,00,\
-  45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z006ACC]
-"MUIVerb"="Reduce Memory"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,34,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z006ACC\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,52,00,65,00,64,00,75,00,63,00,65,00,4d,00,65,\
-  00,6d,00,6f,00,72,00,79,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z007ACD]
-"MUIVerb"="Block Mouse And Keyboard"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,35,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z007ACD\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,42,00,6c,00,6f,00,63,00,6b,00,49,00,6e,00,70,\
-  00,75,00,74,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z008ACE]
-"MUIVerb"="Block Keyboard"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,35,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z008ACE\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,42,00,6c,00,\
-  6f,00,63,00,6b,00,4b,00,65,00,79,00,62,00,6f,00,61,00,72,00,64,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z009ACF]
-"MUIVerb"="Show or Hide Hidden Files and Folders"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,36,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z009ACF\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,48,00,69,00,\
-  64,00,64,00,65,00,6e,00,46,00,69,00,6c,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z010ACG]
-"MUIVerb"="Show or Hide File Extensions"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,37,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z010ACG\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,48,00,69,00,\
-  64,00,65,00,46,00,69,00,6c,00,65,00,45,00,78,00,74,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z011ACH]
-"MUIVerb"="Rebuild Shell Icon Cache"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,38,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z011ACH\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,65,00,\
-  49,00,63,00,6f,00,6e,00,43,00,61,00,63,00,68,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z012ACI]
-"MUIVerb"="Fix Print Spooler"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,39,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z012ACI\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,46,00,69,00,78,00,50,00,72,00,69,00,6e,00,74,\
-  00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z013ACJ]
-"MUIVerb"="Copy IP"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,30,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z003AAC\shell\Z013ACJ\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,6f,00,\
-  70,00,79,00,49,00,50,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD]
-"SubCommands"=""
-"MUIVerb"="System Tools"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,33,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z015AEA]
-"MUIVerb"="Computer Management"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  6d,00,63,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z015AEA\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  6d,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,73,00,20,00,25,00,53,\
-  00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,\
-  79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6f,00,6d,00,70,00,6d,\
-  00,67,00,6d,00,74,00,2e,00,6d,00,73,00,63,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z016AEB]
-"MUIVerb"="Task Manager"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,74,00,\
-  61,00,73,00,6b,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z016AEB\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,74,00,\
-  61,00,73,00,6b,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z017AEC]
-"MUIVerb"="Command Prompt"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6d,00,64,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z017AEC\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6d,00,64,00,2e,00,65,00,78,00,65,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z018AED]
-"MUIVerb"="Registry Editor"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,72,00,65,00,67,00,65,00,64,00,69,00,74,00,2e,00,65,00,78,00,\
-  65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z018AED\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,72,00,65,00,67,00,65,00,64,00,69,00,74,00,2e,00,65,00,78,00,\
-  65,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z019AEE]
-"MUIVerb"="Run"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,32,00,34,\
-  00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z019AEE\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,\
-  78,00,65,00,22,00,20,00,73,00,68,00,65,00,6c,00,6c,00,3a,00,3a,00,3a,00,7b,\
-  00,32,00,35,00,35,00,39,00,41,00,31,00,46,00,33,00,2d,00,32,00,31,00,44,00,\
-  37,00,2d,00,31,00,31,00,44,00,34,00,2d,00,42,00,44,00,41,00,46,00,2d,00,30,\
-  00,30,00,43,00,30,00,34,00,46,00,36,00,30,00,42,00,39,00,46,00,30,00,7d,00,\
-  00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z020AEF]
-"MUIVerb"="Snipping Tool"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  6e,00,69,00,70,00,70,00,69,00,6e,00,67,00,54,00,6f,00,6f,00,6c,00,2e,00,65,\
-  00,78,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z020AEF\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  6e,00,69,00,70,00,70,00,69,00,6e,00,67,00,54,00,6f,00,6f,00,6c,00,2e,00,65,\
-  00,78,00,65,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z021AEG]
-"MUIVerb"="Sticky Notes"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  74,00,69,00,6b,00,79,00,4e,00,6f,00,74,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z021AEG\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  74,00,69,00,6b,00,79,00,4e,00,6f,00,74,00,2e,00,65,00,78,00,65,00,22,00,00,\
-  00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z022AEH]
-"MUIVerb"="Programs and Features"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,61,00,\
-  70,00,70,00,77,00,69,00,7a,00,2e,00,63,00,70,00,6c,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z022AEH\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6f,00,6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,22,00,20,00,61,\
-  00,70,00,70,00,77,00,69,00,7a,00,2e,00,63,00,70,00,6c,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z023AEI]
-"MUIVerb"="All Tasks"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6f,00,6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z023AEI\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,65,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,\
-  78,00,65,00,22,00,20,00,73,00,68,00,65,00,6c,00,6c,00,3a,00,3a,00,3a,00,7b,\
-  00,45,00,44,00,37,00,42,00,41,00,34,00,37,00,30,00,2d,00,38,00,45,00,35,00,\
-  34,00,2d,00,34,00,36,00,35,00,45,00,2d,00,38,00,32,00,35,00,43,00,2d,00,39,\
-  00,39,00,37,00,31,00,32,00,30,00,34,00,33,00,45,00,30,00,31,00,43,00,7d,00,\
-  00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z024AEP]
-"MUIVerb"="Msconfig"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  73,00,63,00,6f,00,6e,00,66,00,69,00,67,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z024AEP\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  73,00,63,00,6f,00,6e,00,66,00,69,00,67,00,2e,00,65,00,78,00,65,00,22,00,00,\
-  00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z025AEK]
-"MUIVerb"="Device Manager"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,\
-  65,00,76,00,6d,00,67,00,72,00,2e,00,64,00,6c,00,6c,00,2c,00,34,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z025AEK\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  6d,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,73,00,20,00,25,00,53,\
-  00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,\
-  79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,65,00,76,00,6d,00,67,\
-  00,6d,00,74,00,2e,00,6d,00,73,00,63,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z026AEL]
-"MUIVerb"="Services"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,53,00,\
-  48,00,45,00,4c,00,4c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,39,00,30,\
-  00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z026AEL\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,\
-  6d,00,63,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,73,00,20,00,25,00,53,\
-  00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,\
-  79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,65,00,72,00,76,00,69,\
-  00,63,00,65,00,73,00,2e,00,6d,00,73,00,63,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z027AEM]
-"MUIVerb"="Network Connections"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6e,00,\
-  63,00,70,00,61,00,2e,00,63,00,70,00,6c,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z027AEM\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6f,00,6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,22,00,20,00,6e,\
-  00,63,00,70,00,61,00,2e,00,63,00,70,00,6c,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z028AEN]
-"MUIVerb"="Control Panel"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,32,00,31,\
-  00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z028AEN\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6f,00,6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z029AEO]
-"MUIVerb"="Empty Recycle Bin"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,33,00,31,\
-  00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z014AAD\shell\Z029AEO\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,46,00,69,00,6c,\
-  00,65,00,73,00,5c,00,6e,00,69,00,72,00,63,00,6d,00,64,00,5c,00,6e,00,69,00,\
-  72,00,63,00,6d,00,64,00,5f,00,58,00,36,00,34,00,2e,00,65,00,78,00,65,00,22,\
-  00,20,00,65,00,6d,00,70,00,74,00,79,00,62,00,69,00,6e,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE]
-"SubCommands"=""
-"MUIVerb"="Turn Off Options"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,34,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z031ADA]
-"MUIVerb"="Turn Off Menu"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,32,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z031ADA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,4d,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z032ADB]
-"MUIVerb"="Lock User"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,35,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z032ADB\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,55,00,4c,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z033ADC]
-"MUIVerb"="Switch User"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,36,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z033ADC\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,55,00,53,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z034ADD]
-"MUIVerb"="Log Off"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,37,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z034ADD\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,4c,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z035ADE]
-"MUIVerb"="Sleep"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,38,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z035ADE\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,53,00,4d,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z036ADF]
-"MUIVerb"="Hibernate"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,39,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z036ADF\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,48,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z037ADG]
-"MUIVerb"="Restart"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,32,00,30,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z037ADG\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,52,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z038ADH]
-"MUIVerb"="Shut Down"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,34,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z038ADH\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,53,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z039ADI]
-"MUIVerb"="Shut Down Force"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,34,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Z030AAE\shell\Z039ADI\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,53,00,68,00,\
-  75,00,74,00,64,00,6f,00,77,00,6e,00,20,00,2f,00,53,00,20,00,2f,00,46,00,00,\
-  00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shellex]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shellex\ContextMenuHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shellex\ContextMenuHandlers\New]
-@="{D969A300-E7FF-11d0-A93B-00A0C90F2719}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shellex\ContextMenuHandlers\NvCplDesktopContext]
-@="{3D1975AF-48C6-4f8e-A182-BE0E08FA86A9}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shellex\ContextMenuHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shellex\ContextMenuHandlers\WorkFolders]
-@="{E61BF828-5E63-4287-BEF1-60B1A4FDE0E3}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\DefaultIcon]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,68,00,\
-  65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,33,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell]
-@="none"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\find]
-"LegacyDisable"=""
-"SuppressionPolicy"=dword:00000080
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\find\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,\
-  65,00,00,00
-"DelegateExecute"="{a015411a-f97d-4ef3-8425-8a38d022aebc}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedCmd]
-@="Command Prompt (Administrator)"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedCmd]
+@="Command Prompt (Run as Administrator)"
 "NoWorkingDirectory"=""
 "NeverDefault"=""
 "Icon"="cmd.exe"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedCmd\command]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedCmd\command]
 @="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedCmd]
+@="Command Prompt (Run as Administrator)"
+"NoWorkingDirectory"=""
+"NeverDefault"=""
+"Icon"="cmd.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedCmd\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"MultipleInvokePromptMinimum"=dword:000000c8
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedPS]
 @="Windows PowerShell (Run as Administrator)"
@@ -2689,324 +235,16 @@ Windows Registry Editor Version 5.00
 "Icon"="PowerShell.exe"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\OpenElevatedPS\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd,%V && powershell' -Verb RunAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Powershell]
-@="@shell32.dll,-8508"
-"Extended"=""
-"NoWorkingDirectory"=""
-"ShowBasedOnVelocityId"=dword:00639bc8
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Powershell\command]
-@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\UpdateEncryptionSettings]
-"AppliesTo"="System.StorageProviderId:<>\"network\" AND System.StorageProviderProtectionMode:<>1 AND System.StorageProviderProtectionMode:<>2"
-"AttributeMask"=dword:00002000
-"AttributeValue"=dword:00002000
-"ExtendedSubCommandsKey"="Directory\\shell\\UpdateEncryptionSettings"
-"ImpliedSelectionModel"=dword:00000000
-"MUIVerb"="@efscore.dll,-101"
-"MultiSelectModel"="Player"
-"Position"="Bottom"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\UpdateEncryptionSettings\Shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\UpdateEncryptionSettings\Shell\Decrypt]
-"AttributeMask"=dword:00002000
-"AttributeValue"=dword:00002000
-"CommandStateHandler"="{5B6D1451-B1E1-4372-90F5-88E541B4DAB9}"
-"Icon"="edputil.dll,-1002"
-"MUIVerb"="@efscore.dll,-103"
-"ShowAsDisabledIfHidden"=""
-"UpdateType"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\UpdateEncryptionSettings\Shell\Decrypt\command]
-"DelegateExecute"="{5B6D1451-B1E1-4372-90F5-88E541B4DAB9}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z001AAA]
-"MUIVerb"="Open Command Prompt Here"
-"Extended"=""
-"NoWorkingDirectory"=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z001AAA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,75,00,\
-  6e,00,41,00,64,00,6d,00,69,00,6e,00,20,00,22,00,25,00,53,00,79,00,73,00,74,\
-  00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,\
-  65,00,6d,00,33,00,32,00,5c,00,63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,22,\
-  00,20,00,2f,00,73,00,20,00,2f,00,6b,00,20,00,70,00,75,00,73,00,68,00,64,00,\
-  20,00,22,00,25,00,4c,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z002AAL]
-"MUIVerb"="Take Ownership"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,31,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z002AAL\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,74,00,61,00,6b,00,65,00,6f,00,77,00,6e,00,20,\
-  00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z003AAM]
-"MUIVerb"="Block Access"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,31,00,35,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z003AAM\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,42,00,6c,00,6f,00,63,00,6b,00,41,00,63,00,63,\
-  00,65,00,73,00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z004AAK]
-"MUIVerb"="Change Icon"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,32,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z004AAK\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,43,00,68,00,61,00,6e,00,67,00,65,00,49,00,63,\
-  00,6f,00,6e,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z005AAN]
-"MUIVerb"="Copy Folder Contents List"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,33,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z005AAN\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,6f,00,\
-  70,00,79,00,46,00,6f,00,6c,00,64,00,65,00,72,00,43,00,6f,00,6e,00,74,00,65,\
-  00,6e,00,74,00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z006AAO]
-"MUIVerb"="Permanently Delete"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,31,00,33,\
-  00,31,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z006AAO\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,50,00,65,00,\
-  72,00,6d,00,61,00,6e,00,65,00,6e,00,74,00,6c,00,79,00,44,00,65,00,6c,00,65,\
-  00,74,00,65,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z007AAP]
-"MUIVerb"="Change Attributes"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,34,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Z007AAP\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,43,00,68,00,\
-  61,00,6e,00,67,00,65,00,41,00,74,00,74,00,72,00,69,00,62,00,75,00,74,00,65,\
-  00,73,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\ContextMenuHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\ContextMenuHandlers\EncryptionMenu]
-@="{A470F8CF-A1E8-4f65-8335-227475AA5C46}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\ContextMenuHandlers\EPP]
-@="{09A47860-11B0-4DA5-AFA5-26D86198A780}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\ContextMenuHandlers\Offline Files]
-@="{474C98EE-CF3D-41f5-80E3-4AAB0AB04301}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\ContextMenuHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\ContextMenuHandlers\WorkFolders]
-@="{E61BF828-5E63-4287-BEF1-60B1A4FDE0E3}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\CopyHookHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\CopyHookHandlers\FileSystem]
-@="{217FC9C0-3AEA-1069-A2DB-08002B30309D}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\CopyHookHandlers\Sharing]
-@="{40dd6e20-7c17-11ce-a804-00aa003ca9f6}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\PropertySheetHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\PropertySheetHandlers\Offline Files]
-@="{7EFA68C6-086B-43e1-A2D2-55A113531240}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\PropertySheetHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\PropertySheetHandlers\{1f2e5c40-9550-11ce-99d2-00aa006e086c}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\PropertySheetHandlers\{4a7ded0a-ad25-11d0-98a8-0800361b1103}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\PropertySheetHandlers\{ECCDF543-45CC-11CE-B9BF-0080C87CDBA6}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shellex\PropertySheetHandlers\{ef43ecfe-2ab9-4632-bf21-58909dd177f0}]
-@=""
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive]
-@="Drive"
-"ContentViewModeForBrowse"="prop:~System.ItemNameDisplay;~System.PercentFull;~System.LayoutPattern.PlaceHolder;~System.LayoutPattern.PlaceHolder;~System.Volume.FileSystem;~System.Computer.DecoratedFreeSpace"
-"ContentViewModeLayoutPatternForBrowse"="delta"
-"EditFlags"=hex:d2,01,00,00
-"InfoTip"="prop:System.FreeSpace;System.Capacity"
-"PreviewDetails"="prop:*System.PercentFull;System.FreeSpace;System.Capacity;System.Volume.FileSystem;*System.Volume.BitLockerProtection"
-"PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
-"TileInfo"="prop:*System.PercentFull;System.Computer.DecoratedFreeSpace;System.Volume.FileSystem"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\Commands]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\Commands\Shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\Commands\Shell\Windows.EnhancedStorage.Lock]
-@="Enhanced Storage Lock Command"
-"CommandStateSync"=""
-"ExplorerCommandHandler"="{CC55EE92-FE67-43C9-95E7-E646918A4A04}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\Commands\Shell\Windows.EnhancedStorage.Unlock]
-@="Enhanced Storage Unlock Command"
-"CommandStateSync"=""
-"ExplorerCommandHandler"="{CC55EE92-FE67-43C9-95E7-E646918A4A04}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\DefaultIcon]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,68,00,\
-  65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,38,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell]
-@="none"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\change-passphrase]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,37,\
-  00,31,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#On OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Encrypting OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended) AND System.Volume.BitLockerCanChangePassphraseByProxy:=System.StructuredQueryType.Boolean#True"
-"MultiSelectModel"="Single"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\change-passphrase\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,62,00,64,00,\
-  65,00,63,00,68,00,61,00,6e,00,67,00,65,00,70,00,69,00,6e,00,2e,00,65,00,78,\
-  00,65,00,20,00,2d,00,70,00,77,00,20,00,25,00,31,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\change-pin]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,37,\
-  00,30,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#On OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Encrypting OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended) AND System.Volume.BitLockerCanChangePin:=System.StructuredQueryType.Boolean#True"
-"MultiSelectModel"="Single"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\change-pin\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,62,00,64,00,\
-  65,00,63,00,68,00,61,00,6e,00,67,00,65,00,70,00,69,00,6e,00,2e,00,65,00,78,\
-  00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\encrypt-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,30,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Off OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#OnPreProvisioned) AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#False"
-"MultiSelectModel"="Single"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\encrypt-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,54,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\encrypt-bde-elev]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,30,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Off OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#OnPreProvisioned) AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#True"
-"HasLUAShield"=""
-"MultiSelectModel"="Single"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\encrypt-bde-elev\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,45,00,6c,00,65,00,76,00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,\
-  54,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\find]
-"LegacyDisable"=""
-"SuppressionPolicy"=dword:00000080
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\find\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,\
-  65,00,00,00
-"DelegateExecute"="{a015411a-f97d-4ef3-8425-8a38d022aebc}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\manage-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,34,\
-  00,39,00,00,00
-"AppliesTo"="System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#On OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Encrypting OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended"
-"MultiSelectModel"="Single"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\manage-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6f,00,\
-  6e,00,74,00,72,00,6f,00,6c,00,2e,00,65,00,78,00,65,00,20,00,2f,00,6e,00,61,\
-  00,6d,00,65,00,20,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,\
-  2e,00,42,00,69,00,74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,44,00,72,00,69,\
-  00,76,00,65,00,45,00,6e,00,63,00,72,00,79,00,70,00,74,00,69,00,6f,00,6e,00,\
-  20,00,2f,00,70,00,61,00,67,00,65,00,20,00,3f,00,49,00,6e,00,69,00,74,00,69,\
-  00,61,00,6c,00,56,00,6f,00,6c,00,75,00,6d,00,65,00,3d,00,3d,00,25,00,31,00,\
-  00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedCmd]
-@="Command Prompt (Administrator)"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
 "NoWorkingDirectory"=""
 "NeverDefault"=""
-"Icon"="cmd.exe"
+"Icon"="PowerShell.exe"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedCmd\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd,%V && powershell' -Verb RunAs\""
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedPS]
 @="Windows PowerShell (Run as Administrator)"
@@ -3015,290 +253,216 @@ Windows Registry Editor Version 5.00
 "Icon"="PowerShell.exe"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\OpenElevatedPS\command]
-@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd %V && powershell' -Verb RunAs\""
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd,%V && powershell' -Verb RunAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\pintohome]
-"CommandStateHandler"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
-"CommandStateSync"=""
-"MUIVerb"="@shell32.dll,-51377"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedPS]
+@="Windows PowerShell (Run as Administrator)"
+"NoWorkingDirectory"=""
 "NeverDefault"=""
-"SkipCloudDownload"=dword:00000000
+"Icon"="PowerShell.exe"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\pintohome\command]
-"DelegateExecute"="{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\LibraryFolder\Shell\OpenElevatedPS\command]
+@="PowerShell.exe -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/c,pushd,%V && powershell' -Verb RunAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Powershell]
-@="@shell32.dll,-8508"
-"Extended"=""
-"NoWorkingDirectory"=""
-"ShowBasedOnVelocityId"=dword:00639bc8
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\DismContextMenu]
+"MUIVerb"="Repair Windows Image"
+"Icon"="WmiPrvSE.exe"
+"Position"="Bottom"
+"SubCommands"=""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Powershell\command]
-@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\resume-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,31,00,00,00
-"AppliesTo"="System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#False"
-"MultiSelectModel"="Single"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\resume-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,56,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\resume-bde-elev]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,31,00,00,00
-"AppliesTo"="System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Suspended AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#True"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\DismContextMenu\shell\CheckHealth]
 "HasLUAShield"=""
-"MultiSelectModel"="Single"
+"MUIVerb"="Check Health of Windows Image"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\resume-bde-elev\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,45,00,6c,00,65,00,76,00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,\
-  56,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\DismContextMenu\shell\CheckHealth\Command]
+@="PowerShell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/k, Dism /Online /Cleanup-Image /CheckHealth' -Verb runAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\unlock-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,62,00,\
-  64,00,65,00,75,00,6e,00,6c,00,6f,00,63,00,6b,00,2e,00,65,00,78,00,65,00,2c,\
-  00,2d,00,31,00,30,00,30,00,00,00
-"AppliesTo"="System.Volume.BitLockerProtection:=6"
-"DefaultAppliesTo"=""
-"MultiSelectModel"="Single"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\DismContextMenu\shell\RestoreHealth]
+"HasLUAShield"=""
+"MUIVerb"="Repair Windows Image"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\unlock-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,62,00,64,00,\
-  65,00,75,00,6e,00,6c,00,6f,00,63,00,6b,00,2e,00,65,00,78,00,65,00,20,00,25,\
-  00,31,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\DismContextMenu\shell\RestoreHealth\Command]
+@="PowerShell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/k, Dism /Online /Cleanup-Image /RestoreHealth' -Verb runAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Z001AAA]
-"MUIVerb"="Open Command Prompt Here"
-"Extended"=""
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\ResetNTFSPermissions]
+"MUIVerb"="Reset Permissions"
 "NoWorkingDirectory"=""
+"Position"="middle"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Z001AAA\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,75,00,\
-  6e,00,41,00,64,00,6d,00,69,00,6e,00,20,00,22,00,25,00,53,00,79,00,73,00,74,\
-  00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,\
-  65,00,6d,00,33,00,32,00,5c,00,63,00,6d,00,64,00,2e,00,65,00,78,00,65,00,22,\
-  00,20,00,2f,00,73,00,20,00,2f,00,6b,00,20,00,70,00,75,00,73,00,68,00,64,00,\
-  20,00,22,00,25,00,4c,00,22,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\ResetNTFSPermissions\Command]
+@="powershell.exe -windowstyle hidden -command \"Start-Process cmd.exe -ArgumentList '/c icacls \\\"%1\\\" /reset & pause' -Verb RunAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Z002AAI]
-"MUIVerb"="Disk Cleanup"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6c,00,65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\ResetNTFSPermissions]
+"MUIVerb"="Reset Permissions"
+"SubCommands"=""
+"Position"="middle"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Z002AAI\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
-  6c,00,65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,22,00,20,\
-  00,2f,00,64,00,20,00,25,00,31,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\ResetNTFSPermissions\Shell\01ResetPermissionsRootFolder]
+"MUIVerb"="Reset permissions of this folder only"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Z003AAJ]
-"MUIVerb"="Defrag"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,31,00,36,\
-  00,36,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\ResetNTFSPermissions\Shell\01ResetPermissionsRootFolder\command]
+@="powershell.exe -windowstyle hidden -command \"Start-Process cmd.exe -ArgumentList '/c icacls \\\"%1\\\" /reset & pause' -Verb RunAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Z003AAJ\command]
-@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,\
-  65,00,66,00,72,00,61,00,67,00,2e,00,65,00,78,00,65,00,22,00,20,00,25,00,31,\
-  00,20,00,2d,00,76,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\ResetNTFSPermissions\Shell\02ResetPermissionsAllFolders]
+"MUIVerb"="Reset permissions of this folder, subfolders and files"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Z004AAK]
-"MUIVerb"="Change Icon"
-"Icon"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,2c,00,33,00,32,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\ResetNTFSPermissions\Shell\02ResetPermissionsAllFolders\command]
+@="powershell.exe -windowstyle hidden -command \"Start-Process cmd.exe -ArgumentList '/c icacls \\\"%1\\\" /reset /t /c /l & pause' -Verb RunAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell\Z004AAK\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,43,00,68,00,61,00,6e,00,67,00,65,00,49,00,63,\
-  00,6f,00,6e,00,20,00,22,00,25,00,31,00,22,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\ContextMenuHandlers]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\ContextMenuHandlers\EnhancedStorageShell]
-@="{2854F705-3548-414C-A113-93E27C808C85}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\ContextMenuHandlers\EPP]
-@="{09A47860-11B0-4DA5-AFA5-26D86198A780}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\ContextMenuHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\ContextMenuHandlers\{D6791A63-E7E2-4fee-BF52-5DED8E86E9B8}]
-"{D6791A63-E7E2-4fee-BF52-5DED8E86E9B8}"="Portable Devices Menu"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\ContextMenuHandlers\{fbeb8a05-beee-4442-804e-409d6c4515e9}]
-@=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\FolderExtensions]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\FolderExtensions\{fbeb8a05-beee-4442-804e-409d6c4515e9}]
-"DriveMask"=dword:00000020
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers]
-@="{5F5295E0-429F-1069-A2E2-08002B30309D}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\Sharing]
-@="{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{1f2e5c40-9550-11ce-99d2-00aa006e086c}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{4a7ded0a-ad25-11d0-98a8-0800361b1103}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{55B3A0BD-4D28-42fe-8CFB-FA3EDFF969B8}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{5F5295E0-429F-1069-A2E2-08002B30309D}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{7988B573-EC89-11cf-9C00-00AA00A14F56}]
-@=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{ECCDF543-45CC-11CE-B9BF-0080C87CDBA6}]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{ef43ecfe-2ab9-4632-bf21-58909dd177f0}]
-@=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shellex\PropertySheetHandlers\{fbeb8a05-beee-4442-804e-409d6c4515e9}]
-@=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\tabsets]
-"location"=dword:00000703
-"selection"=dword:00000703
-
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile]
-@="Application"
-"EditFlags"=hex:38,07,00,00
-"FriendlyTypeName"=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,\
-  00,6f,00,6f,00,74,00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,\
-  32,00,5c,00,73,00,68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,\
-  00,2c,00,2d,00,31,00,30,00,31,00,35,00,36,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\DefaultIcon]
-@="%1"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\open]
-"EditFlags"=hex:00,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\open\command]
-@="\"%1\" %*"
-"IsolatedCommand"="\"%1\" %*"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\runas]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile\Shell\runas]
 "HasLUAShield"=""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\runas\command]
-@="\"%1\" %*"
-"IsolatedCommand"="\"%1\" %*"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\VBSFile\Shell\runas\command]
+@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6D,00,52,00,6F,00,6F,00,\
+74,00,25,00,5C,00,53,00,79,00,73,00,74,00,65,00,6D,00,33,00,32,00,5C,00,57,\
+00,53,00,63,00,72,00,69,00,70,00,74,00,2E,00,65,00,78,00,65,00,22,00,20,00,\
+22,00,25,00,31,00,22,00,20,00,25,00,2A,00,00,00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\runasuser]
-@="@shell32.dll,-50944"
-"Extended"=""
-"SuppressionPolicyEx"="{F211AA05-D4DF-4370-A2A0-9F19C09756A7}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\runas]
+"HasLUAShield"=""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\runasuser\command]
-"DelegateExecute"="{ea72d00e-4960-42fa-ba92-7792a7944c1d}"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Msi.Package\shell\runas\command]
+@=hex(2):22,00,25,00,53,00,79,00,73,00,74,00,65,00,6D,00,52,00,6F,00,6F,00,\
+74,00,25,00,5C,00,53,00,79,00,73,00,74,00,65,00,6D,00,33,00,32,00,5C,00,6D,\
+00,73,00,69,00,65,00,78,00,65,00,63,00,2E,00,65,00,78,00,65,00,22,00,20,00,\
+2F,00,69,00,20,00,22,00,25,00,31,00,22,00,20,00,25,00,2A,00,00,00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\Z001AAT]
-"MUIVerb"="Run with Parameters"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
-  68,00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,32,00,34,\
-  00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1\Shell\runas]
+"HasLUAShield"=""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\Z001AAT\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,52,00,75,00,\
-  6e,00,50,00,61,00,72,00,61,00,6d,00,65,00,74,00,65,00,72,00,73,00,20,00,22,\
-  00,25,00,31,00,22,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Microsoft.PowerShellScript.1\Shell\runas\command]
+@=hex(2):70,00,6F,00,77,00,65,00,72,00,73,00,68,00,65,00,6C,00,6C,00,2E,00,\
+65,00,78,00,65,00,20,00,22,00,2D,00,43,00,6F,00,6D,00,6D,00,61,00,6E,00,64,\
+00,22,00,20,00,22,00,69,00,66,00,28,00,28,00,47,00,65,00,74,00,2D,00,45,00,\
+78,00,65,00,63,00,75,00,74,00,69,00,6F,00,6E,00,50,00,6F,00,6C,00,69,00,63,\
+00,79,00,20,00,29,00,20,00,2D,00,6E,00,65,00,20,00,27,00,41,00,6C,00,6C,00,\
+53,00,69,00,67,00,6E,00,65,00,64,00,27,00,29,00,20,00,7B,00,20,00,53,00,65,\
+00,74,00,2D,00,45,00,78,00,65,00,63,00,75,00,74,00,69,00,6F,00,6E,00,50,00,\
+6F,00,6C,00,69,00,63,00,79,00,20,00,2D,00,53,00,63,00,6F,00,70,00,65,00,20,\
+00,50,00,72,00,6F,00,63,00,65,00,73,00,73,00,20,00,42,00,79,00,70,00,61,00,\
+73,00,73,00,20,00,7D,00,3B,00,20,00,26,00,20,00,27,00,25,00,31,00,27,00,22,\
+00,00,00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\Z002AAU]
-"MUIVerb"="Add To Firewall"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,69,00,\
-  6d,00,61,00,67,00,65,00,72,00,65,00,73,00,2e,00,64,00,6c,00,6c,00,2c,00,31,\
-  00,30,00,30,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SFCScannow]
+"MUIVerb"="SFC /Scannow"
+"Icon"="cmd.exe"
+"Position"="Bottom"
+"SubCommands"=""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\Z002AAU\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,66,00,69,00,72,00,65,00,77,00,61,00,6c,00,6c,\
-  00,5f,00,61,00,64,00,64,00,20,00,22,00,25,00,31,00,22,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SFCScannow\shell\01Scannow]
+"HasLUAShield"=""
+"MUIVerb"="Run SFC /Scannow"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\Z003AAV]
-"MUIVerb"="Delete From Firewall"
-"Icon"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,69,00,\
-  6d,00,61,00,67,00,65,00,72,00,65,00,73,00,2e,00,64,00,6c,00,6c,00,2c,00,31,\
-  00,30,00,31,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SFCScannow\shell\01Scannow\Command]
+@="PowerShell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/k, sfc.exe /scannow' -Verb runAs\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shell\Z003AAV\command]
-@=hex(2):22,00,25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,\
-  00,65,00,73,00,25,00,5c,00,45,00,61,00,73,00,79,00,20,00,43,00,6f,00,6e,00,\
-  74,00,65,00,78,00,74,00,20,00,4d,00,65,00,6e,00,75,00,5c,00,45,00,63,00,4d,\
-  00,65,00,6e,00,75,00,2e,00,65,00,78,00,65,00,22,00,20,00,2f,00,41,00,64,00,\
-  6d,00,69,00,6e,00,20,00,2f,00,66,00,69,00,72,00,65,00,77,00,61,00,6c,00,6c,\
-  00,5f,00,64,00,65,00,6c,00,20,00,22,00,25,00,31,00,22,00,00,00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SFCScannow\shell\02ViewLog]
+"Icon"="notepad.exe"
+"MUIVerb"="View log for SFC"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DesktopBackground\Shell\SFCScannow\shell\02ViewLog\Command]
+@="PowerShell (Select-String [SR] $env:windir\\Logs\\CBS\\CBS.log -s).Line >\"$env:userprofile\\Desktop\\SFC_LOG.txt\"; Start-Process -FilePath \"notepad.exe\" -ArgumentList \"$env:userprofile\\Desktop\\SFC_LOG.txt\""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex\ContextMenuHandlers]
-@="Compatibility"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\HiddenFiles]
+"Icon"="imageres.dll,-5314"
+"MUIVerb"="Hidden items"
+"Position"="Bottom"
+"Extended"=-
+"SubCommands"=""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex\ContextMenuHandlers\Compatibility]
-@="{1d27f844-3a1f-4410-85ac-14651078412d}"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\HiddenFiles\shell\Windows.ShowHiddenFiles]
+"CommandStateSync"=""
+"Description"="@shell32.dll,-37573"
+"ExplorerCommandHandler"="{f7300245-1f4b-41ba-8948-6fd392064494}"
+"Icon"="imageres.dll,-5314"
+"MUIVerb"="Hide/Show Hidden items"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex\ContextMenuHandlers\NvAppShExt]
-@="{A929C4CE-FD36-4270-B4F5-34ECAC5BD63C}"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\HiddenFiles\shell\x1menu]
+"MUIVerb"="Hide protected OS files"
+"Icon"="imageres.dll,-5314"
+"CommandFlags"=dword:00000020
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex\ContextMenuHandlers\OpenGLShExt]
-@="{E97DEC16-A50D-49bb-AE24-CF682282E08D}"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\HiddenFiles\shell\x1menu\command]
+@="cmd /c, REG ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\" /V ShowSuperHidden /T REG_DWORD /D 0 /F & taskkill /f /im explorer.exe & start explorer.exe"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex\ContextMenuHandlers\PintoStartScreen]
-@="{470C0EBD-5D73-4d58-9CED-E91E22E23282}"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\HiddenFiles\shell\x2menu]
+"MUIVerb"="Show protected OS files"
+"Icon"="imageres.dll,-5314"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex\DropHandler]
-@="{86C86720-42A0-1069-A2E8-08002B30309D}"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\HiddenFiles\shell\x2menu\command]
+@="cmd /c, REG ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\" /V Hidden /T REG_DWORD /D 1 /F & REG ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\" /V ShowSuperHidden /T REG_DWORD /D 1 /F & taskkill /f /im explorer.exe & start explorer.exe"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex\PropertySheetHandlers]
+[HKEY_CLASSES_ROOT\Folder\shell\HiddenFiles]
+"Icon"="imageres.dll,-5314"
+"MUIVerb"="Hidden items"
+"Position"="Bottom"
+"Extended"=-
+"SubCommands"=""
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\exefile\shellex\PropertySheetHandlers\ShimLayer Property Page]
-@="{513D916F-2A8E-4F51-AEAB-0CBC76FB1AF8}"
+[HKEY_CLASSES_ROOT\Folder\shell\HiddenFiles\shell\Windows.ShowHiddenFiles]
+"CommandStateSync"=""
+"Description"="@shell32.dll,-37573"
+"ExplorerCommandHandler"="{f7300245-1f4b-41ba-8948-6fd392064494}"
+"Icon"="imageres.dll,-5314"
+"MUIVerb"="Hide/Show Hidden items"
 
+[HKEY_CLASSES_ROOT\Folder\shell\HiddenFiles\shell\x1menu]
+"MUIVerb"="Hide protected OS files"
+"Icon"="imageres.dll,-5314"
+"CommandFlags"=dword:00000020
 
+[HKEY_CLASSES_ROOT\Folder\shell\HiddenFiles\shell\x1menu\command]
+@="cmd /c, REG ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\" /V ShowSuperHidden /T REG_DWORD /D 0 /F & taskkill /f /im explorer.exe & start explorer.exe"
+
+[HKEY_CLASSES_ROOT\Folder\shell\HiddenFiles\shell\x2menu]
+"MUIVerb"="Show protected OS files"
+"Icon"="imageres.dll,-5314"
+
+[HKEY_CLASSES_ROOT\Folder\shell\HiddenFiles\shell\x2menu\command]
+@="cmd /c, REG ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\" /V Hidden /T REG_DWORD /D 1 /F & REG ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\" /V ShowSuperHidden /T REG_DWORD /D 1 /F & taskkill /f /im explorer.exe & start explorer.exe"
+
+[HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\Windows.ShowFileExtensions]
+"CommandStateSync"=""
+"Description"="@shell32.dll,-37571"
+"ExplorerCommandHandler"="{4ac6c205-2853-4bf5-b47c-919a42a48a16}"
+"MUIVerb"="@shell32.dll,-37570"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\Windows.ShowFileExtensions]
+"CommandStateSync"=""
+"Description"="@shell32.dll,-37571"
+"ExplorerCommandHandler"="{4ac6c205-2853-4bf5-b47c-919a42a48a16}"
+"MUIVerb"="@shell32.dll,-37570"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode]
+"icon"="bootux.dll,-1032"
+"MUIVerb"="Safe Mode"
+"Position"=-
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\001-NormalMode]
+@="Restart in Normal Mode"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\001-NormalMode\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/c,bcdedit /deletevalue {current} safeboot & bcdedit /deletevalue {current} safebootalternateshell & shutdown -r -t 00 -f' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\002-SafeMode]
+@="Restart in Safe Mode"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\002-SafeMode\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/c,bcdedit /set {current} safeboot minimal & bcdedit /deletevalue {current} safebootalternateshell & shutdown -r -t 00 -f' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\003-SafeModeNetworking]
+@="Restart in Safe Mode with Networking"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\003-SafeModeNetworking\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/c,bcdedit /set {current} safeboot network & bcdedit /deletevalue {current} safebootalternateshell & shutdown -r -t 00 -f' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\004-SafeModeCommandPrompt]
+@="Restart in Safe Mode with Command Prompt"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\004-SafeModeCommandPrompt\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/c,bcdedit /set {current} safeboot minimal & bcdedit /set {current} safebootalternateshell yes & shutdown -r -t 00 -f' -Verb runAs\""
