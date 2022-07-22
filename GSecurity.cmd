@@ -260,19 +260,155 @@ Dism /online /Disable-Feature /All /Quiet /NoRestart /FeatureName:"SMB1Protocol-
 wmic computersystem where name="%computername%" set AutomaticManagedPagefile=True
 
 :: Hosts
-IF NOT EXIST HOSTS GOTO noHostsFile
-IF "%OS%"=="Windows_NT" GOTO HostsFile
-IF EXIST %winbootdir%\HOSTS*.* ATTRIB +A -H -R -S %winbootdir%\HOSTS*.*>NUL
-IF EXIST %winbootdir%\HOSTS.MVP DEL %winbootdir%\HOSTS.MVP>NUL
-IF EXIST %winbootdir%\HOSTS REN %winbootdir%\HOSTS HOSTS.MVP>NUL
-IF EXIST %winbootdir%\NUL COPY /Y HOSTS %winbootdir%>NUL
-GOTO noHostsFile
-:HostsFile
-IF EXIST %windir%\SYSTEM32\DRIVERS\ETC\HOSTS*.* ATTRIB +A -H -R -S %windir%\SYSTEM32\DRIVERS\ETC\HOSTS*.*>NUL
-IF EXIST %windir%\SYSTEM32\DRIVERS\ETC\HOSTS.MVP DEL %windir%\SYSTEM32\DRIVERS\ETC\HOSTS.MVP>NUL
-IF EXIST %windir%\SYSTEM32\DRIVERS\ETC\HOSTS REN %windir%\SYSTEM32\DRIVERS\ETC\HOSTS HOSTS.MVP>NUL
-IF EXIST %windir%\SYSTEM32\DRIVERS\ETC\NUL COPY /Y HOSTS %windir%\SYSTEM32\DRIVERS\ETC>NUL
-:noHostsFile
+(
+echo # Steven Black suggested
+echo 127.0.0.1 localhost
+echo 127.0.0.1 localhost.localdomain
+echo 127.0.0.1 local
+echo 255.255.255.255 broadcasthost
+echo ::1 localhost
+echo ::1 ip6-localhost
+echo ::1 ip6-loopback
+echo fe80::1%lo0 localhost
+echo ff00::0 ip6-localnet
+echo ff00::0 ip6-mcastprefix
+echo ff02::1 ip6-allnodes
+echo ff02::2 ip6-allrouters
+echo ff02::3 ip6-allhosts
+echo 0.0.0.0 0.0.0.0
+echo 
+echo # this is a list of the most popular ads companies blocked
+echo 0.0.0.0 adtago.s3.amazonaws.com
+echo 0.0.0.0 analyticsengine.s3.amazonaws.com
+echo 0.0.0.0 advice-ads.s3.amazonaws.com
+echo 0.0.0.0 affiliationjs.s3.amazonaws.com
+echo 0.0.0.0 advertising-api-eu.amazon.com
+echo 0.0.0.0 ssl.google-analytics.com
+echo 0.0.0.0 fastclick.com
+echo 0.0.0.0 fastclick.net
+echo 0.0.0.0 media.fastclick.net
+echo 0.0.0.0 cdn.fastclick.net
+echo 0.0.0.0 analytics.yahoo.com
+echo 0.0.0.0 global.adserver.yahoo.com
+echo 0.0.0.0 ads.yap.yahoo.com
+echo 0.0.0.0 appmetrica.yandex.com
+echo 0.0.0.0 yandexadexchange.net
+echo 0.0.0.0 analytics.mobile.yandex.net
+echo 0.0.0.0 extmaps-api.yandex.net
+echo 0.0.0.0 adsdk.yandex.ru
+echo 0.0.0.0 appmetrica.yandex.com
+echo 0.0.0.0 hotjar.com
+echo 0.0.0.0 static.hotjar.com
+echo 0.0.0.0 api-hotjar.com
+echo 0.0.0.0 jotjar-analytics.com
+echo 0.0.0.0 mouseflow.com
+echo 0.0.0.0 freshmarketer.com
+echo 0.0.0.0 luckyorange.com
+echo 0.0.0.0 cdn.luckyorange.com
+echo 0.0.0.0 w1.luckyorange.com
+echo 0.0.0.0 upload.luckyorange.com
+echo 0.0.0.0 cs.luckyorange.com
+echo 0.0.0.0 settings.luckyorange.com
+echo 0.0.0.0 stats.wp.com
+echo 0.0.0.0 app.bugsnag.com
+echo 0.0.0.0 api.bugsnag.com
+echo 0.0.0.0 notify.bugsnag.com
+echo 0.0.0.0 sessions.bugsnag.com
+echo 0.0.0.0 browser.sentry-cdn.com
+echo 0.0.0.0 app.getsentry.com
+echo 0.0.0.0 amazonaws.com
+echo 0.0.0.0 amazonaax.com
+echo 0.0.0.0 amazonclix.com
+echo 0.0.0.0 assoc-amazon.com
+echo 0.0.0.0 ads.google.com
+echo 0.0.0.0 pagead2.googlesyndication.com
+echo 0.0.0.0 pagead2.googleadservices.com
+echo # 0.0.0.0 facebook.com
+echo 0.0.0.0 amazon-adsystem.com
+echo 0.0.0.0 googleadservices.com
+echo 0.0.0.0 doubleclick.net
+echo 0.0.0.0 ad.doubleclick.net
+echo 0.0.0.0 static.doubleclick.net
+echo 0.0.0.0 m.doubleclick.net
+echo 0.0.0.0 mediavisor.doubleclick.net
+echo 0.0.0.0 googleads.g.doubleclick.net
+echo 0.0.0.0 adclick.g.doubleclick.net
+echo 0.0.0.0 carbonads.net
+echo 0.0.0.0 advertising.amazon.com
+echo 0.0.0.0 advertising.amazon.ca
+echo 0.0.0.0 google-analytics.com
+echo 0.0.0.0 doubleclick.net
+echo 0.0.0.0 doubleclick.com
+echo 0.0.0.0 doubleclick.de
+echo 0.0.0.0 partner.googleadservices.com
+echo 0.0.0.0 googlesyndication.com
+echo 0.0.0.0 google-analytics.com
+echo 0.0.0.0 zedo.com
+echo 0.0.0.0 amazon.ae
+echo 0.0.0.0 amazon.cn
+echo 0.0.0.0 advertising.amazon.co.jp
+echo 0.0.0.0 amazon.co.uk
+echo 0.0.0.0 advertising.amazon.com.au
+echo 0.0.0.0 advertising.amazon.com.mx
+echo 0.0.0.0 advertising.amazon.de
+echo 0.0.0.0 advertising.amazon.es
+echo 0.0.0.0 advertising.amazon.fr
+echo 0.0.0.0 advertising.amazon.in
+echo 0.0.0.0 advertising.amazon.it
+echo 0.0.0.0 advertising.amazon.sa
+echo 0.0.0.0 bingads.microsoft.com
+echo 0.0.0.0 adcash.com
+echo 0.0.0.0 taboola.com
+echo 0.0.0.0 outbrain.com
+echo 0.0.0.0 smartyads.com
+echo 0.0.0.0 popads.net
+echo 0.0.0.0 adpushup.com
+echo 0.0.0.0 trafficforce.com
+echo 0.0.0.0 adsterra.com
+echo 0.0.0.0 creative.ak.fbcdn.net
+echo 0.0.0.0 adbrite.com
+echo 0.0.0.0 exponential.com
+echo 0.0.0.0 quantserve.com
+echo 0.0.0.0 scorecardresearch.com
+echo 0.0.0.0 propellerads.com
+echo 0.0.0.0 admedia.net
+echo 0.0.0.0 admedia.com
+echo 0.0.0.0 bidvertiser.com
+echo 0.0.0.0 undertone.com
+echo 0.0.0.0 web.adblade.com
+echo 0.0.0.0 revenuehits.com
+echo 0.0.0.0 infolinks.com
+echo 0.0.0.0 vibrantmedia.com
+echo 0.0.0.0 ads.yahoosmallbusiness.com
+echo 0.0.0.0 ads.yahoo.com
+echo 0.0.0.0 hilltopads.net
+echo 0.0.0.0 clickadu.com
+echo 0.0.0.0 citysex.com
+echo 0.0.0.0 ad-maven.com
+echo 0.0.0.0 propelmedia.com
+echo 0.0.0.0 enginemediaexchange.com
+echo 0.0.0.0 advertisers.adversense.com
+echo 0.0.0.0 a.adtng.com
+echo 0.0.0.0 ads.facebook.com
+echo 0.0.0.0 an.facebook.com
+echo 0.0.0.0 analytics.facebook.com
+echo 0.0.0.0 pixel.facebook.com
+echo 0.0.0.0 ads.youtube.com
+echo 0.0.0.0 youtube.cleverads.vn
+echo 0.0.0.0 ads-twitter.com
+echo 0.0.0.0 ads-api.twitter.com
+echo 0.0.0.0 advertising.twitter.com
+echo 0.0.0.0 ads.linkedin.com
+echo 0.0.0.0 analytics.pointdrive.linkedin.com
+echo 0.0.0.0 ads.reddit.com
+echo 0.0.0.0 d.reddit.com
+echo 0.0.0.0 rereddit.com
+echo 0.0.0.0 events.redditmedia.com
+echo 0.0.0.0 analytics.tiktok.com
+echo 0.0.0.0 ads.tiktok.com
+echo 0.0.0.0 analytics-sg.tiktok.com
+echo 0.0.0.0 ads-sg.tiktok.com
+)>"%systemdrive%\Windows\System32\Drivers\Etc\hosts"
 
 :: Exit
 shutdown /r /t 0
