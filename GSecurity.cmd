@@ -82,14 +82,26 @@ Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile" /v 
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile" /v "EnableFirewall" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile" /v "DefaultOutboundAction" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile" /v "DefaultInboundAction" /t REG_DWORD /d "1" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{1E78ACD0-2EB2-4C5B-BE1E-C3AF5786D813}" /t REG_SZ /d "v2.31|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort2_10=1-66|LPort2_10=69-55554|LPort2_10=55556-65535|Name=TCP|EmbedCtxt=GSecurity|" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{7647502E-A6B0-4DCD-BD65-6B0E48EEFDF7}" /t REG_SZ /d "v2.31|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort2_10=1-66|LPort2_10=69-55554|LPort2_10=55556-65535|Name=UDP|EmbedCtxt=GSecurity|" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{f016bbe0-a716-428b-822e-5E544B6A3105}" /t REG_SZ /d "v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\Windows\explorer.exe|Name=explorer|EmbedCtxt=GSecurity|" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{f016bbe0-a716-428b-822e-5E544B6A3173}" /t REG_SZ /d "v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\Windows\SysWOW64\ntoskrnl.exe|Name=Kernel|EmbedCtxt=GSecurity|" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{1328DBFE-5C4D-45C0-A1DC-E8C4ACA191F1}" /t REG_SZ /d "v2.31|Action=Allow|Active=TRUE|Dir=Out|Name=Allow outgoing|LUAuth=O:LSD:(A;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{2FE0B25C-3959-48DD-8A30-044DEC9D2D21}" /t REG_SZ /d "v2.31|Action=Allow|Active=TRUE|Dir=In|Name=Allow inbound|LUAuth=O:LSD:(A;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{B2BFE478-9FAB-4F16-B788-3EB1362244F0}" /t REG_SZ /d "v2.31|Action=Block|Active=TRUE|Dir=In|Name=Block inbound|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|" /f
-Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{4EC2F4B0-25C5-4B77-AA18-D63616EEC2B1}" /t REG_SZ /d "v2.31|Action=Block|Active=TRUE|Dir=Out|Name=Block outbound|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{ED04FABD-4E60-4D4F-8C72-54D8F32A211D}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=In|Name=Block inbound|LUAuth=O:LSD:(D;;CC;;;NS)(A;;CC;;;S-1-2-1)|Platform=2:6:2|Platform2=GTEQ|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{CA5154A7-8D22-4E9B-A0C8-59EDD6D455C8}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=Out|Name=Block outbound|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|Platform=2:6:2|Platform2=GTEQ|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{C9B41299-7C2C-46EB-8BE5-C448864E7F42}" /t REG_SZ /d "v2.30|Action=Allow|Active=TRUE|Dir=In|Name=Allow inbound|LUAuth=O:LSD:(A;;CC;;;NS)|Platform=2:6:2|Platform2=GTEQ|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{C3C53FFF-0B0A-46C1-88D3-8FF5D05E57DC}" /t REG_SZ /d "v2.30|Action=Allow|Active=TRUE|Dir=Out|Name=Allow outbound|LUAuth=O:LSD:(A;;CC;;;S-1-2-1)|Platform=2:6:2|Platform2=GTEQ|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{1E7BFD4C-BCC0-43E1-984F-5C845CB1D66A}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=In|LA4=0.0.0.0|Name=0.0.0.0|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{394F2EBB-EC53-4332-B0B9-009BD016ACF8}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=135|LPort2_10=137-139|Name=TCP|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{5F113304-2628-4D70-B5F3-842263DA9259}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=135|LPort2_10=137-139|Name=UDP|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{C2BE25BD-F8D8-4855-B5A1-D5A84493A41F}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=Out|LA4=0.0.0.0|Name=0.0.0.0|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{9CEA5326-11AF-4539-93EB-609809B3385D}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=Out|Protocol=6|LPort=135|LPort2_10=137-139|Name=TCP|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{D321AC1A-79F3-4F4D-ACDA-CC7DAE034B1A}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=Out|Protocol=17|LPort=135|LPort2_10=137-139|Name=UDP|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{72B3A63D-B506-4914-BBBD-E6ACED2D63D7}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=In|App=%%SystemRoot%%\System32\ntoskrnl.exe|Name=ntoskrnl.exe|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{891933B0-9E7A-4CDA-A0E3-CA8D3DCF5C0E}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=In|App=%%SystemRoot%%\explorer.exe|Name=explorer.exe|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{050CD76F-8213-4FF4-A025-695F1076BD1C}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=Out|App=%%SystemRoot%%\explorer.exe|Name=explorer.exe|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{15474752-2345-4B78-AC86-1420571F2553}" /t REG_SZ /d "v2.30|Action=Block|Active=TRUE|Dir=Out|App=%%SystemRoot%%\System32\ntoskrnl.exe|Name=ntoskrnl.exe|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{1E78ACD0-2EB2-4C5B-BE1E-C3AF5786D813}" /t REG_SZ /d "v2.29|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort2_10=1-66|LPort2_10=69-55554|LPort2_10=55556-65535|Name=TCP|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{7647502E-A6B0-4DCD-BD65-6B0E48EEFDF7}" /t REG_SZ /d "v2.29|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort2_10=1-66|LPort2_10=69-55554|LPort2_10=55556-65535|Name=UDP|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{1328DBFE-5C4D-45C0-A1DC-E8C4ACA191F1}" /t REG_SZ /d "v2.29|Action=Allow|Active=TRUE|Dir=Out|Name=Allow outgoing|LUAuth=O:LSD:(A;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{2FE0B25C-3959-48DD-8A30-044DEC9D2D21}" /t REG_SZ /d "v2.29|Action=Allow|Active=TRUE|Dir=In|Name=Allow inbound|LUAuth=O:LSD:(A;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{B2BFE478-9FAB-4F16-B788-3EB1362244F0}" /t REG_SZ /d "v2.29|Action=Block|Active=TRUE|Dir=In|Name=Block inbound|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|" /f
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules" /v "{4EC2F4B0-25C5-4B77-AA18-D63616EEC2B1}" /t REG_SZ /d "v2.29|Action=Block|Active=TRUE|Dir=Out|Name=Block outbound|LUAuth=O:LSD:(D;;CC;;;S-1-2-1)|EmbedCtxt=GSecurity|" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile" /v "DisableNotifications" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile" /v "DisableUnicastResponsesToMulticastBroadcast" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile" /v "AllowLocalPolicyMerge" /t REG_DWORD /d "1" /f
@@ -240,9 +252,9 @@ Dism /Online /Enable-Feature /All /Quiet /NoRestart /FeatureName:Microsoft-Hyper
 Dism /Online /Enable-Feature /All /Quiet /NoRestart /FeatureName:Containers-DisposableClientVM
 
 :: Disable point of entry for Spectre and Meltdown
-Dism /online /Disable-Feature /FeatureName:"SMB1Protocol"
-Dism /online /Disable-Feature /FeatureName:"SMB1Protocol-Client"
-Dism /online /Disable-Feature /FeatureName:"SMB1Protocol-Server"
+Dism /online /Disable-Feature /All /Quiet /NoRestart /FeatureName:"SMB1Protocol"
+Dism /online /Disable-Feature /All /Quiet /NoRestart /FeatureName:"SMB1Protocol-Client"
+Dism /online /Disable-Feature /All /Quiet /NoRestart /FeatureName:"SMB1Protocol-Server"
 
 :: Pagefile
 wmic computersystem where name="%computername%" set AutomaticManagedPagefile=True
