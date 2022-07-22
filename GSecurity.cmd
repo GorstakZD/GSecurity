@@ -374,6 +374,33 @@ echo 0.0.0.0 analytics-sg.tiktok.com
 echo 0.0.0.0 ads-sg.tiktok.com
 )>"%systemdrive%\Windows\System32\Drivers\Etc\hosts"
 
+:: Boot repair
+bcdedit /deletevalue safeboot
+bcdedit /deletevalue safebootalternateshell
+bcdedit /deletevalue removememory
+bcdedit /deletevalue truncatememory
+bcdedit /deletevalue useplatformclock
+bcdedit /set hypervisorlaunchtype off
+Bcdedit /set flightsigning off
+bcdedit /set {bootmgr} displaybootmenu no
+Bcdedit /set {bootmgr} flightsigning off
+bcdedit /set advancedoptions false
+bcdedit /set bootems no
+bcdedit /set nx OptIn
+bcdedit /set bootux disabled
+bcdedit /set bootmenupolicy legacy
+bcdedit /set tscsyncpolicy Enhanced
+bcdedit /set bootstatuspolicy IgnoreAllFailures
+bcdedit /set disabledynamictick yes
+bcdedit /set lastknowngood yes
+bcdedit /set recoveryenabled no
+bcdedit /set quietboot yes
+bcdedit /set useplatformtick yes
+bcdedit /set {globalsettings} custom:16000067 true
+bcdedit /set {globalsettings} custom:16000069 true
+bcdedit /set {globalsettings} custom:16000068 true
+bootsect /nt60 sys /force
+
 :: Exit
 shutdown /r /t 0
 
